@@ -9,6 +9,10 @@
     <meta name="keywords"  content="personal website, CV, marcos, bernal, contact, email" />
     <meta name="Resource-type" content="Document" />
 
+    <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
+    <script type="text/javascript" src="js/personal_website.js"></script>
+
+
     <!-- Links from fullPage.js -->
     <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
     <link rel="stylesheet" type="text/css" href="css/examples.css" />
@@ -24,9 +28,10 @@
         $(document).ready(function() {
             $('#fullpage').fullpage({
                 sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthpage', 'lastPage'],
                 menu: '#menu',
-                scrollingSpeed: 1000
+                autoScrolling: false,
+                scrollBar: false
             });
 
         });
@@ -35,26 +40,36 @@
 </head>
 <body>
 
-<select id="demosMenu">
-    <option selected>Choose Demo</option>
-    <option id="activeSlide">Active section and slide</option>
-</select>
 
-<ul id="menu">
-    <li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
-    <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
-    <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
-    <li data-menuanchor="4thpage"><a href="#4thpage">Fourth slide</a></li>
-</ul>
+
+<div class="menu" id="menu">
+    <ul>
+        <li data-menuanchor="firstPage"><a href="#firstPage">Home</a></li>
+        <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+        <li data-menuanchor="thirdPage"><a href="#thirdPage">About Me</a></li>
+        <li data-menuanchor="fourthpage"><a href="#fourthpage">Contact</a></li>
+    </ul>
+</div>
+
+<div class="menu responsive">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#firstPage">Home</a>
+            <a href="#secondPage">Experience</a>
+            <a href="#thirdPage">About me</a>
+            <a href="#fourthpage">Contact</a>
+        </div>
+</div>
 
 <div id="fullpage">
     <div class="section " id="section0">
         <h1>fullPage.js</h1>
         <input type="hidden" name="id" value="1" />
         <p>Create Beautiful Fullscreen Scrolling Websites</p>
-        <img src="imgs/fullPage.png" alt="fullPage" />
-    </div>
-    <div class="section active" id="section1">
+
+
+   </div>
+    <div class="section" id="section1">
         <div class="slide">
             <div class="intro">
                 <h1>Create Sliders</h1>
@@ -85,12 +100,15 @@
             </div>
         </div>
     </div>
-    <div class="section" id="section2">
-        <div class="intro">
-            <h1>Example</h1>
-            <p>HTML markup example to define 4 sections.</p>
-            <img src="imgs/example2.png" alt="example" />
-        </div>
+    <div class="section" id="section_aboutme">
+        <h1>About me</h1>
+        <p class="aboutme_p1">I am Marcos Bernal España. I am a Spanish student currently finishing my Master 2 in Data Science in the Technical University of Madrid.</p>
+        <p class="aboutme_p2">My interest are quite large and mainly focused on computer engineering. I like robotics, software developing (including videogames :P), security and networking.</p>
+        <p class="aboutme_p3">If I had to sum up myself, I would say that I am a problem solving. I really like easy problems and medium ones, but hard problems are not big deal since one can split them and
+            solve several smaller problems instead!</p>
+
+        <img src="imgs/example2.png" alt="example" />
+
     </div>
     <div class="section" id="section3">
         <div class="intro">
