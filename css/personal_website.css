@@ -77,16 +77,24 @@ h1{
     }
 
     .dropbtn {
-        background-color: #4CAF50;
+        background: url("../imgs/menu_collapse_black.png") no-repeat center;
+        min-width: 45px;
+        min-height: 45px;
         color: white;
         padding: 16px;
         font-size: 16px;
-        border: none;
+        border-radius: 30%;
+        border: 2px solid black;
         cursor: pointer;
+        outline: none;
     }
 
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #3e8e41;
+    .dropbtn.alt {
+        background: url("../imgs/menu_collapse_pressed_black.png") no-repeat center;
+    }
+
+    .dropbtn:hover {
+        background-color: #B2B2B2;
     }
 
     .menu.responsive {
@@ -108,7 +116,7 @@ h1{
         min-width: 120px;
         overflow: auto;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+        z-index: 70;
     }
 
     .dropdown-content a {
@@ -118,7 +126,9 @@ h1{
         display: block;
     }
 
-    .dropdown a:hover {background-color: #f1f1f1}
+    .dropdown-content a:hover {
+        background-color: #B2B2B2
+    }
 
     .show {display:block;}
 }
