@@ -7,61 +7,78 @@
     display: none;
 }
 
-/* Style for our header texts
+/* Font for the text
 * --------------------------------------- */
-h1{
-    font-size: 5em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin:0;
-    padding:0;
+h1, h2, h3, h4, p {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-/* Centered texts in each section
-* --------------------------------------- */
-.section{
-    text-align:center;
+h4 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 2.5em !important;
+}
+
+p {
+    margin-top: 1%;
+    margin-botton: 1%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+/*
+===================================================================================
+============================== ABOUT ME SECTION ====================================
+===================================================================================
+*/
+#AboutMe{
+    background: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg) no-repeat;
     background-size: cover;
 }
 
-
-/* Backgrounds will cover all the section
-* --------------------------------------- */
-.slide{
-    background-size: cover;
-}
-
-/* Defining each section background and styles
-* --------------------------------------- */
-#section_aboutme{
-    background-image: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg);
-}
-
-#section_aboutme p{
-    color: black;
+#AboutMe .description{
+    padding-left: 8%;
+    padding-right: 8%;
     text-align: left;
-    font-size: large;
-    position: relative;
+}
 
-    padding-top: 5%;
-    padding-right: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
+#AboutMe .description h4{
 
 }
 
-#section0 h1{
-    top: 50%;
-    transform: translateY(-50%);
-    position: relative;
+#AboutMe .description p{
+    color: black;
+    text-align: justify;
+    font-size: 1em;
 }
-#section3 h1{
-    color: #000;
+
+#AboutMe .show_images{
+    display: inline-block;
+    margin-left: 5%;
+}
+
+/*
+===================================================================================
+============================== CONTACT SECTION ====================================
+=================================================================================*/
+
+
+#Contact .w3-container{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#Contact .w3-col{
+    height: 100%;
+    width: 50px;
+    text-align: center;
 }
 
 
-/* Bottom menu
-* --------------------------------------- */
+
+
 #infoMenu li a {
     color: #fff;
 }
@@ -70,7 +87,7 @@ h1{
     display: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 
     .menu{
         display: none;
@@ -94,7 +111,8 @@ h1{
     }
 
     .dropbtn:hover {
-        background-color: #B2B2B2;
+        background-color: rgba(255,255,255, 0.4);
+
     }
 
     .menu.responsive {
@@ -131,5 +149,65 @@ h1{
     }
 
     .show {display:block;}
+
+    #section_about_me{
+        background: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b_reduced.jpg) ;
+        background-size: cover;
+    }
+
+    #AboutMe .show_images{
+        display: block !important;
+        width: 60% !important;
+        margin-left: auto;
+        margin-right: auto !important;
+        margin-bottom: 5%;
+    }
 }
 
+/*
+===================================================================================
+============================== FROM FULLPAGEJS ====================================
+=================================================================================*/
+
+#menu li {
+    display:inline-block;
+    margin: 10px;
+    color: #000;
+    background:#fff;
+    background: rgba(255,255,255, 0.5);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+#menu li.active{
+    background:#666;
+    background: rgba(0,0,0, 0.5);
+    color: #fff;
+}
+#menu li a{
+    text-decoration:none;
+    color: #000;
+}
+#menu li.active a:hover{
+    color: #000;
+}
+#menu li:hover{
+    background: rgba(255,255,255, 0.8);
+}
+#menu li a,
+#menu li.active a{
+    padding: 9px 18px;
+    display:block;
+}
+#menu li.active a{
+    color: #fff;
+}
+#menu{
+    position:fixed;
+    top:0;
+    left:0;
+    height: 40px;
+    z-index: 70;
+    width: 100%;
+    padding: 0;
+    margin:0;
+}
