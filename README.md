@@ -1,11 +1,13 @@
 # Personal website
 
-This is my personal website developed from the demo page made by fullPage.js creators.
+This is my personal website developed from the Template made by W3School.
 
 In construction
 
 # Credits
 
-The core of this future website was made with fullPage.js
+Some ideas were taken from the project fullPage.js and the free template Parallax
 
-More information in: https://alvarotrigo.com/fullPage/
+More information in:
+   - https://alvarotrigo.com/fullPage/
+   - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_parallax&stacked=h

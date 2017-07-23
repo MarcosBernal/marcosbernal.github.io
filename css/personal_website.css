@@ -16,6 +16,7 @@ h1, h2, h3, h4, p {
 h4 {
     margin-top: 2%;
     margin-bottom: 2%;
+    font-size: 2.5em !important;
 }
 
 p {
@@ -44,7 +45,7 @@ p {
 }
 
 #AboutMe .description h4{
-    font-size: 2.5em;
+
 }
 
 #AboutMe .description p{
@@ -64,9 +65,18 @@ p {
 =================================================================================*/
 
 
-{
-
+#Contact .w3-container{
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
+#Contact .w3-col{
+    height: 100%;
+    width: 50px;
+    text-align: center;
+}
+
+
 
 
 #infoMenu li a {
