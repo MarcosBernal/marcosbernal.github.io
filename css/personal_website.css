@@ -1,6 +1,5 @@
+/* personal_website.css Jul 2017 by Marcos Bernal */
 @CHARSET "ISO-8859-1";
-/* Marcos Personal Website
-  *----------------------------------------- */
 
 /* Removing scrollbars in all body of html */
 ::-webkit-scrollbar {
@@ -19,33 +18,126 @@ h4 {
     font-size: 2.5em !important;
 }
 
+/* Font for the text
+* --------------------------------------- */
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+
 p {
     margin-top: 1%;
     margin-botton: 1%;
 }
 
-.full-height {
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
 }
 
-/*
-===================================================================================
-============================== ABOUT ME SECTION ====================================
-===================================================================================
-*/
-#AboutMe{
-    background: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg) no-repeat;
+.text_centered{
+   margin: 0px auto;
+}
+
+
+/*==================================================================================
+============================== WELCOME SECTION =====================================
+==================================================================================*/
+#Welcome, #Welcome2{
+    background-image: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100%;
+}
+
+#Welcome .text_introduction{
+    display: inline-block;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+    max-width: 35%;
+    min-height: 75% !important;
+    background: rgba(176, 75, 80, 0.3);
+}
+
+#Welcome .images_introduction{
+    display: inline-block;
+    position: absolute;
+    width: 50%;
+    margin-left: 45%;
+    margin-right: 5%;
+    background: rgba(76, 175, 80, 0.3);
+    height: 40% !important;
+}
+
+#Welcome .container {
+     position: relative;
+     width: 40%;
+ }
+
+#Welcome .image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#Welcome .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    transition: .5s ease;
+}
+
+#Welcome .container:hover .overlay {
+    width: 100%;
+}
+
+#Welcome .text {
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+
+/*==================================================================================
+============================ EXPERIENCE SECTION ====================================
+==================================================================================*/
+#Experience{
+    background: none;
+}
+
+/*==================================================================================
+============================== ABOUT ME SECTION ====================================
+==================================================================================*/
+#AboutMe{
+    background-image: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
 }
 
 #AboutMe .description{
     padding-left: 8%;
     padding-right: 8%;
     text-align: left;
-}
-
-#AboutMe .description h4{
-
 }
 
 #AboutMe .description p{
@@ -79,10 +171,6 @@ p {
 
 
 
-#infoMenu li a {
-    color: #fff;
-}
-
 .menu.responsive{
     display: none;
 }
@@ -91,6 +179,11 @@ p {
 
     .menu{
         display: none;
+    }
+
+
+    .parallax {
+        background-attachment: scroll;
     }
 
     .dropbtn {
@@ -162,6 +255,7 @@ p {
         margin-right: auto !important;
         margin-bottom: 5%;
     }
+
 }
 
 /*
