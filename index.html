@@ -13,135 +13,150 @@
     <script type="text/javascript" src="js/personal_website.js"></script>
 
 
+    <link rel="stylesheet" href="css/w3.css">
+
+    <!-- Icons and other open source resources from  cdnjs.cloudflare.com-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    <!-- Links from fullPage.js -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
-
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-
-
-        <script type="text/javascript" src="js/jquery.fullPage.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#fullpage').fullpage({
-                    sectionsColor: ['#1bbc9b', '#4BBFC3', 'transparent', 'whitesmoke', '#ccddff'],
-                    anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthpage', 'lastPage'],
-                    menu: '#menu',
-                    autoScrolling: false,
-                    scrollBar: false,
-                    normalScrollElements: ".description",
-                    fitToSection:false
-                });
-
-            });
-        </script>
-
-    </head>
-    <body>
+</head>
+<body>
 
 
 
-    <div class="menu" id="menu">
-        <ul>
-            <li data-menuanchor="firstPage"><a href="#firstPage">Home</a></li>
-            <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
-            <li data-menuanchor="thirdPage"><a href="#thirdPage">About Me</a></li>
-            <li data-menuanchor="fourthpage"><a href="#fourthpage">Contact</a></li>
-        </ul>
+<div class="menu" id="menu">
+    <ul>
+        <li><a href="#Welcome">Home</a></li>
+        <li><a href="#Experience">Second slide</a></li>
+        <li><a href="#AboutMe">About Me</a></li>
+        <li><a href="#Contact">Contact</a></li>
+    </ul>
+</div>
+
+<div class="menu responsive">
+    <button onclick="myFunction()" class="dropbtn"></button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#Welcome">Home</a>
+        <a href="#Experience">Experience</a>
+        <a href="#AboutMe">About me</a>
+        <a href="#Contact">Contact</a>
     </div>
+</div>
 
-    <div class="menu responsive">
-            <button onclick="myFunction()" class="dropbtn"></button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#firstPage">Home</a>
-                <a href="#secondPage">Experience</a>
-                <a href="#thirdPage">About me</a>
-                <a href="#fourthpage">Contact</a>
-            </div>
-    </div>
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++ Pages (Content) +++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
-    <div id="fullpage">
-        <div class="section " id="section0">
-            <h1>fullPage.js</h1>
-            <input type="hidden" name="id" value="1" />
-            <p>Create Beautiful Fullscreen Scrolling Websites</p>
+<div class="w3-container w3-padding-64" id="Welcome">
+    <h1>fullPage.js</h1>
+    <input type="hidden" name="id" value="1" />
+    <p>Create Beautiful Fullscreen Scrolling Websites</p>
+</div>
 
+<div class="w3-container w3-padding-64" id="Experience">
+    <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+</div>
 
-       </div>
-        <div class="section" id="section1">
-            <div class="slide">
-                <div class="intro">
-                    <h1>Create Sliders</h1>
-                    <p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
-                    <img src="imgs/slider.png" alt="slider" />
+<div class="w3-display-container" id="AboutMe">
+    <div class="w3-container w3-padding-64 description">
+        <h4>Allow me to introduce myself...</h4>
+
+        <p>I am Marcos Bernal España. I am a Spanish student currently finishing Master 2 in Data Science in the
+            Technical University of Madrid.
+            My interest are quite large and mainly focused on computer engineering. I like robotics, software developing
+            (including videogames :P), security and networking. I like to learn something useful everyday and I do my best to achieve it.</p>
+        <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
+            medium ones, but hard problems are not big deal since one can split them and
+            have several lovely small problems instead!</p>
+
+        <div class="w3-container">
+            <a href="#Welcome">
+                <div class="w3-card-4 show_images" style="width:20%">
+                    <div class="w3-container w3-center ">
+                        <p>OpenHack Nice 2017</p>
+                    </div>
+                        <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale" style="width:100%">
                 </div>
+            </a>
 
-            </div>
-            <div class="slide">
-                <div class="intro">
-                    <img src="imgs/1.png" alt="simple" />
-                    <h1>Simple</h1>
-                    <p>Easy to use. Configurable and customizable.</p>
+            <a href="default.asp">
+                <div class="w3-card-4 show_images" style="width:20%">
+                    <div class="w3-tooltip w3-center">
+                        <p>Solar Tracker Project</p>
+                    </div>
+                        <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale" style=" width:100%">
                 </div>
-            </div>
-            <div class="slide">
-                <div class="intro">
-                    <img src="imgs/2.png" alt="Cool" />
-                    <h1>Cool</h1>
-                    <p>It just looks cool. Impress everybody with a simple and modern web design!</p>
+            </a>
+
+            <a href="#Welcome">
+                <div class="w3-card-4 show_images" style="width:25%">
+                    <div class="w3-container w3-center">
+                        <p>Coming back soon!</p>
+                    </div>
+                    <img src="imgs/in_construction.jpg" alt="Coming back soon!" class="w3-hover-grayscale" style="width:100%">
                 </div>
-            </div>
-            <div class="slide">
-                <div class="intro">
-                    <img src="imgs/3.png" alt="Compatible" />
-                    <h1>Compatible</h1>
-                    <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
-                </div>
-            </div>
-        </div>
-        <div class="section" id="section_about_me">
-            <div class="description">
-                <h1>Allow me to introduce myself...</h1>
-
-                <p>I am Marcos Bernal España. I am a Spanish student currently finishing Master 2 in Data Science in the Technical University of Madrid.</p>
-                <p>My interest are quite large and mainly focused on computer engineering. I like robotics, software developing (including videogames :P), security and networking.</p>
-                <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and medium ones, but hard problems are not big deal since one can split them and
-                have several lovely small problems instead!</p>
-
-                <div class="show_images">
-                    <a href="default.asp">
-                        <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize">
-                    </a>
-                    <a href="default.asp">
-                        <img src="imgs/microcontroller_project.jpg" alt="Marcos holding his openhack prize">
-                    </a>
-                    <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize">
-
-                </div>
-            </div>
-
+            </a>
 
         </div>
-        <div class="section" id="section3">
-            <div class="intro">
-                <h1>Working On Tablets</h1>
-                <p>
-                    Designed to fit to different screen sizes as well as tablet and mobile devices.
-                    <br /><br /><br /><br /><br /><br />
-                </p>
-            </div>
-            <img src="imgs/tablets.png" alt="tablets" />
-        </div>
     </div>
+</div>
 
-    <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <p>Bootstrap Theme Made By <a href="#">Marcos Bernal</a></p>
+<div class="w3-display-container" id="Contact">
+    <div class="w3-container w3-padding-64">
+        <h4>Contact</h4>
+
+
+        <form action="">
+            <div class="w3-half">
+            <div class="w3-row w3-section">
+                <div class="w3-col"><i class="w3-xxlarge fa fa-user"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
+                </div>
+            </div>
+            </div>
+            <div class="w3-half">
+
+            <div class="w3-row w3-section">
+                <div class="w3-col"><i class="w3-xxlarge fa fa-phone"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="phone" type="text" placeholder="Phone">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col"><i class="w3-xxlarge fa fa-pencil"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="message" type="text" placeholder="Subjet">
+                </div>
+            </div>
+            </div>
+
+            <textarea name="message" rows="10" cols="30" style="width: 100%;" placeholder="Hi Marcos, ..."></textarea>
+
+            <button class="w3-button w3-block w3-section w3-black w3-ripple w3-padding">Send</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <div class="w3-xlarge w3-section">
+        <i class="fa fa-github w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </div>
+    <p>W3CSS Theme Made By <a href="#">Marcos Bernal</a></p>
 </footer>
+
 
 </body>
 </html> 

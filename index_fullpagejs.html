@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Personal Website of Marcos Bernal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Marcos Bernal España" />
+    <meta name="description" content="Personal website. Sharing a small piece of me to the world." />
+    <meta name="keywords"  content="personal website, CV, marcos, bernal, contact, email" />
+    <meta name="Resource-type" content="Document" />
+
+    <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
+    <script type="text/javascript" src="js/personal_website.js"></script>
+
+
+
+
+    <!-- Links from fullPage.js -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+
+        <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#fullpage').fullpage({
+                    sectionsColor: ['#1bbc9b', '#4BBFC3', 'transparent', 'whitesmoke', '#ccddff'],
+                    anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthpage', 'lastPage'],
+                    menu: '#menu',
+                    autoScrolling: false,
+                    scrollBar: false,
+                    normalScrollElements: ".description",
+                    fitToSection:false
+                });
+
+            });
+        </script>
+
+    </head>
+    <body>
+
+
+
+    <div class="menu" id="menu">
+        <ul>
+            <li data-menuanchor="firstPage"><a href="#firstPage">Home</a></li>
+            <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+            <li data-menuanchor="thirdPage"><a href="#thirdPage">About Me</a></li>
+            <li data-menuanchor="fourthpage"><a href="#fourthpage">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="menu responsive">
+            <button onclick="myFunction()" class="dropbtn"></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#firstPage">Home</a>
+                <a href="#secondPage">Experience</a>
+                <a href="#thirdPage">About me</a>
+                <a href="#fourthpage">Contact</a>
+            </div>
+    </div>
+
+    <div id="fullpage">
+        <div class="section " id="section0">
+            <h1>fullPage.js</h1>
+            <input type="hidden" name="id" value="1" />
+            <p>Create Beautiful Fullscreen Scrolling Websites</p>
+
+
+       </div>
+        <div class="section" id="section1">
+            <div class="slide">
+                <div class="intro">
+                    <h1>Create Sliders</h1>
+                    <p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
+                    <img src="imgs/slider.png" alt="slider" />
+                </div>
+
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/1.png" alt="simple" />
+                    <h1>Simple</h1>
+                    <p>Easy to use. Configurable and customizable.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/2.png" alt="Cool" />
+                    <h1>Cool</h1>
+                    <p>It just looks cool. Impress everybody with a simple and modern web design!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/3.png" alt="Compatible" />
+                    <h1>Compatible</h1>
+                    <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section_about_me">
+            <div class="description">
+                <h1>Allow me to introduce myself...</h1>
+
+                <p>I am Marcos Bernal España. I am a Spanish student currently finishing Master 2 in Data Science in the Technical University of Madrid.</p>
+                <p>My interest are quite large and mainly focused on computer engineering. I like robotics, software developing (including videogames :P), security and networking.</p>
+                <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and medium ones, but hard problems are not big deal since one can split them and
+                have several lovely small problems instead!</p>
+
+                <div class="show_images">
+                    <a href="default.asp">
+                        <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize">
+                    </a>
+                    <a href="default.asp">
+                        <img src="imgs/microcontroller_project.jpg" alt="Marcos holding his openhack prize">
+                    </a>
+                    <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <h1>Working On Tablets</h1>
+                <p>
+                    Designed to fit to different screen sizes as well as tablet and mobile devices.
+                    <br /><br /><br /><br /><br /><br />
+                </p>
+            </div>
+            <img src="imgs/tablets.png" alt="tablets" />
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+    <p>Bootstrap Theme Made By <a href="#">Marcos Bernal</a></p>
+</footer>
+
+</body>
+</html> 
