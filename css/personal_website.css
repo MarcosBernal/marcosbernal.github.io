@@ -42,6 +42,10 @@ p {
    margin: 0px auto;
 }
 
+.hidden {
+    display: none !important;
+}
+
 
 /*==================================================================================
 ============================== WELCOME SECTION =====================================
@@ -169,135 +173,24 @@ p {
 }
 
 
-
-
 .menu.responsive{
     display: none;
 }
 
-@media screen and (max-width: 600px) {
 
-    .menu{
-        display: none;
-    }
-
-
-    .parallax {
-        background-attachment: scroll;
-    }
-
-    .dropbtn {
-        background: url("../imgs/menu_collapse_black.png") no-repeat center;
-        min-width: 45px;
-        min-height: 45px;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border-radius: 30%;
-        border: 2px solid black;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .dropbtn.alt {
-        background: url("../imgs/menu_collapse_pressed_black.png") no-repeat center;
-    }
-
-    .dropbtn:hover {
-        background-color: rgba(255,255,255, 0.4);
-
-    }
-
-    .menu.responsive {
-        display: block;
-        position:fixed;
-        right:15px;
-        top: 15px;
-        height: 30px;
-        z-index: 70;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        left:auto;
-        right:0;
-        text-align: center;
-        background-color: #f9f9f9;
-        min-width: 120px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 70;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 8px 12px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #B2B2B2
-    }
-
-    .show {display:block;}
-
-    #section_about_me{
-        background: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b_reduced.jpg) ;
-        background-size: cover;
-    }
-
-    #AboutMe .show_images{
-        display: block !important;
-        width: 60% !important;
-        margin-left: auto;
-        margin-right: auto !important;
-        margin-bottom: 5%;
-    }
-
-}
-
-/*
-===================================================================================
-============================== FROM FULLPAGEJS ====================================
+/*=================================================================================
+======================= MENU INSPIRED FROM FULLPAGEJS =============================
 =================================================================================*/
+#welcome_menu {
+    position:absolute;
+    width:100%;
+    z-index:1;
+    top:0;
+}
 
-#menu li {
-    display:inline-block;
-    margin: 10px;
-    color: #000;
-    background:#fff;
-    background: rgba(255,255,255, 0.5);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-#menu li.active{
-    background:#666;
-    background: rgba(0,0,0, 0.5);
-    color: #fff;
-}
-#menu li a{
-    text-decoration:none;
-    color: #000;
-}
-#menu li.active a:hover{
-    color: #000;
-}
-#menu li:hover{
-    background: rgba(255,255,255, 0.8);
-}
-#menu li a,
-#menu li.active a{
-    padding: 9px 18px;
-    display:block;
-}
-#menu li.active a{
-    color: #fff;
-}
 #menu{
     position:fixed;
-    top:0;
+    top: 0;
     left:0;
     height: 40px;
     z-index: 70;
@@ -305,3 +198,31 @@ p {
     padding: 0;
     margin:0;
 }
+
+#menu li {
+    display:inline-block;
+    margin: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#menu li a{
+    text-decoration:none;
+    color: #fff;
+    padding: 9px 18px;
+    display:block;
+}
+
+#menu li:hover{
+    background: rgba(255, 255, 255, 0.7) !important;;
+}
+
+#menu li a:hover{
+    color: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 0.2) !important;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+

@@ -9,6 +9,7 @@
     <meta name="keywords"  content="personal website, CV, marcos, bernal, contact, email" />
     <meta name="Resource-type" content="Document" />
 
+    <link rel="stylesheet" type="text/css" href="css/responsive_code.css"/>
     <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
     <script type="text/javascript" src="js/personal_website.js"></script>
 
@@ -22,24 +23,35 @@
 </head>
 <body>
 
+<!-- Navbar (placed on top) -->
+<div class="w3-black">
+    <div class="w3-bar">
+        <a href="#Welcome" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Welcome</a>
+        <a href="#Experience" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> Experience</a>
+        <a href="#AboutMe" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> AboutMe</a>
+        <a href="#Contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> Contact</a>
+        <a href="https://es.linkedin.com/in/marcosbernalespana" class="w3-bar-item w3-button w3-hide-small w3-right"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+        <a href="https://github.com/MarcosBernal" class="w3-bar-item w3-button w3-hide-small w3-right"><i class="fa fa-github w3-hover-opacity"></i></a>
+    </div>
+
+    <div class="menu hidden" id="menu">
+        <ul>
+            <li><a href="#Welcome">Welcome</a></li>
+            <li><a href="#Experience">Experience</a></li>
+            <li><a href="#AboutMe">About Me</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+    </div>
 
 
-<div class="menu w3-top" id="menu">
-    <ul>
-        <li><a href="#Welcome">Home</a></li>
-        <li><a href="#Experience">Second slide</a></li>
-        <li><a href="#AboutMe">About Me</a></li>
-        <li><a href="#Contact">Contact</a></li>
-    </ul>
-</div>
-
-<div class="menu responsive">
-    <button onclick="myFunction()" class="dropbtn"></button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="#Welcome">Home</a>
-        <a href="#Experience">Experience</a>
-        <a href="#AboutMe">About me</a>
-        <a href="#Contact">Contact</a>
+    <div class="menu responsive">
+        <button onclick="show_responsive_nav_menu()" class="dropbtn"></button>
+        <div id="myDropdownNav" class="dropdown-content">
+            <a href="#Welcome">Welcome</a>
+            <a href="#Experience">Experience</a>
+            <a href="#AboutMe">About me</a>
+            <a href="#Contact">Contact</a>
+        </div>
     </div>
 </div>
 
@@ -77,7 +89,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <div class="w3-container w3-padding-64" id="Experience">

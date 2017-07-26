@@ -1,7 +1,7 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function show_responsive_nav_menu() {
+    document.getElementById("myDropdownNav").classList.toggle("show");
 
 
     var buttons = document.getElementsByClassName('dropbtn');
@@ -27,5 +27,16 @@ window.onclick = function(event) {
         for(var i=0;i<buttons.length;i++) {
             buttons[i].classList.toggle('alt');
         }
+    }
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {changeMenu();};
+function changeMenu() {
+    var navbar_mov = document.getElementById("menu");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        navbar_mov.classList.remove("hidden");
+    } else {
+        navbar_mov.classList += " hidden";
     }
 }
