@@ -36,10 +36,11 @@
 
     <div class="menu hidden" id="menu">
         <ul>
-            <li><a href="#Welcome">Welcome</a></li>
-            <li><a href="#Experience">Experience</a></li>
-            <li><a href="#AboutMe">About Me</a></li>
-            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Welcome"><i class="fa fa-home"></i> Welcome</a></li>
+            <li><a href="#Experience"><i class="fa fa-user"></i> Experience</a></li>
+            <li><a href="#AboutMe"><i class="fa fa-th"></i> AboutMe</a></li>
+            <li><a href="#Contact"><i class="fa fa-envelope"></i> Contact</a></li>
+
         </ul>
     </div>
 
@@ -72,20 +73,11 @@
 
 <div class="w3-display-container w3-padding-64" id="Welcome">
     <div class="w3-row-padding w3-padding-32" style="margin-left: 5%; margin-right: 5%;">
-        <div class="w3-third w3-container w3-black" style="padding: 2%;margin-left: 5%; margin-right: 5%;height: 100%; background: rgba(176, 75, 80, 0.3);">
+        <div class="w3-third w3-container w3-black welcome_text">
             <div class="text_centered">
-            <h4>Welcome!</h4>
-            <h5>I'm Marcos Bernal, a computer engineering student.
-                Developing and creating new stuff and projects!</h5>
-            </div>
-        </div>
-
-        <div class="w3-rest w3-container">
-            <div class="container">
-                <img src="imgs/me_and_openhack_award.jpg" class="image" alt="Marcos holding his openhack prize">
-                <div class="overlay">
-                    <div class="text">Hello World</div>
-                </div>
+                <h4>Welcome!</h4>
+                <h5>I'm Marcos Bernal, a computer engineering student.
+                    Developing and creating new stuff and projects!</h5>
             </div>
         </div>
     </div>
@@ -95,11 +87,14 @@
     <div class="w3-container w3-half">
         <h4>Work Experience</h4>
         <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+        <div class="w3-container">
+            <div class="container">
+                <img src="imgs/me_and_openhack_award.jpg" class="image" alt="Marcos holding his openhack prize">
+                <div class="overlay">
+                    <div class="text">Hello World</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="w3-container w3-half">
@@ -114,49 +109,61 @@
             Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
             Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
     </div>
+
+    <div class="w3-container">
+        <a href="#Welcome">
+            <div class="w3-card-4 show_images" style="width:20%">
+                <div class="w3-container w3-center ">
+                    <p>OpenHack Nice 2017</p>
+                </div>
+                <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale" style="width:100%">
+            </div>
+        </a>
+
+        <a href="default.asp">
+            <div class="w3-card-4 show_images" style="width:20%">
+                <div class="w3-tooltip w3-center">
+                    <p>Solar Tracker Project</p>
+                </div>
+                <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale" style=" width:100%">
+            </div>
+        </a>
+
+        <a href="#Welcome">
+            <div class="w3-card-4 show_images" style="width:25%">
+                <div class="w3-container w3-center">
+                    <p>Coming back soon!</p>
+                </div>
+                <img src="imgs/in_construction.jpg" alt="Coming back soon!" class="w3-hover-grayscale" style="width:100%">
+            </div>
+        </a>
+
+    </div>
 </div>
 
 <div class="w3-display-container" id="AboutMe">
     <div class="w3-display-container w3-padding-64 description">
         <h4>Allow me to introduce myself...</h4>
+        <div class="switching_content" id="text">
+            <div class="left_text">
+                <p>I am Marcos Bernal España. Ironically, you may guess from my last surname that you found another crazy Spaniard... well, you are not far from being right.
 
-        <p>I am Marcos Bernal España. I am a Spanish student currently finishing Master 2 in Data Science in the
-            Technical University of Madrid.
-            My interest are quite large and mainly focused on computer engineering. I like robotics, software developing
-            (including videogames :P), security and networking. I like to learn something useful everyday and I do my best to achieve it.</p>
-        <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
-            medium ones, but hard problems are not big deal since one can split them and
-            have several lovely small problems instead!</p>
+                    Anyway, if you want to know more about me, I am finishing the Master 2 in Data Science in the
+                    Technical University of Madrid.<br><br>
+                    My interest are quite large and mainly focused, but not limited, on computer engineering. I like robotics, software developing
+                    (including videogames :P), security and networking. I like to learn something useful everyday and I do my best to achieve it.</p>
+                <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
+                    medium ones, but hard problems are not big deal since one can split them and
+                    have several small lovely problems instead!</p>
+                <p>When I am not working nor developing/researching projects by my own, I like to hang out with friends, play some videogames and do all kind of sports.
+                    Particularly, I love hockey and the one that I play is Field Hockey. Field hockey is usually misunderstood with the other variants of hockey i.e. Ice Hockey or Roller Hockey which are quite different.</p>
+            </div>
+            <div class="right_graph">
 
-        <div class="w3-container">
-            <a href="#Welcome">
-                <div class="w3-card-4 show_images" style="width:20%">
-                    <div class="w3-container w3-center ">
-                        <p>OpenHack Nice 2017</p>
-                    </div>
-                        <img src="imgs/me_and_openhack_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale" style="width:100%">
-                </div>
-            </a>
-
-            <a href="default.asp">
-                <div class="w3-card-4 show_images" style="width:20%">
-                    <div class="w3-tooltip w3-center">
-                        <p>Solar Tracker Project</p>
-                    </div>
-                        <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale" style=" width:100%">
-                </div>
-            </a>
-
-            <a href="#Welcome">
-                <div class="w3-card-4 show_images" style="width:25%">
-                    <div class="w3-container w3-center">
-                        <p>Coming back soon!</p>
-                    </div>
-                    <img src="imgs/in_construction.jpg" alt="Coming back soon!" class="w3-hover-grayscale" style="width:100%">
-                </div>
-            </a>
-
+            </div>
         </div>
+
+
     </div>
 </div>
 
@@ -167,40 +174,40 @@
 
         <form action="">
             <div class="w3-half">
-            <div class="w3-row w3-section">
-                <div class="w3-col"><i class="w3-xxlarge fa fa-user"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+                <div class="w3-row w3-section">
+                    <div class="w3-col"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+                    </div>
                 </div>
-            </div>
 
-            <div class="w3-row w3-section">
-                <div class="w3-col"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
+                <div class="w3-row w3-section">
+                    <div class="w3-col"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="w3-half">
 
-            <div class="w3-row w3-section">
-                <div class="w3-col"><i class="w3-xxlarge fa fa-phone"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="phone" type="text" placeholder="Phone">
+                <div class="w3-row w3-section">
+                    <div class="w3-col"><i class="w3-xxlarge fa fa-phone"></i></div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" name="phone" type="text" placeholder="Phone">
+                    </div>
                 </div>
-            </div>
 
-            <div class="w3-row w3-section">
-                <div class="w3-col"><i class="w3-xxlarge fa fa-pencil"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="message" type="text" placeholder="Subjet">
+                <div class="w3-row w3-section">
+                    <div class="w3-col"><i class="w3-xxlarge fa fa-pencil"></i></div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border" name="message" type="text" placeholder="Subjet">
+                    </div>
                 </div>
-            </div>
             </div>
 
             <textarea name="message" rows="10" cols="30" style="width: 100%;" placeholder="Hi Marcos, ..."></textarea>
 
-            <button class="w3-button w3-block w3-section w3-black w3-ripple w3-padding"><i class="fa fa-paper-plane"></i> Send Message!</button>
+            <button class="w3-button w3-block w3-section w3-ripple w3-padding"><i class="fa fa-paper-plane"></i> Send Message!</button>
 
         </form>
     </div>

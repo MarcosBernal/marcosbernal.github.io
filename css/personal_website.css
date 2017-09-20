@@ -28,6 +28,7 @@ body, html {
 p {
     margin-top: 1%;
     margin-botton: 1%;
+    font-size: 1.1em !important;
 }
 
 .parallax {
@@ -46,31 +47,42 @@ p {
     display: none !important;
 }
 
+.w3-black .w3-bar {
+    background-color: black; /*rgb(62, 71, 79);*/
+}
+
 
 /*==================================================================================
 ============================== WELCOME SECTION =====================================
 ==================================================================================*/
 #Welcome, #Welcome2{
-    background-image: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg') center no-repeat;
     background-size: cover;
     min-height: 100%;
 }
 
-#Welcome .text_introduction{
-    display: inline-block;
-    position: absolute;
-    margin-top: 1%;
+#Welcome .welcome_text{
+    background-color: black;/*rgb(62, 71, 79) !important;*/
+    padding: 2%;
     margin-left: 5%;
     margin-right: 5%;
-    padding: 2%;
-    max-width: 35%;
-    min-height: 75% !important;
-    background: rgba(176, 75, 80, 0.3);
+    height: 100%;
 }
 
-#Welcome .images_introduction{
+
+/*==================================================================================
+============================ EXPERIENCE SECTION ====================================
+==================================================================================*/
+#Experience{
+    background: none;
+}
+
+#Experience .show_images{
+    display: inline-block;
+    margin-left: 5%;
+}
+
+#Experience .images_introduction{
     display: inline-block;
     position: absolute;
     width: 50%;
@@ -80,18 +92,18 @@ p {
     height: 40% !important;
 }
 
-#Welcome .container {
-     position: relative;
-     width: 40%;
- }
+#Experience .container {
+    position: relative;
+    width: 40%;
+}
 
-#Welcome .image {
+#Experience .image {
     display: block;
     width: 100%;
     height: auto;
 }
 
-#Welcome .overlay {
+#Experience .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -103,11 +115,11 @@ p {
     transition: .5s ease;
 }
 
-#Welcome .container:hover .overlay {
+#Experience .container:hover .overlay {
     width: 100%;
 }
 
-#Welcome .text {
+#Experience .text {
     white-space: nowrap;
     color: white;
     font-size: 20px;
@@ -119,41 +131,59 @@ p {
     -ms-transform: translate(-50%, -50%);
 }
 
-
-/*==================================================================================
-============================ EXPERIENCE SECTION ====================================
-==================================================================================*/
-#Experience{
-    background: none;
-}
-
 /*==================================================================================
 ============================== ABOUT ME SECTION ====================================
 ==================================================================================*/
 #AboutMe{
-    background-image: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgba(216, 216, 255, 0.51);
+    color: #52733B;
     min-height: 100%;
 }
 
+/* color 1: #E4EBF2;
+#52733B;
+#84A45A;
+#818A6F;
+#715E4E;
+*/
+
+/* color 1: #ABA6BF;
+#595775;
+#583E2E;
+#F1E0D6;
+#BF988F;
+*/
+
 #AboutMe .description{
-    padding-left: 8%;
-    padding-right: 8%;
+    padding: 0% 8% 5% 8%;
     text-align: left;
+}
+
+#AboutMe .description .switching_content{
+    border-radius: 25px;
+    height: 400px;
+    weigth: 400px;
+    border: 2px solid #73AD21;
+    position: relative;
+    background: yellow;
+}
+
+#AboutMe .description .switching_content .left_text{
+    margin: 5% 1% 5% 1%;
+}
+
+#AboutMe .description .switching_content .right_graph{
+}
+
+#AboutMe .description .switching_content .right_graph img{
+   height: 100%;
 }
 
 #AboutMe .description p{
     color: black;
     text-align: justify;
-    font-size: 1em;
 }
 
-#AboutMe .show_images{
-    display: inline-block;
-    margin-left: 5%;
-}
 
 /*
 ===================================================================================
@@ -164,12 +194,22 @@ p {
 #Contact .w3-container{
     margin-left: 10%;
     margin-right: 10%;
+    color: #52733B;
 }
 
 #Contact .w3-col{
     height: 100%;
     width: 50px;
     text-align: center;
+}
+
+#Contact .w3-button{
+    background-color: gainsboro;
+    color: black;
+}
+
+#Contact .fa-paper-plane{
+    color: #52733B;
 }
 
 
