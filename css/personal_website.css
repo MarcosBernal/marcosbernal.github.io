@@ -173,6 +173,12 @@ p {
 }
 
 #AboutMe .description .switching_content .right_graph{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top:0px;
+    right:10px;
+    background: black;
 }
 
 #AboutMe .description .switching_content .right_graph img{

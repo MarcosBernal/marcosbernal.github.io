@@ -66,6 +66,15 @@ function smartShowingMenu(){
 
 
 window.onload = function(event) {
+    rect_measures = document.getElementsByClassName("left_text").item(0).getBoundingClientRect();
+    left_text_style = window.getComputedStyle(document.getElementsByClassName("left_text").item(0));
+    right_graph_div = document.getElementsByClassName("right_graph").item(0);
+
+    right_graph_div.style.top = rect_measures.top;
+    right_graph_div.style.marginTop = left_text_style.marginTop;
+    right_graph_div.style.marginBottom = left_text_style.marginBottom;
+    right_graph_div.style.height = rect_measures.height + 'px';
+    right_graph_div.style.width = rect_measures.width + 'px';
 }
 
 function GetBox (element) {
