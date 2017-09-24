@@ -166,25 +166,38 @@ p {
     border: 2px solid #73AD21;
     position: relative;
     background: yellow;
+    padding: 5% 1% 5% 1%;
 }
 
 #AboutMe .description .switching_content #left_text{
-    margin: 5% 1% 5% 1%;
+
+}
+
+#AboutMe .description .switching_content #divider{
+    position: absolute;
+    max-width: 10px;
+    border: 2px;
+    border-radius: 25px;
+    right:0px;
+    background: blue;
+    overflow: hidden;
 }
 
 #AboutMe .description .switching_content #right_graph{
     position: absolute;
-    height: 80px;
-    width: 80px;
+    width: 0px; height: 0px; /*Avoid the graph if javascript not available*/
     top:0px;
     right:10px;
     background: black;
     overflow: hidden;
 }
 
-#AboutMe .description .switching_content #right_graph img{
+#AboutMe .description .switching_content #right_graph #mynetwork{
     min-width: 750px;
+    height: 300px;
+    border: 1px solid lightgray;
     float: right;
+    background: whitesmoke;
 
 }
 

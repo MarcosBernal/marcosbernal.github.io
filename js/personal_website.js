@@ -65,18 +65,6 @@ function smartShowingMenu(){
 // Mirar como hacer para guardar el navegador
 
 
-window.onload = function(event) {
-    rect_measures = document.getElementById("left_text").getBoundingClientRect();
-    left_text_style = window.getComputedStyle(document.getElementById("left_text"));
-    right_graph_div = document.getElementById("right_graph");
-
-    right_graph_div.style.top = rect_measures.top;
-    right_graph_div.style.marginTop = left_text_style.marginTop;
-    right_graph_div.style.marginBottom = left_text_style.marginBottom;
-    right_graph_div.style.height = rect_measures.height + 'px';
-    right_graph_div.style.width = rect_measures.width + 'px';
-}
-
 function GetBox (element) {
     var div = document.getElementById (element);
 
