@@ -10,8 +10,8 @@
     <meta name="Resource-type" content="Document" />
 
     <!-- Icons and other open source resources from  cdnjs.cloudflare.com-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
     <link rel="stylesheet" type="text/css" href="css/responsive_code.css"/>
     <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
@@ -21,7 +21,9 @@
 
     <link rel="stylesheet" href="css/w3.css">
 
-
+    <!-- JS and CSS files for visjs library http://visjs.org/index.html#download_install -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css"/>
 
 
 </head>
@@ -162,8 +164,11 @@
                 <p>When I am not working nor developing/researching projects by my own, I like to hang out with friends, play some videogames and do all kind of sports.
                     Particularly, I love hockey and the one that I play is Field Hockey. Field hockey is usually misunderstood with the other variants of hockey i.e. Ice Hockey or Roller Hockey which are quite different.</p>
             </div>
+            <div id="divider"></div>
             <div id="right_graph">
-                <img src="imgs/graph.jpg"/>
+                <div id="mynetwork"></div>
+                <!-- The javascript has to be after the div of the network-->
+                <script type="text/javascript" src="js/visjs_network_graph.js"></script>
             </div>
         </div>
 
@@ -176,8 +181,6 @@
 <div class="w3-display-container" id="Contact">
     <div class="w3-container w3-padding-64">
         <h4>Contact</h4>
-
-
         <form action="">
             <div class="w3-half">
                 <div class="w3-row w3-section">
