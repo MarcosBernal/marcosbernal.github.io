@@ -31,4 +31,15 @@ $(document).ready(function(){
         $("#right_graph").css('width',right_graph_pos);
         $("#divider").css('left',divPos.left+$('#divider').width());
     });
+
+    //Show completely all introduction either text or graph
+    $("#text_button").on("click", function(e){
+        $("#right_graph").css('width',0);
+        $("#divider").css('left',$("#left_text").width()+$("#divider").width()*2);
+    });
+
+    $("#graph_button").on("click", function(e){
+        $("#right_graph").css('width',$("#left_text").width());
+        $("#divider").css('left',0+$("#divider").width());
+    });
 });

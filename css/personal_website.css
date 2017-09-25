@@ -159,18 +159,31 @@ p {
     text-align: left;
 }
 
+#AboutMe .description .showing_button{
+    min-width: 120px;
+    min-height: 50px;
+    padding: 0% 3% 0% 3%;
+    cursor:pointer;
+}
+
+#AboutMe .description .showing_button img:hover{
+    background: darkgrey;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
+}
+
+#AboutMe .description .showing_button #text_button {
+    float: right;
+}
+
 #AboutMe .description .switching_content{
     border-radius: 25px;
-    min-height: 800px;
+    min-height: 300px;
     min-width: 800px;
     border: 2px solid #73AD21;
     position: relative;
     background: yellow;
     padding: 5% 1% 5% 1%;
-}
-
-#AboutMe .description .switching_content #left_text{
-
 }
 
 #AboutMe .description .switching_content #divider{
