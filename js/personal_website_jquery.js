@@ -1,11 +1,3 @@
-$(document).ready(function(){
-    $("p").click(function(){
-        $(this).hide();
-        alert("deleting");
-    });
-});
-
-
 // When DOM has been loaded the function is triggered
 $(document).ready(function(){
 
@@ -15,8 +7,11 @@ $(document).ready(function(){
                       });
     $("#divider").offset({top:$("#left_text").offset().top});
     $("#right_graph").offset({top:$("#left_text").offset().top});
-    $("#right_graph").css({'width':$('#left_text').width()/2,
+    $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
                            'height':$('#left_text').height()});
+
+    $("#mynetwork").css({'width':$('#left_text').width(),
+        'height':$('#left_text').height()});
 
     // Refreshing the position of the knowledge graph and text according the mouse position
     var divPos = {};
@@ -46,11 +41,14 @@ $(document).ready(function(){
             $("#right_graph").css('width', right_graph_pos);
             $("#divider").css('left', divPos.left + $('#divider').width());
             $("p").css('user-select', "none");
+            $("img").css('user-select', "none");
+
         }, 20);
     });
     $("#divider").on("mouseup touchend", function(){
         clearInterval(interval);
         $("p").css('user-select', "auto");
+        $("img").css('user-select', "auto");
     });
 
     //Show completely all introduction either text or graph
