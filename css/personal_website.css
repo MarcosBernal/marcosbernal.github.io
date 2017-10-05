@@ -77,6 +77,86 @@ p {
     background: none;
 }
 
+#Experience .w3-container .box_container{
+
+}
+
+#Experience .w3-container .box_container .infobox{
+    width: 30%;
+    margin: 5% 7% 5% 7%;
+    background: #cccccc;
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+
+#Experience .w3-container .box_container .infobox:before{
+    content: "";
+    display: block;
+    padding-top: 100%; 	/* initial ratio of 1:1*/
+}
+
+#Experience .w3-container .box_container .infobox .inside_box {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top:0;
+    left: 0;
+    margin: 10%;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+#Experience .w3-container .box_container .infobox .topbar_inside_box {
+    left: calc(50% - 40px);
+    top: -5px;
+    width: 80px;
+    height: 10px;
+    background: gray;
+    position: absolute;
+}
+
+#Experience .w3-container .box_container .infobox .leftbar_inside_box {
+    left: -5px;
+    top: calc(50% - 40px);
+    width: 10px;
+    height: 80px;
+    background: gray;
+    position: absolute;
+}
+
+#Experience .w3-container .box_container .infobox .rightbar_inside_box {
+    right: -5px;
+    top: calc(50% - 40px);
+    width: 10px;
+    height: 80px;
+    background: gray;
+    position: absolute;
+}
+
+#Experience .w3-container .box_container .infobox .bottombar_inside_box {
+    bottom: -5px;
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 10px;
+    background: gray;
+    position: absolute;
+}
+
+
+#Experience .w3-container .box_container .infobox .cross {
+    background: red; height: 100px; position: absolute;
+    width: 20px; left: calc(50% - 10px); top: calc(50% - 50px); z-index: auto;
+}
+#Experience .w3-container .box_container .infobox .cross:after {
+    background: red; content: ""; height: 20px; left: -40px; position: absolute; top: 40px; width: 100px;
+}
+
 #Experience .show_images{
     display: inline-block;
     margin-left: 5%;
@@ -200,11 +280,6 @@ p {
     margin: 0 2% 0 2%;
 }
 
-#AboutMe .description .switching_content #left_text p{
-    margin: 1% 0% 2% 0%;
-    line-height: 2.0;
-}
-
 #AboutMe .description .switching_content #divider{
     position: absolute;
     max-width: 10px;
@@ -241,6 +316,8 @@ p {
 #AboutMe .description p{
     color: black;
     text-align: justify;
+    margin: 1% 0% 2% 0%;
+    line-height: 2.0;
 }
 
 
