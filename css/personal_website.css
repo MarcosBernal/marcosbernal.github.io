@@ -111,13 +111,16 @@ p {
     border-width: 1px;
 }
 
+.infobox {
+    --inside-box-dim: 80px;
+}
 
 #Experience .w3-container .box_container .infobox .topbar_inside_box {
     left: calc(50% - 40px);
     top: -5px;
-    width: 80px;
+    width: var(--inside-box-dim);
     height: 10px;
-    background: gray;
+    background: #cccccc;
     position: absolute;
 }
 
@@ -125,8 +128,8 @@ p {
     left: -5px;
     top: calc(50% - 40px);
     width: 10px;
-    height: 80px;
-    background: gray;
+    height: var(--inside-box-dim);
+    background: #cccccc;
     position: absolute;
 }
 
@@ -134,17 +137,17 @@ p {
     right: -5px;
     top: calc(50% - 40px);
     width: 10px;
-    height: 80px;
-    background: gray;
+    height: var(--inside-box-dim);
+    background: #cccccc;
     position: absolute;
 }
 
 #Experience .w3-container .box_container .infobox .bottombar_inside_box {
     bottom: -5px;
     left: calc(50% - 40px);
-    width: 80px;
+    width: var(--inside-box-dim);
     height: 10px;
-    background: gray;
+    background: #cccccc;
     position: absolute;
 }
 

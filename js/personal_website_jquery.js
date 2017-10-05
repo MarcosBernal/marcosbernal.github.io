@@ -63,17 +63,25 @@ $(document).ready(function(){
         $("#divider").css('left',0+$("#divider").width());
     });
 
+    var speed = 100;
     $(".infobox").on("mouseenter", function () {
-        $(this).children().children(".topbar_inside_box").animate({left: $(".inside_box").width()-$(".topbar_inside_box").width()},100);
-        $(this).children().children(".rightbar_inside_box").animate({top: $(".inside_box").height()-$(".rightbar_inside_box").height()},100);
-        $(this).children().children(".bottombar_inside_box").animate({left: 0},100);
-        $(this).children().children(".leftbar_inside_box").animate({top: 0},100);
+        $(this).children().children(".topbar_inside_box").animate(
+            {left: $(".inside_box").width()-$(".topbar_inside_box").width()},speed, function (){
+                $(this).animate({width:$(".inside_box").width(), left:0},speed*2)});
+        $(this).children().children(".rightbar_inside_box").animate(
+            {top: $(".inside_box").height()-$(".rightbar_inside_box").height()},speed, function (){
+                $(this).animate({height:$(".inside_box").height(), top: 0},speed*2)});
+        $(this).children().children(".bottombar_inside_box").animate({left: 0},speed, function (){
+            $(this).animate({width:$(".inside_box").width()},speed*2)});
+        $(this).children().children(".leftbar_inside_box").animate({top: 0},speed, function (){
+            $(this).animate({height:$(".inside_box").height()},speed*2)});
     });
 
     $(".infobox").on("mouseleave", function () {
-        $(this).children().children(".topbar_inside_box").animate({left: ($(".inside_box").width()-$(".topbar_inside_box").width())/2},100);
-        $(this).children().children(".rightbar_inside_box").animate({top: ($(".inside_box").height()-$(".rightbar_inside_box").height())/2},100);
-        $(this).children().children(".bottombar_inside_box").animate({left: ($(".inside_box").width()-$(".topbar_inside_box").width())/2},100);
-        $(this).children().children(".leftbar_inside_box").animate({top: ($(".inside_box").height()-$(".rightbar_inside_box").height())/2},100);
+        var default_size = $(".infobox").css("--inside-box-dim").replace('px', '');
+        $(this).children().children(".topbar_inside_box").animate({width: default_size,left: ($(".inside_box").width()-default_size)/2},speed*2);
+        $(this).children().children(".rightbar_inside_box").animate({height: default_size, top: ($(".inside_box").height()-default_size)/2},speed*2);
+        $(this).children().children(".bottombar_inside_box").animate({width:default_size, left: ($(".inside_box").width()-default_size)/2},speed*2);
+        $(this).children().children(".leftbar_inside_box").animate({height: default_size, top: ($(".inside_box").height()-default_size)/2},speed*2);
     });
 });
