@@ -79,17 +79,21 @@ p {
 
 #Experience .w3-container .box_container{
 
+    background: green;
 }
 
 #Experience .w3-container .box_container .infobox{
-    width: 30%;
-    margin: 5% 7% 5% 7%;
+    max-width: 30%;
+    width: 250px;
+    margin: 5% 9% 5% 9%;
     background: #cccccc;
     display: inline-block;
     position: relative;
     border-radius: 5px;
-    border-style: dashed;
-    border-width: 1px;
+    border: 1px dashed;
+    --inside-box-dim:  40%;
+    --inside-box-dim_2: 5%;
+    overflow: hidden;
 }
 
 
@@ -106,58 +110,75 @@ p {
     top:0;
     left: 0;
     margin: 10%;
+    border: 1px solid;
     border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.infobox {
-    --inside-box-dim: 80px;
 }
 
 #Experience .w3-container .box_container .infobox .topbar_inside_box {
-    left: calc(50% - 40px);
-    top: -5px;
+    left: calc(50% - var(--inside-box-dim)/2);
+    top: calc(-1*(var(--inside-box-dim_2)/2));
     width: var(--inside-box-dim);
-    height: 10px;
+    height: var(--inside-box-dim_2);
     background: #cccccc;
     position: absolute;
 }
 
 #Experience .w3-container .box_container .infobox .leftbar_inside_box {
-    left: -5px;
-    top: calc(50% - 40px);
-    width: 10px;
+    left: calc(-1*(var(--inside-box-dim_2)/2));
+    top: calc(50% - var(--inside-box-dim)/2);
+    width: var(--inside-box-dim_2);
     height: var(--inside-box-dim);
     background: #cccccc;
     position: absolute;
 }
 
 #Experience .w3-container .box_container .infobox .rightbar_inside_box {
-    right: -5px;
-    top: calc(50% - 40px);
-    width: 10px;
+    left: calc(100% - var(--inside-box-dim_2)/2);
+    top: calc(50% - var(--inside-box-dim)/2);
+    width: var(--inside-box-dim_2);
     height: var(--inside-box-dim);
     background: #cccccc;
     position: absolute;
 }
 
 #Experience .w3-container .box_container .infobox .bottombar_inside_box {
-    bottom: -5px;
-    left: calc(50% - 40px);
+    top: calc(100% - var(--inside-box-dim_2)/2);
+    left: calc(50% - var(--inside-box-dim)/2);
     width: var(--inside-box-dim);
-    height: 10px;
+    height: var(--inside-box-dim_2);
     background: #cccccc;
     position: absolute;
 }
 
 
 #Experience .w3-container .box_container .infobox .cross {
-    background: red; height: 100px; position: absolute;
-    width: 20px; left: calc(50% - 10px); top: calc(50% - 50px); z-index: auto;
+    background: red; height: 50%; position: absolute;
+    width: 10%; left: 45%; top: 25%; z-index: auto;
 }
 #Experience .w3-container .box_container .infobox .cross:after {
-    background: red; content: ""; height: 20px; left: -40px; position: absolute; top: 40px; width: 100px;
+    background: red; content: ""; height: 20%; left: -200%; top: 40%; width: 500%;
+    position: absolute;
+}
+
+#Experience .w3-container .box_container .infobox .image_icon {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+}
+
+#Experience .w3-container .box_container .infobox .image_icon img{
+    max-width: 80%;
+    max-height: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#Experience .w3-container .box_container .infobox .image_icon img:hover{
+    max-width:  115%;
+    max-height: 115%;
 }
 
 #Experience .show_images{

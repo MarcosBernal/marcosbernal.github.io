@@ -78,10 +78,13 @@ $(document).ready(function(){
     });
 
     $(".infobox").on("mouseleave", function () {
-        var default_size = $(".infobox").css("--inside-box-dim").replace('px', '');
-        $(this).children().children(".topbar_inside_box").stop().animate({width: default_size,left: ($(".inside_box").width()-default_size)/2},speed*2);
-        $(this).children().children(".rightbar_inside_box").stop().animate({height: default_size, top: ($(".inside_box").height()-default_size)/2},speed*2);
-        $(this).children().children(".bottombar_inside_box").stop().animate({width:default_size, left: ($(".inside_box").width()-default_size)/2},speed*2);
-        $(this).children().children(".leftbar_inside_box").stop().animate({height: default_size, top: ($(".inside_box").height()-default_size)/2},speed*2);
+        var default_size = $(".infobox").css("--inside-box-dim").replace('%', '')/100;
+        var default_size_value = default_size*$(".inside_box").width();
+        var default_size_inverse = ((1-default_size)*$(".inside_box").width())/2;
+
+        $(this).children().children(".topbar_inside_box").stop().animate({width: default_size_value,left: default_size_inverse},speed*2);
+        $(this).children().children(".rightbar_inside_box").stop().animate({height: default_size_value, top: default_size_inverse},speed*2);
+        $(this).children().children(".bottombar_inside_box").stop().animate({width:default_size_value, left: default_size_inverse},speed*2);
+        $(this).children().children(".leftbar_inside_box").stop().animate({height: default_size_value, top: default_size_inverse},speed*2);
     });
 });
