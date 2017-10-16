@@ -21,6 +21,10 @@
 
     <link rel="stylesheet" href="css/w3.css">
 
+    <!-- JS and CSS files from infobox https://github.com/MarcosBernal/infobox_matrix -->
+    <script type="text/javascript" src="infobox_matrix/infobox_matrix.js"></script>
+    <link rel="stylesheet" type="text/css" href="infobox_matrix/infobox_matrix.css"/>
+
     <!-- JS and CSS files for visjs library http://visjs.org/index.html#download_install -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css"/>
@@ -30,9 +34,9 @@
 <body>
 
 <!-- Navbar (placed on top) -->
-<div class="w3-black">
+<div class="w3-black" id="nav_menu">
     <div class="w3-bar">
-        <a href="#Welcome" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Welcome</a>
+        <a href="#nav_menu" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Welcome</a>
         <a href="#Experience" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> Experience</a>
         <a href="#AboutMe" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> AboutMe</a>
         <a href="#Contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> Contact</a>
@@ -42,7 +46,7 @@
 
     <div class="menu hidden" id="menu">
         <ul>
-            <li><a href="#Welcome"><i class="fa fa-home"></i> Welcome</a></li>
+            <li><a href="#nav_menu"><i class="fa fa-home"></i> Welcome</a></li>
             <li><a href="#Experience"><i class="fa fa-user"></i> Experience</a></li>
             <li><a href="#AboutMe"><i class="fa fa-th"></i> AboutMe</a></li>
             <li><a href="#Contact"><i class="fa fa-envelope"></i> Contact</a></li>
@@ -54,7 +58,7 @@
     <div class="menu responsive">
         <button onclick="show_responsive_nav_menu()" class="dropbtn"></button>
         <div id="myDropdownNav" class="dropdown-content">
-            <a href="#Welcome">Welcome</a>
+            <a href="#nav_menu">Welcome</a>
             <a href="#Experience">Experience</a>
             <a href="#AboutMe">About me</a>
             <a href="#Contact">Contact</a>
@@ -83,85 +87,130 @@
             <div class="text_centered">
                 <h4>Welcome!</h4>
                 <h5>I'm Marcos Bernal, a computer engineering student.
-                    Developing and creating new stuff and projects!</h5>
+                    Developing and creating new ideas and projects!</h5>
             </div>
         </div>
     </div>
 </div>
 
-<div class="w3-container w3-padding-64" id="Experience">
-    <div class="w3-container w3-half">
-        <h4>Work Experience</h4>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-        <div class="w3-container">
-            <div class="container">
-                <img src="imgs/me_and_openhack_award.jpg" class="image" alt="Marcos holding his openhack prize">
-                <div class="overlay">
-                    <div class="text">Hello World</div>
-                </div>
-            </div>
+<div class="w3-container w3-padding-64 web_section" id="Experience">
+    <div class="w3-half">
+        <div class="intro_text">
+        <h4>Projects</h4>
+        <p>Right now it seems empty, but wait a little you will see my new projects :D</p>
+        <p>In this space, I will be referenced all kind of projects. Why do not you take a look? maybe one of them get your attention.</p>
         </div>
-        <div class="box_container">
-            <div class="infobox">
-                <div class="inside_box">
-                    <div class="topbar_inside_box"></div>
-                    <div class="leftbar_inside_box"></div>
-                    <div class="rightbar_inside_box"></div>
-                    <div class="bottombar_inside_box"></div>
-                    <div class="cross">
+        <div class="_box_container">
+            <div class="_infobox" id="degree_project">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale"/>
                     </div>
                 </div>
             </div>
-            <div class="infobox"></div>
-            <div class="infobox"></div>
-            <div class="infobox"></div>
-            <div class="infobox"></div>
-            <div class="infobox"></div>
+            <div class="_infobox" id="infobox_project">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/in_construction.jpg" alt="Personal Project aiming for showing portfolios" class="w3-hover-grayscale"/>
+                    </div>
+                </div>
+            </div>
+            <div class="_infobox" id="personal_server">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/in_construction.jpg" alt="Personal Project aiming for creating my own services" class="w3-hover-grayscale"/>
+                    </div>
+                </div>
+            </div>
+            <div class="_infobox">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_cross">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-half">
+        <div class="intro_text">
+        <h4>Experiences</h4>
+        <p>Well, let's present my 'wannabe' blog.</p>
+        <p>Here you can find short articles containing my opinion as well as some experiences worthy to share.</p>
+
+        </div>
+        <div class="_box_container">
+            <div class="_infobox" id="openhacknice">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/openhack/me_and_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale"/>
+                    </div>
+                </div>
+            </div>
+            <div class="_infobox" id="summerschoolmunich">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/summer_school/everyone_front_tum.jpg" alt="Marcos with his classmates in front of TUM Munich(Germany)" class="w3-hover-grayscale"/>
+                    </div>
+                </div>
+            </div>
+            <div class="_infobox" id="tadhackmadrid">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_image_icon">
+                        <img src="imgs/in_construction.jpg" alt="Marcos with his team in the hack in Madrid" class="w3-hover-grayscale"/>
+                    </div>
+                </div>
+            </div>
+            <div class="_infobox">
+                <div class="_inside_box">
+                    <div class="_topbar_inside_box"></div>
+                    <div class="_leftbar_inside_box"></div>
+                    <div class="_rightbar_inside_box"></div>
+                    <div class="_bottombar_inside_box"></div>
+                    <div class="_cross">
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
 
-    <div class="w3-container w3-half">
-        <h4>Education</h4>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.
-            Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
-
-        <div class="box_container">
-            <div class="infobox">
-                <div class="inside_box">
-                    <div class="topbar_inside_box"></div>
-                    <div class="leftbar_inside_box"></div>
-                    <div class="rightbar_inside_box"></div>
-                    <div class="bottombar_inside_box"></div>
-                    <div class="cross">
-
-                    </div>
-                </div>
+    <!--
+    <div class="w3-container" style="max-width: 30%; max-height: 30%">
+        <div class="container">
+            <img src="imgs/me_and_openhack_award.jpg" class="image" alt="Marcos holding his openhack prize">
+            <div class="overlay">
+                <div class="text">Hello World</div>
             </div>
-            <div class="infobox">
-                <div class="inside_box">
-                    <div class="topbar_inside_box"></div>
-                    <div class="leftbar_inside_box"></div>
-                    <div class="rightbar_inside_box"></div>
-                    <div class="bottombar_inside_box"></div>
-                    <div class="image_icon">
-                        <img src="imgs/in_construction.jpg"/>
-                    </div>
-                </div>
-            </div>
-            <div class="infobox"></div>
-            <div class="infobox"></div>
         </div>
-
     </div>
-
 
     <div class="w3-container">
         <a href="#Welcome">
@@ -191,8 +240,75 @@
             </div>
         </a>
 
+    </div>-->
+</div>
+
+<div class="_modal_popup" id="degree_project_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> A wild solar tracker has appeared!</h2>
+        <img src="imgs/in_construction.jpg"/>
+        <p>Before ending my bachelor I had already decided to build some robotic device.</p> <br>
+        <p>I was Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
     </div>
 </div>
+
+<div class="_modal_popup" id="infobox_project_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> How to show your impressive portfolio?</h2>
+        <img src="imgs/in_construction.jpg"/>
+        <p>Of course with infobox_matrix!!</p>
+        <p>Well maybe not, however this project was created because I needed it, and in
+            the meantime I refreshed my old javascript knowledge. To be honest, it is a very humble project,
+            but it is available for anyone who needs it.</p>
+    </div>
+</div>
+
+<div class="_modal_popup" id="personal_server_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> One server to rule them all!!</h2>
+        <img src="imgs/in_construction.jpg"/>
+        <p>We live in a really good period, at least, for tech lovers. We have access to many services and resources
+            that not so long ago were not even thought about.</p>
+        <p>...</p>
+    </div>
+</div>
+
+
+<div class="_modal_popup" id="openhacknice_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> My first hackathon award!</h2>
+        <img src="imgs/openhack/team_working.jpg"/>
+        <p>Look at the image. Ok, now once more. Could you guess how many hours we were working together before that picture?</p>
+        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+    </div>
+</div>
+
+<div class="_modal_popup" id="summerschoolmunich_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> Decentralizing the production in Munich!</h2>
+        <img src="imgs/summer_school/everyone_front_tum.jpg"/>
+        <p>Trying something as text</p>
+        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+    </div>
+</div>
+
+<div class="_modal_popup" id="tadhackmadrid_popup">
+    <div class="_modal_popup-content">
+        <span class="_modal_popup-close">&times;</span>
+        <h2 class="w3-centered"> Time to learn about telco APIs!</h2>
+        <img src="imgs/in_construction.jpg"/>
+        <p>Trying something as text</p>
+        <p>Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+    </div>
+</div>
+
+
+
 
 <div class="w3-display-container" id="AboutMe">
     <div class="w3-display-container w3-padding-64 description">

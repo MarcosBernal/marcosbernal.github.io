@@ -62,29 +62,4 @@ $(document).ready(function(){
         $("#right_graph").css('width',$("#left_text").width());
         $("#divider").css('left',0+$("#divider").width());
     });
-
-    var speed = 100;
-    $(".infobox").on("mouseenter", function () {
-        $(this).children().children(".topbar_inside_box").stop().animate(
-            {left: $(".inside_box").width()-$(".topbar_inside_box").width()},speed, function (){
-                $(this).animate({width:$(".inside_box").width(), left:0},speed*2)});
-        $(this).children().children(".rightbar_inside_box").stop().animate(
-            {top: $(".inside_box").height()-$(".rightbar_inside_box").height()},speed, function (){
-                $(this).animate({height:$(".inside_box").height(), top: 0},speed*2)});
-        $(this).children().children(".bottombar_inside_box").stop().animate({left: 0},speed, function (){
-            $(this).animate({width:$(".inside_box").width()},speed*2)});
-        $(this).children().children(".leftbar_inside_box").stop().animate({top: 0},speed, function (){
-            $(this).animate({height:$(".inside_box").height()},speed*2)});
-    });
-
-    $(".infobox").on("mouseleave", function () {
-        var default_size = $(".infobox").css("--inside-box-dim").replace('%', '')/100;
-        var default_size_value = default_size*$(".inside_box").width();
-        var default_size_inverse = ((1-default_size)*$(".inside_box").width())/2;
-
-        $(this).children().children(".topbar_inside_box").stop().animate({width: default_size_value,left: default_size_inverse},speed*2);
-        $(this).children().children(".rightbar_inside_box").stop().animate({height: default_size_value, top: default_size_inverse},speed*2);
-        $(this).children().children(".bottombar_inside_box").stop().animate({width:default_size_value, left: default_size_inverse},speed*2);
-        $(this).children().children(".leftbar_inside_box").stop().animate({height: default_size_value, top: default_size_inverse},speed*2);
-    });
 });
