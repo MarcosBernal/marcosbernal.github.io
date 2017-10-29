@@ -224,12 +224,9 @@ p {
 
 #AboutMe .description .switching_content #divider{
     position: absolute;
-    max-width: 10px;
-    border: 2px;
+    width: 10px;
     border-radius: 25px;
-    right:0px;
-    background: #52733B;;
-    overflow: hidden;
+    background: #52733B;
 }
 
 #AboutMe .description .switching_content #divider:hover{
@@ -292,6 +289,10 @@ p {
     color: #52733B;
 }
 
+/* Removes the underline of hyperlink */
+footer a{
+    text-decoration: none;
+}
 
 .menu.responsive{
     display: none;
