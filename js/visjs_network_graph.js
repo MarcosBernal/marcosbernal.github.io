@@ -16,6 +16,11 @@ var nodes = new vis.DataSet([
     {id: 14, label: 'Robotics'},
     {id: 15, label: 'Data Mining'},
     {id: 16, label: 'Machine Learning'},
+    {id: 17, label: 'Large Scale Distributed Computing'},
+    {id: 18, label: 'Field Hockey'},
+    {id: 19, label: 'EIT Digital - Master 2'}
+
+
 
 
 
@@ -37,7 +42,11 @@ var edges = new vis.DataSet([
     {from: 7, to: 13, label:"belongsTo"},
     {from: 7, to: 14, label:"belongsTo"},
     {from: 8, to: 15, label:"belongsTo"},
-    {from: 8, to: 16, label:"belongsTo"}
+    {from: 8, to: 16, label:"belongsTo"},
+    {from: 8, to: 17, label:"belongsTo"},
+    {from:10, to: 18, label:"typeOf"},
+    {from: 4, to: 19, label:"situation"}
+
 ]);
 
 // create a network
@@ -48,7 +57,28 @@ var data = {
     nodes: nodes,
     edges: edges
 };
-var options = {};
+var options = {
+    nodes : {
+        size : 20,
+
+        font : {
+            size : 18,
+            color : 'black'
+        },
+        borderWidth : 2
+    },
+    edges : {
+      font: {
+          size : 16
+      }
+    },
+    interaction: {
+        dragView: false,
+        zoomView: false
+    }
+};
 
 // initialize your network!
 var network = new vis.Network(container, data, options);
+network.fit();
+

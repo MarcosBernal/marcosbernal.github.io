@@ -192,8 +192,8 @@ p {
 }
 
 #AboutMe .description .showing_button img:hover{
-    background: darkgrey;
-    border: 1px solid darkgrey;
+    background: #cdcdcd;
+    border: 1px solid #cdcdcd;
     border-radius: 4px;
     cursor:pointer;
 }
@@ -220,6 +220,7 @@ p {
 #AboutMe .description .switching_content #left_text img{
     align: right;
     margin: 0 2% 0 2%;
+    max-width: 25%;
 }
 
 #AboutMe .description .switching_content #divider{
@@ -265,7 +266,7 @@ p {
 ============================== CONTACT SECTION ====================================
 =================================================================================*/
 #Contact {
-    min-height: calc(100% - 150px);
+    min-height: calc(100% - 200px);
 }
 
 #Contact .w3-container{
@@ -287,6 +288,18 @@ p {
 
 #Contact .fa-paper-plane{
     color: #52733B;
+}
+
+#in_construction {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+
+footer{
+    max-height: 200px;
 }
 
 /* Removes the underline of hyperlink */
