@@ -266,7 +266,7 @@ p {
 ============================== CONTACT SECTION ====================================
 =================================================================================*/
 #Contact {
-    min-height: calc(100% - 200px);
+    min-height: calc(100% - var(--footer-size));
 }
 
 #Contact .w3-container{
@@ -299,12 +299,24 @@ p {
 }
 
 footer{
-    max-height: 200px;
+    --footer-size: 250px;
+    max-height: var(--footer-size);
 }
 
 /* Removes the underline of hyperlink */
 footer a{
     text-decoration: none;
+}
+
+footer .license{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+footer .license p{
+    margin: 0;
+    padding: 0;
 }
 
 .menu.responsive{
