@@ -1,6 +1,16 @@
 // When DOM has been loaded the function is triggered
 $(document).ready(function(){
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////  CANVAS - GRAPH - TEXT  /////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // Set position and size to graph and divider initially in the middle
     $("#right_graph").offset({top:$("#left_text").offset().top});
     $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
@@ -16,15 +26,7 @@ $(document).ready(function(){
     var divPos = {};
     var right_graph_pos = 0;
     var offset = $("#left_text").offset();
-    // $(".switching_content").on("mouseover mousemove", function(e){
-    //     divPos = {
-    //         left: e.pageX - offset.left,
-    //         top: e.pageY - offset.top
-    //     };
-    //     right_graph_pos = $('#left_text').width()-divPos.left;
-    //     $("#right_graph").css('width',right_graph_pos);
-    //     $("#divider").css('left',divPos.left+$('#divider').width());
-    // });
+
     $(".switching_content").on("mousemove", function(e){
     divPos = {
         left: e.pageX - offset.left,
@@ -36,7 +38,8 @@ $(document).ready(function(){
         if(interval == undefined){
             interval = setInterval(function() {
                 divPos.left = divPos.left > 0 ? divPos.left : 0;
-                divPos.left = divPos.left > $('#left_text').width()+ $('#divider').width() ? $('#left_text').width()+$('#divider').width() : divPos.left;
+                divPos.left = divPos.left > $('#left_text').width()+ $('#divider').width() ?
+                    $('#left_text').width()+$('#divider').width() : divPos.left;
                 right_graph_pos = $('#left_text').width() - divPos.left;
                 right_divider_pos = right_graph_pos == 0 ? 0 : right_graph_pos+$('#divider').width();
                 $("#right_graph").css('width', right_graph_pos);
@@ -97,6 +100,12 @@ $(document).ready(function(){
     });
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////  CONTACT - JS SERVER   //////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     //Contact Form sending ajax text to server
     $("#contact_form").submit(function(e) {
         $("#Contact").children().children().css({"background-color":"black"});
@@ -104,8 +113,6 @@ $(document).ready(function(){
         $("#Contact").children().children().removeAttr("background-color");
         $("#Contact").children().children().css("background-color",'');
     });
-
-    $("#in_c")
 
 
 });

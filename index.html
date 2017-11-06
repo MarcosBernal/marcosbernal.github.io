@@ -36,6 +36,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css"/>
 
+    <!-- If javascript is not enabled, warning the user -->
+    <noscript>
+        <div class="noscriptmsg" style="background-color: red; font-size: large; font-weight: bold; text-align: center; border: 5px solid yellow;">
+            Why don't you ENABLE JavaScript??  Not only design and content will be better, but also some features...
+        </div>
+    </noscript>
+
 </head>
 <body>
 
@@ -80,7 +87,7 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 <!--+++++++++++++ Welcome ++++++++++++++++++++++++++++-->
-    <div class="w3-display-container w3-padding-64" id="Welcome">
+    <div class="w3-container w3-padding-64" id="Welcome">
         <div class="w3-row-padding w3-padding-32" style="margin-left: 5%; margin-right: 5%;">
             <div class="w3-third w3-container w3-black welcome_text">
                 <div class="text_centered">
@@ -93,108 +100,111 @@
     </div>
 
 <!--+++++++++++++ Experience ++++++++++++++++++++++++++++-->
-    <div class="w3-container w3-padding-64 web_section" id="Experience">
-        <div class="w3-half w3-padding-small">
-            <div class="intro_text">
-            <h4>Projects</h4>
-            <p>Right now it seems empty, but wait a little you will see my new projects :D</p>
-            <p>In this space, I will be referenced all kind of projects. Why do not you take a look? maybe one of them get your attention.</p>
-            </div>
-            <div class="_box_container _reacting_infobox">
-                <div class="_infobox" id="degree_project">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale"/>
+    <div class="w3-container" id="Experience">
+        <div class="w3-half">
+            <div class="w3-container w3-padding-64">
+                <div class="w3-container intro_text">
+                <h4>Projects</h4>
+                <p>Right now it seems empty, but wait a little you will see my new projects :D</p>
+                <p>In this space, I will be referenced all kind of projects. Why do not you take a look? maybe one of them get your attention.</p>
+                </div>
+                <div class="_box_container _reacting_infobox">
+                    <div class="_infobox" id="degree_project">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/microcontroller_project.jpg" alt="Showing some features of my Solar Tracker" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox" id="infobox_project">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/in_construction.jpg" alt="Personal Project aiming for showing portfolios" class="w3-hover-grayscale"/>
+                    <div class="_infobox" id="infobox_project">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/in_construction.jpg" alt="Personal Project aiming for showing portfolios" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox" id="personal_server">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/my_raspberry_pi_intro.jpg" alt="Presentation of my small personal server" class="w3-hover-grayscale"/>
+                    <div class="_infobox" id="personal_server">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/my_raspberry_pi_intro.jpg" alt="Presentation of my small personal server" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_cross">
+                    <div class="_infobox">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_cross">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="w3-half">
+            <div class="w3-container w3-padding-64">
+                <div class="intro_text">
+                <h4>Experiences</h4>
+                <p>Well, let's present my 'wannabe' blog.</p>
+                <p>Here you should find short articles containing my opinion as well as some experiences that may be worthy to share.</p>
 
-        <div class="w3-half w3-padding-small">
-            <div class="intro_text">
-            <h4>Experiences</h4>
-            <p>Well, let's present my 'wannabe' blog.</p>
-            <p>Here you should find short articles containing my opinion as well as some experiences that may be worthy to share.</p>
-
-            </div>
-            <div class="_box_container _reacting_infobox">
-                <div class="_infobox" id="openhacknice">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/openhack/me_and_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale"/>
+                </div>
+                <div class="_box_container _reacting_infobox">
+                    <div class="_infobox" id="openhacknice">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/openhack/me_and_award.jpg" alt="Marcos holding his openhack prize" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox" id="summerschoolmunich">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/summer_school/everyone_front_tum.jpg" alt="Marcos with his classmates in front of TUM Munich(Germany)" class="w3-hover-grayscale"/>
+                    <div class="_infobox" id="summerschoolmunich">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/summer_school/everyone_front_tum.jpg" alt="Marcos with his classmates in front of TUM Munich(Germany)" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox" id="tadhackmadrid">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_image_icon">
-                            <img src="imgs/in_construction.jpg" alt="Marcos with his team in the hack in Madrid" class="w3-hover-grayscale"/>
+                    <div class="_infobox" id="tadhackmadrid">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_image_icon">
+                                <img src="imgs/in_construction.jpg" alt="Marcos with his team in the hack in Madrid" class="w3-hover-grayscale"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="_infobox">
-                    <div class="_inside_box">
-                        <div class="_topbar_inside_box"></div>
-                        <div class="_leftbar_inside_box"></div>
-                        <div class="_rightbar_inside_box"></div>
-                        <div class="_bottombar_inside_box"></div>
-                        <div class="_cross">
+                    <div class="_infobox">
+                        <div class="_inside_box">
+                            <div class="_topbar_inside_box"></div>
+                            <div class="_leftbar_inside_box"></div>
+                            <div class="_rightbar_inside_box"></div>
+                            <div class="_bottombar_inside_box"></div>
+                            <div class="_cross">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,8 +225,8 @@
 
 
 <!--+++++++++++++ AboutMe ++++++++++++++++++++++++++++-->
-    <div class="w3-display-container" id="AboutMe">
-        <div class="w3-display-container w3-padding-64 description">
+    <div class="w3-container" id="AboutMe">
+        <div class="w3-padding-64 description">
             <h4>Allow me to introduce myself...</h4>
             <div class="showing_button">
                 <img src="imgs/text_icon.svg" id="text_button"/>
@@ -257,7 +267,15 @@
     </div>
 
 <!--+++++++++++++ Contact ++++++++++++++++++++++++++++-->
-    <div class="w3-display-container" id="Contact">
+    <div class="w3-container" id="Contact">
+
+        <!-- If javascript is not enabled, warning the user -->
+        <noscript>
+            <div class="noscriptmsg" style="background-color: red; font-size: large; font-weight: bold; text-align: center; border: 5px solid yellow;">
+                Why don't you ENABLE JavaScript??  Not only design and content will be better, but also some features...
+            </div>
+        </noscript>
+
         <div class="w3-container w3-padding-64">
             <div id="in_construction">Not Ready</div>
             <h4>Contact</h4>
@@ -306,7 +324,7 @@
 <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++ Footer (Content) ++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<footer class="w3-center w3-black w3-padding-24">
+<footer class="w3-container w3-center w3-black w3-padding-24">
     <div class="w3-xlarge w3-section">
         <a href="https://github.com/MarcosBernal" class="w3-bar-item w3-button w3-hover-opacity w3-round-small"><i class="fa fa-github"></i></a>
         <a href="https://es.linkedin.com/in/marcosbernalespana" class="w3-bar-item w3-button w3-hover-opacity w3-round-small"><i class="fa fa-linkedin"></i></a>
