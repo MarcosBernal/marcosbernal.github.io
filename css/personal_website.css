@@ -58,6 +58,15 @@ p {
     background-color: black; /*rgb(62, 71, 79);*/
 }
 
+.lang img{
+    width: 20px;
+    transform: translateY(calc(-50% + 4px));
+}
+
+#english_lang{
+    background-color: #494949;
+}
+
 
 /*==================================================================================
 ============================== WELCOME SECTION =====================================
