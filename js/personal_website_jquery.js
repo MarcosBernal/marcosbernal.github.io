@@ -117,25 +117,29 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('ws://83.43.15.217:5001');
+    var connection = new WebSocket('ws://192.168.1.56:3000');//83.43.15.217:5001');
 
     connection.onopen = function () {
         // connection is opened and ready to use
-        alert("Connected with server");
-
+        //alert("Connected with server");
     };
+
+    connection.onclose = function () {
+        $(".block_comm").css({display:'block',width:Math.round($("#contact_form").width()), height:Math.round($("#contact_form").height()-$("#message_button").height()), 'margin-top': Math.round($("#Contact h4").height())});
+        $("#message_button").text("Not available. Please come later!!");
+    }
 
     connection.onerror = function (error) {
         // an error occurred when sending/receiving data
-        alert("Error on connection");
-        $("#contact_form").toogle("conn_error");
-        $("#message_button").toogle("conn_error");
+        console.log("Error on connection");
+        $(".block_comm").css({display:'block',width:Math.round($("#contact_form").width()), height:Math.round($("#contact_form").height()-$("#message_button").height()), 'margin-top': Math.round($("#Contact h4").height())});
+        $("#message_button").text("Not available. Please come later!!");
     };
 
     connection.onmessage = function (message) {
         // try to decode json (I assume that each message
         // from server is json)
-        alert("Received message from server " + message.toString());
+        console.log("Received message from server " + message.toString());
         try {
             var json = JSON.parse(message.data);
         } catch (e) { alert.log('Server answer doesn\'t look like a valid JSON: ', message.data); return false; }
@@ -148,13 +152,18 @@ $(document).ready(function(){
             $("textarea[name~='message']").val('');
             connection.close();
         }else {
-            $("#contact_form").toogle("conn_error");
-            $("#message_button").toogle("conn_error");
+            $("#contact_form").toggleClass("conn_error");
+            $("#message_button").toggleClass("conn_error");
         }
         // handle incoming message
     };
 
     $("#contact_form").submit(function() {
+        if($("#message_button").text().indexOf("Send") == -1) {
+            console.log("Tried to connect without socket");
+            return false;
+        }
+
         var message = {
             type: "message",
             date: Date.now(),
