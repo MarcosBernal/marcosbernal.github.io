@@ -116,14 +116,58 @@ $(document).ready(function(){
 /////////////////////////////////////////////////  CONTACT - JS SERVER   //////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    window.WebSocket = window.WebSocket || window.MozWebSocket;
+    var connection = new WebSocket('ws://83.43.15.217:5001');
 
-    //Contact Form sending ajax text to server
-    $("#contact_form").submit(function(e) {
-        $("#Contact").children().children().css({"background-color":"black"});
-        alert("No ready yet! Please use other way");
-        $("#Contact").children().children().removeAttr("background-color");
-        $("#Contact").children().children().css("background-color",'');
+    connection.onopen = function () {
+        // connection is opened and ready to use
+        alert("Connected with server");
+
+    };
+
+    connection.onerror = function (error) {
+        // an error occurred when sending/receiving data
+        alert("Error on connection");
+        $("#contact_form").toogle("conn_error");
+        $("#message_button").toogle("conn_error");
+    };
+
+    connection.onmessage = function (message) {
+        // try to decode json (I assume that each message
+        // from server is json)
+        alert("Received message from server " + message.toString());
+        try {
+            var json = JSON.parse(message.data);
+        } catch (e) { alert.log('Server answer doesn\'t look like a valid JSON: ', message.data); return false; }
+
+        if(json['message'] = "Processed"){
+            $("input[name~='firstname']").val('');
+            $("input[name~='phone']").val('');
+            $("input[name~='email']").val('');
+            $("input[name~='subject']").val('');
+            $("textarea[name~='message']").val('');
+            connection.close();
+        }else {
+            $("#contact_form").toogle("conn_error");
+            $("#message_button").toogle("conn_error");
+        }
+        // handle incoming message
+    };
+
+    $("#contact_form").submit(function() {
+        var message = {
+            type: "message",
+            date: Date.now(),
+            firstname: $("input[name~='firstname']").val().toString(),
+            phone: $("input[name~='phone']").val().toString(),
+            email: $("input[name~='email']").val().toString(),
+            subject: $("input[name~='subject']").val().toString(),
+            message: $("textarea[name~='message']").val().toString()
+        }
+
+        connection.send(JSON.stringify(message));
+        return false; // NEED RETURN FALSE to not refresh page and keep values in the form
+
     });
-
 
 });

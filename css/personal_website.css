@@ -299,14 +299,6 @@ p {
     color: #52733B;
 }
 
-#in_construction {
-    position: absolute;
-    height: 80%;
-    width: 80%;
-    color: white;
-    background-color: rgba(0,0,0,0.5);
-}
-
 footer{
     --footer-size: 250px;
     max-height: var(--footer-size);
