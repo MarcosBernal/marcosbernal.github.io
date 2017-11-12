@@ -117,7 +117,7 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('ws://192.168.1.56:3000');//83.43.15.217:5001');
+    var connection = new WebSocket('wss://83.43.15.217:5001');
 
     connection.onopen = function () {
         // connection is opened and ready to use

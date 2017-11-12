@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head prefix="og: http://ogp.me/ns#">
+<head prefix="og: https://ogp.me/ns#">
 
     <!-- RDFa tags-->
     <meta property='og:title' content="Marcos Bernal España" />
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="infobox_matrix/infobox_matrix.js"></script>
     <link rel="stylesheet" type="text/css" href="infobox_matrix/infobox_matrix.css"/>
 
-    <!-- JS and CSS files for visjs library http://visjs.org/index.html#download_install -->
+    <!-- JS and CSS files for visjs library https://visjs.org/index.html#download_install -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css"/>
 
@@ -43,8 +43,9 @@
         </div>
     </noscript>
 
-    <!-- Icon of the website, with my initials -->
+    <!-- Icon of the website, with my initials      -->
     <link rel="shortcut icon" href="imgs/icon_logo_inverted.png">
+
 
 </head>
 <body>
@@ -112,7 +113,7 @@
                 <div class="w3-container intro_text">
                 <h4>Projects</h4>
                 <p>Right now it seems empty, but wait a little you will see my new projects :D</p>
-                <p>In this space, I will be referenced all kind of projects. Why do not you take a look? maybe one of them get your attention.</p>
+                <p>In this space, I will attach all kind of projects. Why do not you take a look? maybe one of them get your attention.</p>
                 </div>
                 <div class="_box_container _reacting_infobox">
                     <div class="_infobox" id="degree_project">
@@ -133,7 +134,7 @@
                             <div class="_rightbar_inside_box"></div>
                             <div class="_bottombar_inside_box"></div>
                             <div class="_image_icon">
-                                <img src="imgs/in_construction.jpg" alt="Personal Project aiming for showing portfolios" class="w3-hover-grayscale"/>
+                                <img src="imgs/infobox_matrix_example.jpg" alt="Personal Project to assist showing portfolios" class="w3-hover-grayscale"/>
                             </div>
                         </div>
                     </div>
@@ -148,26 +149,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="_infobox">
-                        <div class="_inside_box">
-                            <div class="_topbar_inside_box"></div>
-                            <div class="_leftbar_inside_box"></div>
-                            <div class="_rightbar_inside_box"></div>
-                            <div class="_bottombar_inside_box"></div>
-                            <div class="_cross">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <div class="w3-half">
             <div class="w3-container w3-padding-64">
-                <div class="intro_text">
+                <div class="w3-container intro_text">
                 <h4>Experiences</h4>
                 <p>Well, let's present my 'wannabe' blog.</p>
                 <p>Here you should find short articles containing my opinion as well as some experiences that may be worthy to share.</p>
-
                 </div>
                 <div class="_box_container _reacting_infobox">
                     <div class="_infobox" id="openhacknice">
@@ -188,7 +178,7 @@
                             <div class="_rightbar_inside_box"></div>
                             <div class="_bottombar_inside_box"></div>
                             <div class="_image_icon">
-                                <img src="imgs/summer_school/everyone_front_tum.jpg" alt="Marcos with his classmates in front of TUM Munich(Germany)" class="w3-hover-grayscale"/>
+                                <img src="imgs/summer_school/nimbus_slide.jpg" alt="First slide of NIMBUS the EOS solution" class="w3-hover-grayscale"/>
                             </div>
                         </div>
                     </div>
@@ -199,17 +189,7 @@
                             <div class="_rightbar_inside_box"></div>
                             <div class="_bottombar_inside_box"></div>
                             <div class="_image_icon">
-                                <img src="imgs/in_construction.jpg" alt="Marcos with his team in the hack in Madrid" class="w3-hover-grayscale"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="_infobox">
-                        <div class="_inside_box">
-                            <div class="_topbar_inside_box"></div>
-                            <div class="_leftbar_inside_box"></div>
-                            <div class="_rightbar_inside_box"></div>
-                            <div class="_bottombar_inside_box"></div>
-                            <div class="_cross">
+                                <img src="imgs/application_welcome_menu.jpg" alt="Web Application that we developed in the TADHackMadrid" class="w3-hover-grayscale"/>
                             </div>
                         </div>
                     </div>
@@ -238,25 +218,32 @@
                 <img src="imgs/text_icon.svg" id="text_button"/>
             </div>
             <div class="switching_content" id="text">
-                <div id="left_text" itemscope itemtype ="http://schema.org/Person">
-                    <img src="imgs/in_construction.jpg" align="right"/>
-                    <p>I am <span itemprop="givenName">Marcos</span> <span itemprop="familyName">Bernal España</span>.
-                        Ironically, due to my last surname you may guess that you found another crazy <span itemprop="nationality">Spaniard</span>...
+                <div id="left_text" itemscope itemtype ="https://schema.org/Person">
+                    <img src="imgs/working_in_success_cases_hce.jpg"src="imgs/in_hockey.jpg" align="right" alt="marcos in the HCE in berlin"/>
+                    <p>
+                        I am <span itemprop="givenName">Marcos</span> <span itemprop="familyName">Bernal España</span>.
+                        Ironically, due to my last surname you may guess that you found another 'crazy' <span itemprop="nationality">Spaniard</span>...
                         well, you are not far from being right.
                         Some classmates would say that I am finishing the Master 2 in Data Science in the
-                        <span itemprop="alumniOf" itemtype="http://schema.org/EducationalOrganization">Technical University of Madrid (UPM)</span>, so you may consider me a
-                        <span itemprop="hasOccupation" itemtype="http://pending.schema.org/Occupation">data science student</span>.</p>
+                        <span itemprop="alumniOf" itemtype="https://schema.org/EducationalOrganization">Technical University of Madrid (UPM)</span>, so you may consider me a
+                        <span itemprop="hasOccupation" itemtype="https://pending.schema.org/Occupation">data science student</span>.
+                    </p>
+                    <p>
+                        My interest are quite large and mainly focused, but not limited, on <span itemprop="seeks">computer engineering and</span>, by extension, <span itemprop="seeks">data science</span>.
+                        I like robotics, software developing (including videogames :P), security, networking, data mining and machine learning. I like to learn something useful everyday and I do my best to achieve it.
+                    </p>
 
-                    <p> My interest are quite large and mainly focused, but not limited, on <span itemprop="seeks">computer engineering and</span>, by extension, <span itemprop="seeks">data science</span>.
-                        I like robotics, software developing (including videogames :P), security, networking, data mining and machine learning. I like to learn something useful everyday and I do my best to achieve it.</p>
-
-                    <img src="imgs/HCE-berlin/me_working_in_success_cases.jpg" align="left"/>
-                    <p>If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
+                    <img src="imgs/in_hockey.jpg" align="left" alt="marcos in the Field Hockey pitch of Madrid Federation"/>
+                    <p>
+                        If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
                         medium ones, but hard problems are not big deal since one can split them and
-                        have several small lovely problems instead!</p>
-                    <p>When I am not working nor developing/researching projects by my own, I like to hang out with friends, play some videogames and do all kind of sports.
+                        have several small lovely problems instead!
+                    </p>
+                    <p>
+                        When I am not working nor developing/researching projects by my own, I like to hang out with friends, play some videogames and do all kind of sports.
                         Particularly, I love hockey and the one that I play is Field Hockey.
-                        Field hockey is usually misunderstood with the other variants of hockey i.e. Ice Hockey or Roller Hockey which are quite different.</p>
+                        Field hockey is usually misunderstood with the other variants of hockey i.e. Ice Hockey or Roller Hockey which are quite different.
+                    </p>
                 </div>
                 <div id="divider"></div>
                 <div id="right_graph">
@@ -340,7 +327,7 @@
     <div class="license">
         <p class="w3-small"><span>Content licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="font-weight: bold;" >CC BY-SA</a></span> © 2017 Marcos Bernal España</p>
         <a href="https://github.com/MarcosBernal/marcosbernal.github.io" class="w3-small"><p> Details and credits in Marcos' github repo</p></a>
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
     </div>
 </footer>
 

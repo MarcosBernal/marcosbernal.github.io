@@ -1,9 +1,5 @@
-# Example files
-*example*
-
 # Previous images
-imgs/me_and_bike_HDR_reduced*
-!imgs/me_and_bike_HDR_reduced_pasteu_6b.jpg
+imgs/backup_images
 *.xcf
 
 # My other copies
