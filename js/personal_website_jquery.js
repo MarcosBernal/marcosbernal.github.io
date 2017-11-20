@@ -117,11 +117,19 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('wss://83.43.15.217:5001');
+    var connection = new WebSocket('wss://inbox-website.marcosbernal.es/websocket');
 
     connection.onopen = function () {
         // connection is opened and ready to use
-        //alert("Connected with server");
+        console.log("Connected with server");
+
+        //This is How to use the Waitable findIP function, and react to the
+        //results arriving
+        var ipWaitObject = findIP(foundNewIP);        // Puts found IP(s) in window.ipAddress
+        ipWaitObject.then(
+            function (result) { console.log("IP(s) Found.  Result: '" + result + "'. You can use them now: " + window.ipAddress); },
+            function (err) { console.log("IP(s) NOT Found.  FAILED!  " + err); }
+        );
     };
 
     connection.onclose = function () {
@@ -150,7 +158,7 @@ $(document).ready(function(){
             $("input[name~='email']").val('');
             $("input[name~='subject']").val('');
             $("textarea[name~='message']").val('');
-            connection.close();
+            console.log('Received message:',message);
         }else {
             $("#contact_form").toggleClass("conn_error");
             $("#message_button").toggleClass("conn_error");
@@ -167,6 +175,7 @@ $(document).ready(function(){
         var message = {
             type: "message",
             date: Date.now(),
+            'priv-origin': window.ipAddress,
             firstname: $("input[name~='firstname']").val().toString(),
             phone: $("input[name~='phone']").val().toString(),
             email: $("input[name~='email']").val().toString(),
@@ -180,3 +189,51 @@ $(document).ready(function(){
     });
 
 });
+
+
+
+
+// Funtion to obtain the IP in the client browser without any server interaction
+// Code from BRebey https://stackoverflow.com/a/36610819
+function findIP(onNewIP) { //  onNewIp - your listener function for new IPs
+    var promise = new Promise(function (resolve, reject) {
+        try {
+            var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection; //compatibility for firefox and chrome
+            var pc = new myPeerConnection({ iceServers: [] }),
+                noop = function () { },
+                localIPs = {},
+                ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+                key;
+            function ipIterate(ip) {
+                if (!localIPs[ip]) onNewIP(ip);
+                localIPs[ip] = true;
+            }
+            pc.createDataChannel(""); //create a bogus data channel
+            pc.createOffer(function (sdp) {
+                sdp.sdp.split('\n').forEach(function (line) {
+                    if (line.indexOf('candidate') < 0) return;
+                    line.match(ipRegex).forEach(ipIterate);
+                });
+                pc.setLocalDescription(sdp, noop, noop);
+            }, noop); // create offer and set local description
+
+            pc.onicecandidate = function (ice) { //listen for candidate events
+                if (ice && ice.candidate && ice.candidate.candidate && ice.candidate.candidate.match(ipRegex)) {
+                    ice.candidate.candidate.match(ipRegex).forEach(ipIterate);
+                }
+                resolve("FindIPsDone");
+                return;
+            };
+        }
+        catch (ex) {
+            console.log(Error(ex));
+        }
+    });// New Promise(...{ ... });
+    return promise;
+};
+
+//This is the callback that gets run for each IP address found
+function foundNewIP(ip) {
+    if (typeof window.ipAddress === 'undefined'){ window.ipAddress = ip; }
+    else{ window.ipAddress += " - " + ip; }
+}
