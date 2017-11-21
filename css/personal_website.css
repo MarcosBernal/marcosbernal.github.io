@@ -290,8 +290,11 @@ p {
 }
 
 #Contact .w3-button{
-    background-color: gainsboro;
     color: black;
+}
+
+#Contact .waiting_mess {
+      background-color: gainsboro;
 }
 
 #Contact .fa-paper-plane{
@@ -305,6 +308,19 @@ p {
     width: 50%;
     position: absolute;
     display: none;
+}
+
+#Contact .message_conf{
+  background-color: #52733B;
+  cursor: default;
+}
+
+#Contact .message_conf:hover{
+  background-color: #52733B !important;
+}
+
+#Contact .blame_form {
+  border: 1px solid red !important;
 }
 
 
@@ -386,4 +402,3 @@ footer .license p{
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
-

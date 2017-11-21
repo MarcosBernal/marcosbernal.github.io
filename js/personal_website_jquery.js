@@ -150,25 +150,34 @@ $(document).ready(function(){
         console.log("Received message from server " + message.toString());
         try {
             var json = JSON.parse(message.data);
-        } catch (e) { alert.log('Server answer doesn\'t look like a valid JSON: ', message.data); return false; }
+        } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
 
-        if(json['message'] = "Processed"){
+        if(json['type'] == 'Reply' && json['message'] == "Processed"){
+            $("textarea[name~='message']").val('Thank you, '+$("input[name~='firstname']").val() + '\n\nI will reply you in less than 48 hours. \nNevertheless, if you need urgent contact, please use twitter. \n\nRegards, Marcos');
             $("input[name~='firstname']").val('');
             $("input[name~='phone']").val('');
             $("input[name~='email']").val('');
             $("input[name~='subject']").val('');
-            $("textarea[name~='message']").val('');
-            console.log('Received message:',message);
+
+            console.log('>> Confirmation of reception:',message);
+            $("#message_button").text('Message was properly sent!!');
+            $("#message_button").toggleClass("message_conf");
         }else {
             $("#contact_form").toggleClass("conn_error");
             $("#message_button").toggleClass("conn_error");
+            console.log(">> Error when receiving confirmation. Message", message);
         }
         // handle incoming message
     };
 
     $("#contact_form").submit(function() {
-        if($("#message_button").text().indexOf("Send") == -1) {
+        if($("#message_button").text().indexOf("No") == 0) {
             console.log("Tried to connect without socket");
+            return false;
+        }
+
+        if($("#message_button").hasClass('message_conf')){
+            console.log("Message already sent.");
             return false;
         }
 
@@ -183,11 +192,26 @@ $(document).ready(function(){
             message: $("textarea[name~='message']").val().toString()
         }
 
-        connection.send(JSON.stringify(message));
+        console.log('tried');
+
+        // Check if form are properly written
+        $('.mandatory_form').each(function() {
+            if($(this).val().toString() == '')
+              $(this).addClass('blame_form');
+            else
+              $(this).removeClass('blame_form');
+        });
+
+        if($('.blame_form').length == 0) //Only send a message when the form is complete
+          connection.send(JSON.stringify(message));
+        else
+          $("#message_button").text("Please review, before sending again!");
+
+
+
         return false; // NEED RETURN FALSE to not refresh page and keep values in the form
 
     });
-
 });
 
 
