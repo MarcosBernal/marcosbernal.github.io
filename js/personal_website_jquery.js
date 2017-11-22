@@ -141,6 +141,7 @@ $(document).ready(function(){
         // an error occurred when sending/receiving data
         console.log("Error on connection");
         $(".block_comm").css({display:'block',width:Math.round($("#contact_form").width()), height:Math.round($("#contact_form").height()-$("#message_button").height()), 'margin-top': Math.round($("#Contact h4").height())});
+        $("#message_button").toggleClass('error_com');
         $("#message_button").text("Not available. Please come later!!");
     };
 
@@ -152,8 +153,8 @@ $(document).ready(function(){
             var json = JSON.parse(message.data);
         } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
 
-        if(json['type'] == 'Reply' && json['message'] == "Processed"){
-            $("textarea[name~='message']").val('Thank you, '+$("input[name~='firstname']").val() + '\n\nI will reply you in less than 48 hours. \nNevertheless, if you need urgent contact, please use twitter. \n\nRegards, Marcos');
+        if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
+            $("textarea[name~='message']").val('Thank you, '+$("input[name~='firstname']").val() + '\n\nI will reply you in less than 48 hours. \nNevertheless, if you need urgent contact, please use linkedin. \n\nRegards, Marcos');
             $("input[name~='firstname']").val('');
             $("input[name~='phone']").val('');
             $("input[name~='email']").val('');
@@ -183,8 +184,8 @@ $(document).ready(function(){
 
         var message = {
             type: "message",
-            date: Date.now(),
-            'priv-origin': window.ipAddress,
+            date: Date(),
+            privOrigin: window.ipAddress,
             firstname: $("input[name~='firstname']").val().toString(),
             phone: $("input[name~='phone']").val().toString(),
             email: $("input[name~='email']").val().toString(),

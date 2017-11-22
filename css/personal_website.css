@@ -310,6 +310,14 @@ p {
     display: none;
 }
 
+#Contact .error_com {
+  cursor: default;
+}
+
+#Contact .error_com:hover {
+  background-color: gainsboro !important;
+}
+
 #Contact .message_conf{
   background-color: #52733B;
   cursor: default;
