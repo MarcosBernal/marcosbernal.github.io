@@ -75,10 +75,16 @@ var options = {
     interaction: {
         dragView: false,
         zoomView: false
-    }
+    },
+    width: '100%',
+    height: '100%'
 };
+
+if(window.screen.width < 900){
+  options['width'] = window.screen.width*0.8+'px';
+  options['height'] = '400px';
+}
 
 // initialize your network!
 var network = new vis.Network(container, data, options);
 network.fit();
-

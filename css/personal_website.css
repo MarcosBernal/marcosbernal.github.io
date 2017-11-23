@@ -29,6 +29,7 @@ p {
     margin-top: 1%;
     margin-botton: 1%;
     font-size: 1.1em !important;
+    line-height: 105%;
 }
 
 .parallax {
@@ -246,7 +247,6 @@ p {
 
 #AboutMe .description .switching_content #right_graph{
     position: absolute;
-    width: 0px; height: 0px; /*Avoid the graph if javascript not available*/
     top:0px;
     right:10px;
     background: black;
@@ -266,7 +266,7 @@ p {
     color: black;
     text-align: justify;
     margin: 1% 0% 2% 0%;
-    line-height: 2.0;
+    line-height: 175%;
 }
 
 
