@@ -1,6 +1,13 @@
 // When DOM has been loaded the function is triggered
 $(document).ready(function(){
 
+  window.onresize = function(event){
+    if(window.screen.width > 910){
+        placeCanvasAndDivider();
+        console.log("Width has changed", window.screen.width);
+      }
+  }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,15 +30,7 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Set position and size to graph and divider initially in the middle
-    $("#right_graph").offset({top:$("#left_text").offset().top});
-    $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
-        'height':$('#left_text').height()});
-    $("#divider").css({'right':($('#right_graph').width()+$('#divider').width()),
-        'height':$('#left_text').height()});
-    $("#divider").offset({top:$("#left_text").offset().top});
-
-    $("#mynetwork").css({'width':$('#left_text').width(),
-        'height':$('#left_text').height()});
+    placeCanvasAndDivider();
 
     // Refreshing the position of the knowledge graph and text according the mouse position
     var divPos = {};
@@ -110,7 +109,7 @@ $(document).ready(function(){
         }
     });
 
-
+    //$('#aboutme_carousel').carousel()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  CONTACT - JS SERVER   //////////////////////////////////////////////////////////////////////
@@ -215,8 +214,19 @@ $(document).ready(function(){
     });
 });
 
+// Function to set position and size to graph and divider initially in the middle
+// Used at the beginning and if someone resize from small size to big size
+function placeCanvasAndDivider(){
+  $("#right_graph").offset({top:$("#left_text").offset().top});
+  $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
+      'height':$('#left_text').height()});
+  $("#divider").css({'right':($('#right_graph').width()+$('#divider').width()),
+      'height':$('#left_text').height()});
+  $("#divider").offset({top:$("#left_text").offset().top});
 
-
+  $("#mynetwork").css({'width':$('#left_text').width(),
+      'height':$('#left_text').height()});
+}
 
 // Funtion to obtain the IP in the client browser without any server interaction
 // Code from BRebey https://stackoverflow.com/a/36610819

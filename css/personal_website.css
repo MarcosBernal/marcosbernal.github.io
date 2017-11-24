@@ -226,7 +226,6 @@ p {
     height: auto;
 }
 
-
 #AboutMe .description .switching_content #left_text img{
     align: right;
     margin: 0 2% 0 2%;
@@ -268,7 +267,17 @@ p {
     margin: 1% 0% 2% 0%;
     line-height: 175%;
 }
+/*
+#AboutMe .carousel-inner .item .car_container{
+  width: 80%;
+  height: 40%;
+}
 
+#AboutMe .carousel-inner {
+  background: black !important;
+  z-index: -1 !important;
+}
+*/
 
 /*=================================================================================
 ============================== CONTACT SECTION ====================================

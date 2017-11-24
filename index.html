@@ -20,12 +20,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-    <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
-    <link rel="stylesheet" type="text/css" href="css/responsive_code.css"/>
-    <script type="text/javascript" src="js/personal_website.js"></script>
-    <script type="text/javascript" src="js/personal_website_jquery.js"></script>
-
-
+    <!-- W3.css file -->
     <link rel="stylesheet" href="css/w3.css">
 
     <!-- JS and CSS files from infobox https://github.com/MarcosBernal/infobox_matrix -->
@@ -36,13 +31,26 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css"/>
 
+    <!-- JS and CSS files of bootstrap to use the Carousel https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_carousel2&stacked=h
+    <script type="text/javascript" src="js/responsive_design.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <!-- My CSS and JS files -->
+
+    <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive_code.css"/>
+    <script type="text/javascript" src="js/personal_website.js"></script>
+    <script type="text/javascript" src="js/personal_website_jquery.js"></script>
+
+
     <!-- If javascript is not enabled, warning the user -->
     <noscript>
         <div class="noscriptmsg" style="background-color: red; font-size: large; font-weight: bold; text-align: center; border: 5px solid yellow;">
             Why don't you ENABLE JavaScript??  Not only design and content will be better, but also some features...
         </div>
         <style>
-           #right_graph, #divider, .showing_button, #message_button {display: none;}
+           #right_graph, #divider, .showing_button, #message_button, #aboutme_carousel {display: none;}
         </style>
     </noscript>
 
@@ -222,8 +230,8 @@
             </div>
             <div class="switching_content" id="text">
                 <div id="left_text" itemscope itemtype ="https://schema.org/Person">
-                    <img src="imgs/working_in_success_cases_hce.jpg"src="imgs/in_hockey.jpg" align="right" alt="marcos in the HCE in berlin"/>
-                    <p>
+                  <img id="about_in_hce" src="imgs/working_in_success_cases_hce.jpg" align="right" alt="marcos in the HCE in berlin"/>
+                   <p id="about_text1">
                         I am <span itemprop="givenName">Marcos</span> <span itemprop="familyName">Bernal España</span>.
                         Ironically, due to my last surname you may guess that you found another 'crazy' <span itemprop="nationality">Spaniard</span>...
                         well, you are not far from being right.
@@ -231,22 +239,24 @@
                         <span itemprop="alumniOf" itemtype="https://schema.org/EducationalOrganization">Technical University of Madrid (UPM)</span>, so you may consider me a
                         <span itemprop="hasOccupation" itemtype="https://pending.schema.org/Occupation">data science student</span>.
                     </p>
-                    <p>
+                    <p id="about_text2">
                         My interest are quite large and mainly focused, but not limited, on <span itemprop="seeks">computer engineering and</span>, by extension, <span itemprop="seeks">data science</span>.
                         I like robotics, software developing (including videogames :P), security, networking, data mining and machine learning. I like to learn something useful everyday and I do my best to achieve it.
                     </p>
 
-                    <img src="imgs/in_hockey.jpg" align="left" alt="marcos in the Field Hockey pitch of Madrid Federation"/>
-                    <p>
+                   <img id="about_in_hockey" src="imgs/in_hockey.jpg" align="left" alt="marcos in the Field Hockey pitch of Madrid Federation"/>
+                    <p id="about_text3">
+                       <br>
                         If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
                         medium ones, but hard problems are not big deal since one can split them and
                         have several small lovely problems instead!
                     </p>
-                    <p>
+                    <p id="about_text4">
                         When I am not working nor developing/researching projects by my own, I like to hang out with friends, play some videogames and do all kind of sports.
                         Particularly, I love hockey and the one that I play is Field Hockey.
                         Field hockey is usually misunderstood with the other variants of hockey i.e. Ice Hockey or Roller Hockey which are quite different.
                     </p>
+
                 </div>
                 <div id="divider"></div>
                 <div id="right_graph">
@@ -259,8 +269,9 @@
                 <img src="imgs/graph_icon.svg" id="graph_button"/>
             </div>
 
+
+          </div>
         </div>
-    </div>
 
 <!--+++++++++++++ Contact ++++++++++++++++++++++++++++-->
     <div class="w3-container" id="Contact">
@@ -311,8 +322,71 @@
                 <textarea class="mandatory_form" name="message" rows="10" cols="30" style="width: 100%;" placeholder="*Hi Marcos, ..."></textarea>
 
                 <button class="w3-button w3-block w3-section waiting_mess w3-padding" id="message_button"><i class="fa fa-paper-plane"></i> Send Message!</button>
-
             </form>
+
+
+            <!-- Carousel div from carousel.js from bootstrap
+            <div id="aboutme_carousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+              <li data-target="#aboutme_carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#aboutme_carousel" data-slide-to="1"></li>
+              <li data-target="#aboutme_carousel" data-slide-to="2"></li>
+              <li data-target="#aboutme_carousel" data-slide-to="3"></li>
+              <li data-target="#aboutme_carousel" data-slide-to="4"></li>
+              <li data-target="#aboutme_carousel" data-slide-to="5"></li>
+            </ol>
+
+                <div class="carousel-inner" role="listbox">
+
+                  <div class="item active">
+                    <div id="car_about_text1" class="carousel-caption">
+                      <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div id="car_about_text2" class="carousel-caption">
+                      <h3>Chania</h3>
+                      <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div id="car_about_in_hce" class="carousel-caption">
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div id="car_about_text3" class="carousel-caption">
+                      <h3>Flowers</h3>
+                      <p>Beautiful flowers in Kolymbari, Crete.</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div id="car_about_text4" class="carousel-caption">
+                      <h3>Flowers</h3>
+                      <p>Beautiful flowers in Kolymbari, Crete.</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div id="car_about_in_hockey" class="carousel-caption">
+                    </div>
+                  </div>
+
+                </div>
+
+                <a class="left carousel-control" href="#aboutme_carousel" role="button" data-slide="prev">
+                  <span class="fa fa-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#aboutme_carousel" role="button" data-slide="next">
+                  <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div> -->
         </div>
     </div>
 

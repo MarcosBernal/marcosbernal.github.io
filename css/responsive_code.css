@@ -1,7 +1,19 @@
 /* personal_website.css Jul 2017 by Marcos Bernal */
 @CHARSET "ISO-8859-1";
 
+@media only screen and (min-width: 910px) {
+  /*
+  #aboutme_carousel {
+      display: none;
+    }
+    */
+}
+
 @media only screen and (max-width: 900px) {
+
+  #Experience .w3-half{
+    width: 95%;
+  }
 
   #AboutMe .description .showing_button {
     display: none;
@@ -29,6 +41,7 @@
     top:auto !important;
     min-width: 0 !important;
     height: auto !important;
+    margin-top: 20px;
   }
 
   #AboutMe .description .switching_content #right_graph #mynetwork{
@@ -36,12 +49,32 @@
     width: 100% !important;
     min-width: 0 !important;
     margin: 0 !important;
-          height: auto !important;
+    height: auto !important;
+  }
+
+  #Aboutme #aboutme_carousel{
+    z-index: -1; position:relative;
+  }
+
+  #AboutMe img{
+    display: block;
+    max-width: 70% !important;
+    margin: 20px !important;
+    margin-left: 15% !important;
+    height: 30%;
+    float: none;
+    position: relative;
   }
 
 }
 
 @media screen and (max-width: 600px) {
+
+    /*
+    #aboutme_carousel img{
+        width: 400px;
+        height: 280px;
+    }*/
 
     .menu{
         display: none;
@@ -124,8 +157,12 @@
 
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 440px) {
     #AboutMe .description .switching_content #right_graph{
-    display: none;
+      display: none;
+    }
+
+    #AboutMe img {
+      display: none;
     }
 }
