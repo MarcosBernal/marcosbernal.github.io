@@ -13,6 +13,7 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $("#spanish_lang").on("click", function () {
+        event.stopPropagation();
         //$(".lang").css({background: "black"});
         //$(this).css({background: "gray"});
         //$(document).load("../index_es.html");
@@ -20,10 +21,31 @@ $(document).ready(function(){
     });
 
     $("#english_lang").on("click", function () {
+        event.stopPropagation();
         $(".lang").css({background: "black"});
         $(this).css({background: "gray"});
         //$(document).load("../index_en.html");
     });
+
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    $(".responsive_menu").on("click", function(event){
+        event.stopPropagation();
+        $(this).children(".dropdown_button").toggleClass("alt");
+        $(this).children(".dropdown_button-content").toggleClass("show");
+        console.log("clicked on event");
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown_button')) {
+          $('.dropdown_button.alt').toggleClass('alt');
+          $(".dropdown_button-content.show").removeClass('show');
+          console.log("Closing dropdown");
+
+        }
+        console.log("Called event");
+    }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  CANVAS - GRAPH - TEXT  /////////////////////////////////////////////////////////////////////
@@ -76,7 +98,8 @@ $(document).ready(function(){
     });
 
     //Show completely all introduction either text or graph
-    $("#text_button").on("click touch", function(){
+    $("#text_button").on("click touch", function(event){
+        event.stopPropagation();
         clearInterval(interval);
         interval = undefined;
 
@@ -93,7 +116,8 @@ $(document).ready(function(){
         }
     });
 
-    $("#graph_button").on("click touch", function(e){
+    $("#graph_button").on("click touch", function(event){
+        event.stopPropagation();
         clearInterval(interval);
         interval = undefined;
         if ($("#right_graph").width() == $("#left_text").width()){

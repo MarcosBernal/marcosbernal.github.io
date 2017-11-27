@@ -52,22 +52,40 @@
     height: auto !important;
   }
 
-  #Aboutme #aboutme_carousel{
-    z-index: -1; position:relative;
-  }
-
   #AboutMe img{
     display: block;
     max-width: 70% !important;
     margin: 20px !important;
     margin-left: 15% !important;
-    height: 30%;
+    max-height: auto !important;
     float: none;
     position: relative;
   }
 
 }
 
+@media screen and (max-width: 800px) {
+
+  .aux_black_bar{
+    height: 20px;
+    width: 100%;
+    background: black;
+  }
+
+  #nav_menu .w3-bar {
+    display: none;
+  }
+
+  #nav_menu .responsive_menu {
+    display: block;
+  }
+
+  #Welcome{
+      background: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b_small_vertical.jpg') ;
+  }
+
+
+}
 @media screen and (max-width: 600px) {
 
     /*
@@ -76,75 +94,13 @@
         height: 280px;
     }*/
 
-    .menu{
-        display: none;
+    #Welcome .welcome_text{
+       min-width: 220px;
+       margin-left: 2%;
     }
 
-
-    .parallax {
-        background-attachment: scroll;
-    }
-
-    .dropbtn {
-        background: url("../imgs/menu_collapse_black.png") no-repeat center;
-        min-width: 45px;
-        min-height: 45px;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border-radius: 30%;
-        border: 2px solid black;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .dropbtn.alt {
-        background: url("../imgs/menu_collapse_pressed_black.png") no-repeat center;
-    }
-
-    .dropbtn:hover {
-        background-color: rgba(255,255,255, 0.4);
-
-    }
-
-    .menu.responsive {
-        display: block;
-        position:fixed;
-        right:15px;
-        top: 15px;
-        height: 30px;
-        z-index: 70;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        left:auto;
-        right:0;
-        text-align: center;
-        background-color: #f9f9f9;
-        min-width: 120px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 70;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 8px 12px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #B2B2B2
-    }
-
-    .show {display:block;}
-
-    #section_about_me{
-        background: url(../imgs/me_and_bike_HDR_reduced_pasteu_6b_reduced.jpg) ;
-        background-size: cover;
+    #Welcome .welcome_text .text_centered h5 {
+        margin: 5px 5px 15px 5px;
     }
 
     #AboutMe .show_images{
@@ -155,9 +111,18 @@
         margin-bottom: 5%;
     }
 
+    #Contact #contact_form .w3-half .prev_row_half{
+      margin-bottom: 0px !important;
+    }
+
 }
 
 @media only screen and (max-width: 440px) {
+
+    #Welcome{
+        background: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b_vertical_059.jpg') ;
+    }
+
     #AboutMe .description .switching_content #right_graph{
       display: none;
     }
