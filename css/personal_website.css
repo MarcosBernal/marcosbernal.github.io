@@ -312,6 +312,15 @@ p {
     max-width: 25%;
 }
 
+#AboutMe .description .switching_content #left_text #about_in_hockey{
+    float: left;
+}
+
+
+#AboutMe .description .switching_content #left_text #about_in_hce{
+    float: right;
+}
+
 #AboutMe .description .switching_content #divider{
     position: absolute;
     width: 10px;

@@ -37,28 +37,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
     <!-- My CSS and JS files -->
-
     <link rel="stylesheet" type="text/css" href="css/personal_website.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive_code.css"/>
     <script type="text/javascript" src="js/personal_website_jquery.js"></script>
 
 
+    <!-- Icon of the website, with my initials      -->
+    <link rel="shortcut icon" href="imgs/icon_logo_inverted.png"/>
+
+
     <!-- If javascript is not enabled, warning the user -->
     <noscript>
-        <div class="noscriptmsg" style="background-color: red; font-size: large; font-weight: bold; text-align: center; border: 5px solid yellow;">
-            Why don't you ENABLE JavaScript??  Not only design and content will be better, but also some features...
-        </div>
-        <style>
-           #right_graph, #divider, .showing_button, #message_button, #aboutme_carousel {display: none;}
-        </style>
+      <style>
+         #right_graph, #divider, .showing_button, #message_button, #aboutme_carousel {display: none;}
+      </style>
     </noscript>
-
-    <!-- Icon of the website, with my initials      -->
-    <link rel="shortcut icon" href="imgs/icon_logo_inverted.png">
-
 
 </head>
 <body>
+
+<!-- If javascript is not enabled, warning the user -->
+<noscript>
+    <div class="noscriptmsg" style="background-color: red; font-size: large; font-weight: bold; text-align: center; border: 5px solid yellow;">
+        Why don't you ENABLE JavaScript??  Not only design and content will be better, but also some features...
+    </div>
+</noscript>
 
 <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++ Nav Menu(Content) +++++++++++++++++++++++++++++++++++++
@@ -74,8 +77,8 @@
         <a href="https://es.linkedin.com/in/marcosbernalespana" class="w3-bar-item w3-button w3-hide-small w3-right"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
         <a href="https://github.com/MarcosBernal" class="w3-bar-item w3-button w3-hide-small w3-right"><i class="fa fa-github w3-hover-opacity"></i></a>
         <div class="w3-bar-item w3-right w3-hide-small" style="cursor:default">|</div>
-        <div class="w3-bar-item w3-button w3-hide-small w3-right lang" id="spanish_lang"><i class="fa"><img src="imgs/flag-of-spain.jpg"></i></div>
-        <i class="w3-bar-item w3-button w3-hide-small w3-right lang" id="english_lang"><img src="imgs/flag-of-english.jpg"></i>
+        <div class="w3-bar-item w3-button w3-hide-small w3-right lang" id="spanish_lang"><i class="fa"><img src="imgs/flag-of-spain.jpg" alt="Spanish language - flag of spain"></i></div>
+        <i class="w3-bar-item w3-button w3-hide-small w3-right lang" id="english_lang"><img src="imgs/flag-of-english.jpg" alt="English language - flag of UK/US"></i>
     </div>
 
     <div class="responsive_menu hidden">
@@ -215,25 +218,25 @@
         <div class="w3-padding-64 description">
             <h4>Allow me to introduce myself...</h4>
             <div class="showing_button">
-                <img src="imgs/text_icon.svg" id="text_button"/>
+                <img src="imgs/text_icon.svg" id="text_button" alt="Button to show all text in description"/>
             </div>
             <div class="switching_content" id="text">
-                <div id="left_text" itemscope itemtype ="https://schema.org/Person">
-                  <img id="about_in_hce" src="imgs/working_in_success_cases_hce.jpg" align="right" alt="marcos in the HCE in berlin"/>
+                <div id="left_text" itemscope itemtype="https://schema.org/Person">
+                  <img id="about_in_hce" src="imgs/working_in_success_cases_hce.jpg" alt="marcos in the HCE in berlin"/>
                    <p id="about_text1">
                         I am <span itemprop="givenName">Marcos</span> <span itemprop="familyName">Bernal España</span>.
                         Ironically, due to my last surname you may guess that you found another 'crazy' <span itemprop="nationality">Spaniard</span>...
                         well, you are not far from being right.
                         Some classmates would say that I am finishing the Master 2 in Data Science in the
-                        <span itemprop="alumniOf" itemtype="https://schema.org/EducationalOrganization">Technical University of Madrid (UPM)</span>, so you may consider me a
-                        <span itemprop="hasOccupation" itemtype="https://pending.schema.org/Occupation">data science student</span>.
+                        <span itemprop="alumniOf">Technical University of Madrid (UPM)</span>, so you may consider me a
+                        <span itemprop="hasOccupation">data science student</span>.
                     </p>
                     <p id="about_text2">
                         My interest are quite large and mainly focused, but not limited, on <span itemprop="seeks">computer engineering and</span>, by extension, <span itemprop="seeks">data science</span>.
                         I like robotics, software developing (including videogames :P), security, networking, data mining and machine learning. I like to learn something useful everyday and I do my best to achieve it.
                     </p>
 
-                   <img id="about_in_hockey" src="imgs/in_hockey.jpg" align="left" alt="marcos in the Field Hockey pitch of Madrid Federation"/>
+                   <img id="about_in_hockey" src="imgs/in_hockey.jpg" alt="marcos in the Field Hockey pitch of Madrid Federation"/>
                     <p id="about_text3">
                        <br>
                         If I had to sum up myself, I would say that I am a problem solving person. I really like easy problems and
@@ -255,7 +258,7 @@
                 </div>
             </div>
             <div class="showing_button">
-                <img src="imgs/graph_icon.svg" id="graph_button"/>
+                <img src="imgs/graph_icon.svg" id="graph_button" alt="Button to show the graph completely"/>
             </div>
 
 
