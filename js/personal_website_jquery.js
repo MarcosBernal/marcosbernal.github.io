@@ -2,10 +2,9 @@
 $(document).ready(function(){
 
   window.onresize = function(event){
-    if(window.screen.width > 910){
         placeCanvasAndDivider();
+        paintNetworkAgain();
         console.log("Width has changed", window.screen.width);
-      }
   }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -241,15 +240,19 @@ $(document).ready(function(){
 // Function to set position and size to graph and divider initially in the middle
 // Used at the beginning and if someone resize from small size to big size
 function placeCanvasAndDivider(){
-  $("#right_graph").offset({top:$("#left_text").offset().top});
-  $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
-      'height':$('#left_text').height()});
-  $("#divider").css({'right':($('#right_graph').width()+$('#divider').width()),
-      'height':$('#left_text').height()});
-  $("#divider").offset({top:$("#left_text").offset().top});
+  if(window.screen.width > 900){
+    $("#right_graph").offset({top:$("#left_text").offset().top});
+    $("#right_graph").css({'width':Math.round($('#left_text').width()/2),
+        'height':$('#left_text').height()});
+    $("#divider").css({'right':($('#right_graph').width()+$('#divider').width()),
+        'height':$('#left_text').height()});
+    $("#divider").offset({top:$("#left_text").offset().top});
 
-  $("#mynetwork").css({'width':$('#left_text').width(),
-      'height':$('#left_text').height()});
+    $("#mynetwork").css({'width':$('#left_text').width(),
+        'height':$('#left_text').height()});
+  }else {
+        $("#mynetwork canvas").css({'width':$('#left_text').width(), 'height':'400px'});
+  }
 }
 
 // Funtion to obtain the IP in the client browser without any server interaction

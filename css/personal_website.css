@@ -100,6 +100,13 @@ p {
     border: 2px solid black;
     cursor: pointer;
     outline: none;
+
+    -webkit-tap-highlight-color:  transparent;
+    -moz-highlight-color: transparent;
+    -ms-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+
 }
 
 .responsive_menu .dropdown_button.alt {
@@ -343,13 +350,20 @@ p {
 }
 
 #AboutMe .description .switching_content #right_graph #mynetwork{
-    min-width: 750px;
-    height: 300px;
     border: 1px solid lightgray;
     float: right;
     background: whitesmoke;
     z-index: -1 !important;
+}
 
+#AboutMe #mynetwork .vis-network, #mynetwork canvas{
+    -webkit-tap-highlight-color:  transparent;
+    -moz-highlight-color: transparent;
+    -ms-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+
+    outline: none;
 }
 
 #AboutMe .description p{

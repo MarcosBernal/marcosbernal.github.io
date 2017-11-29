@@ -77,14 +77,31 @@ var options = {
         zoomView: false
     },
     width: '100%',
-    height: '100%'
+    height: '100%',
+    autoResize: false
 };
 
-if(window.screen.width < 900){
   options['width'] = window.screen.width*0.8+'px';
+
+if(window.screen.width < 900)
   options['height'] = '400px';
-}
+else
+  options['height'] = $('#left_text').height()+'px';
+
 
 // initialize your network!
 var network = new vis.Network(container, data, options);
 network.fit();
+
+
+function paintNetworkAgain(){
+    options['width'] = window.screen.width*0.8+'px';
+    options['height'] = $('#left_text').height()+'px';
+
+    if (window.screen.width < 900)
+      options['height'] = '400px';
+
+    network.setSize(options['width'],options['height']);
+    network.fit();
+
+}

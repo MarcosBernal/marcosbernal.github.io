@@ -53,13 +53,11 @@
   }
 
   #AboutMe img{
-    display: block;
     max-width: 70% !important;
     margin: 20px !important;
     margin-left: 15% !important;
     max-height: auto !important;
-    float: none;
-    position: relative;
+    float: none !important;
   }
 
 }
