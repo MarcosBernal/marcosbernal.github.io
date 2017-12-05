@@ -279,6 +279,7 @@
             <div class="block_comm"></div>
             <h4>Contact</h4>
             <form id="contact_form">
+              <div class="w3-row">
                 <div class="w3-half">
                     <div class="w3-row w3-section">
                         <div class="w3-col"><i class="w3-xxlarge fa fa-user"></i></div>
@@ -306,14 +307,15 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col"><i class="w3-xxlarge fa fa-pencil"></i></div>
                         <div class="w3-rest">
-                            <input class="w3-input w3-border mandatory_form" name="subject" type="text" placeholder="*Subjet">
+                            <input class="w3-input w3-border mandatory_form" name="subject" type="text" placeholder="*Subject">
                         </div>
                     </div>
                 </div>
-
-                <textarea class="mandatory_form" name="message" rows="10" cols="30" style="width: 100%;" placeholder="*Hi Marcos, ..."></textarea>
-
-                <button class="w3-button w3-block w3-section waiting_mess w3-padding" id="message_button"><i class="fa fa-paper-plane"></i> Send Message!</button>
+              </div>
+              <div id="msg_conf" class="w3-row w3-section">
+                 <textarea class="mandatory_form" name="message" rows="10" cols="30" style="width: 100%;" placeholder="*Hi Marcos, ..."></textarea>
+              </div>
+              <button class="w3-button w3-block w3-section waiting_mess w3-padding" id="message_button"><i class="fa fa-paper-plane"></i> Send Message!</button>
             </form>
 
 

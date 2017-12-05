@@ -175,8 +175,16 @@ $(document).ready(function(){
             var json = JSON.parse(message.data);
         } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
 
+        var confirmation_str = '<p>Thank you,'+ $("input[name~='firstname']").val() + '<br /><br />I will reply you in less than 48 hours. \
+        <br /> Nevertheless, if you need urgent contact, please use \
+        <a href="https://es.linkedin.com/in/marcosbernalespana" class="w3-hover-opacity"> \
+        linked<i class="fa fa-linkedin"></i></a> <br /><br />Regards, <br /> Marcos <br /></p>';
+
         if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
-            $("textarea[name~='message']").val('Thank you, '+$("input[name~='firstname']").val() + '\n\nI will reply you in less than 48 hours. \nNevertheless, if you need urgent contact, please use linkedin. \n\nRegards, Marcos');
+            $("#msg_conf").append("<div>"+confirmation_str+"</div>");
+            $("#msg_conf div").css({ border: '1px solid', width: '100%', padding: '4%'});
+            $("textarea[name~='message']").css({display: 'none'});
+
             $("input[name~='firstname']").val('');
             $("input[name~='phone']").val('');
             $("input[name~='email']").val('');
@@ -225,10 +233,15 @@ $(document).ready(function(){
               $(this).removeClass('blame_form');
         });
 
-        if($('.blame_form').length == 0) //Only send a message when the form is complete
+        if($('.blame_form').length == 0){ //Only send a message when the form is complete
           connection.send(JSON.stringify(message));
-        else
+console.log('1');
+        }
+        else{
           $("#message_button").text("Please review, before sending again!");
+          console.log('2');
+
+        }
 
 
 
