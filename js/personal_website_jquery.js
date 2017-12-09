@@ -1,3 +1,10 @@
+// Load the proper website according to the language selected (by default english)
+var language = getCookie("language");
+
+if(navigator.cookieEnabled && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index"+language+".html"){
+  window.location.assign("index"+language+".html");
+}
+
 // When DOM has been loaded the function is triggered
 $(document).ready(function(){
 
@@ -10,21 +17,31 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var language = "";
+    if(language == ".es"){
+      $(".lang").css({background: "black"});
+      $("#spanish_lang").css({background: "gray"});
+    }
+
     $("#spanish_lang").on("click", function (event) {
         event.stopPropagation();
         language = ".es";
+        setCookie("language", language, 365);
         window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
         $(this).css({background: "gray"});
+
+        console.log("Selected language", language);
     });
 
     $("#english_lang").on("click", function (event) {
         event.stopPropagation();
         language = "";
+        setCookie("language", language, 365);
         window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
         $(this).css({background: "gray"});
+
+        console.log("Selected language english");
     });
 
     /* When the user clicks on the button,
@@ -182,8 +199,9 @@ $(document).ready(function(){
         linked<i class="fa fa-linkedin"></i></a> <br /><br />Regards, <br /> Marcos <br /></p>';
 
         if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
-            $("#msg_conf").append("<div>"+confirmation_str+"</div>");
-            $("#msg_conf div").css({ border: '1px solid', width: '100%', padding: '4%'});
+            //$("#msg_conf").append("<div>"+confirmation_str+"</div>");
+            $("#firstname").text($("input[name~='firstname']").val());
+            $(".msg_conf_text").css({display: 'block'});
             $("textarea[name~='message']").css({display: 'none'});
 
             $("input[name~='firstname']").val('');
@@ -192,7 +210,11 @@ $(document).ready(function(){
             $("input[name~='subject']").val('');
 
             console.log('>> Confirmation of reception:',message);
-            $("#message_button").text('Message was properly sent!!');
+            if(language=="")
+               $("#message_button").text('Message was properly sent!!');
+            else
+               $("#message_button").text('¡¡El mensage fue enviado correctamente!!');
+
             $("#message_button").toggleClass("message_conf");
         }else {
             $("#contact_form").toggleClass("conn_error");
@@ -236,12 +258,12 @@ $(document).ready(function(){
 
         if($('.blame_form').length == 0){ //Only send a message when the form is complete
           connection.send(JSON.stringify(message));
-console.log('1');
         }
         else{
-          $("#message_button").text("Please review, before sending again!");
-          console.log('2');
-
+          if(language=="")
+             $("#message_button").text("Please review, before sending again!");
+          else
+             $("#message_button").text("Por favor, ¡revisa los campos antes de reenviar!");
         }
 
 
@@ -312,4 +334,27 @@ function findIP(onNewIP) { //  onNewIp - your listener function for new IPs
 function foundNewIP(ip) {
     if (typeof window.ipAddress === 'undefined'){ window.ipAddress = ip; }
     else{ window.ipAddress += " - " + ip; }
+}
+
+// Functions of w3 school to set, get a check a cookie https://www.w3schools.com/js/js_cookies.asp
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
