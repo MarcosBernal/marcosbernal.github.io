@@ -9,10 +9,13 @@ echo "No perl installed. Install perl to separate the text."
 exit 1
 fi
 
-
-echo "Everything is ready. Starting pl script \n $(pwd)/$(dirname $0)/$0"
+echo "Everything is ready. Starting..."
 cd $(pwd)/$(dirname $0)
+
 ./dislines.pl index.MULTILINGUAL.html
+
+echo "Renaming files"
 mv index.MULTILINGUAL.en.html index.html
 mv index.MULTILINGUAL.es.html index.es.html
-echo "Finished created and renamed files"
+
+echo "Finished creation and rename of files"

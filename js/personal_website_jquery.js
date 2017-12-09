@@ -10,20 +10,21 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    $("#spanish_lang").on("click", function () {
+    var language = "";
+    $("#spanish_lang").on("click", function (event) {
         event.stopPropagation();
-        //$(".lang").css({background: "black"});
-        //$(this).css({background: "gray"});
-        //$(document).load("../index_es.html");
-        alert("Desarrollando funcionalidad!! Por favor consúltalo de nuevo mas tarde!")
-    });
-
-    $("#english_lang").on("click", function () {
-        event.stopPropagation();
+        language = ".es";
+        window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
         $(this).css({background: "gray"});
-        //$(document).load("../index_en.html");
+    });
+
+    $("#english_lang").on("click", function (event) {
+        event.stopPropagation();
+        language = "";
+        window.location.assign("index"+language+".html");
+        $(".lang").css({background: "black"});
+        $(this).css({background: "gray"});
     });
 
     /* When the user clicks on the button,
