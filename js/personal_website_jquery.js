@@ -11,6 +11,7 @@ $(document).ready(function(){
   window.onresize = function(event){
         placeCanvasAndDivider();
         paintNetworkAgain();
+        placingBlackDivContact();
         console.log("Width has changed", window.screen.width);
   }
 
@@ -159,9 +160,22 @@ $(document).ready(function(){
     window.WebSocket = window.WebSocket || window.MozWebSocket;
     var connection = new WebSocket('wss://inbox-website.marcosbernal.es/websocket');
 
+    placingBlackDivContact();
+
+    $("#message_button").addClass("error_text");
+    $("#message_button i").css({display:'none'});
+    $("#message_button .msg_btn_text").css({display:'none'});
+    $("#message_button .waiting_text").css({display:'inline-block'});
+
+
     connection.onopen = function () {
         // connection is opened and ready to use
         console.log("Connected with server");
+        $(".block_comm").css({display:'none'});
+        $("#message_button").removeClass("error_text");
+        $("#message_button i").css({display:'inline-block'});
+        $("#message_button .msg_btn_text").css({display:'none'});
+        $("#message_button .connected_text").css({display:'inline-block'});
 
         //This is How to use the Waitable findIP function, and react to the
         //results arriving
@@ -173,16 +187,21 @@ $(document).ready(function(){
     };
 
     connection.onclose = function () {
-        $(".block_comm").css({display:'block',width:Math.round($("#contact_form").width()), height:Math.round($("#contact_form").height()-$("#message_button").height()), 'margin-top': Math.round($("#Contact h4").height())});
-        $("#message_button").text("Not available. Please come later!!");
+        $(".block_comm").css({display:'block'});
+        $("#message_button").addClass("error_text");
+        $("#message_button i").css({display:'none'});
+        $("#message_button .msg_btn_text").css({display:'none'});
+        $("#message_button .error_text").css({display:'inline-block'});
     }
 
     connection.onerror = function (error) {
         // an error occurred when sending/receiving data
         console.log("Error on connection");
-        $(".block_comm").css({display:'block',width:Math.round($("#contact_form").width()), height:Math.round($("#contact_form").height()-$("#message_button").height()), 'margin-top': Math.round($("#Contact h4").height())});
-        $("#message_button").toggleClass('error_com');
-        $("#message_button").text("Not available. Please come later!!");
+        $(".block_comm").css({display:'block'});
+        $("#message_button").addClass("error_text");
+        $("#message_button i").css({display:'none'});
+        $("#message_button .msg_btn_text").css({display:'none'});
+        $("#message_button .error_text").css({display:'inline-block'});
     };
 
     connection.onmessage = function (message) {
@@ -193,13 +212,7 @@ $(document).ready(function(){
             var json = JSON.parse(message.data);
         } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
 
-        var confirmation_str = '<p>Thank you,'+ $("input[name~='firstname']").val() + '<br /><br />I will reply you in less than 48 hours. \
-        <br /> Nevertheless, if you need urgent contact, please use \
-        <a href="https://es.linkedin.com/in/marcosbernalespana" class="w3-hover-opacity"> \
-        linked<i class="fa fa-linkedin"></i></a> <br /><br />Regards, <br /> Marcos <br /></p>';
-
         if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
-            //$("#msg_conf").append("<div>"+confirmation_str+"</div>");
             $("#firstname").text($("input[name~='firstname']").val());
             $(".msg_conf_text").css({display: 'block'});
             $("textarea[name~='message']").css({display: 'none'});
@@ -210,27 +223,24 @@ $(document).ready(function(){
             $("input[name~='subject']").val('');
 
             console.log('>> Confirmation of reception:',message);
-            if(language=="")
-               $("#message_button").text('Message was properly sent!!');
-            else
-               $("#message_button").text('¡¡El mensage fue enviado correctamente!!');
-
-            $("#message_button").toggleClass("message_conf");
-        }else {
-            $("#contact_form").toggleClass("conn_error");
-            $("#message_button").toggleClass("conn_error");
-            console.log(">> Error when receiving confirmation. Message", message);
+            $("#message_button").addClass("error_text");
+            $("#message_button i").css({display:'none'});
+            $("#message_button .msg_btn_text").css({display:'none'});
+            $("#message_button .confirmation_text").css({display:'inline-block'});
         }
+        else
+            console.log(">> Error when receiving confirmation. Message", message);
+
         // handle incoming message
     };
 
     $("#contact_form").submit(function() {
-        if($("#message_button").text().indexOf("No") == 0) {
+        if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block") {
             console.log("Tried to connect without socket");
             return false;
         }
 
-        if($("#message_button").hasClass('message_conf')){
+        if($("#message_button .confirmation_text").css("display") == "inline-block"){
             console.log("Message already sent.");
             return false;
         }
@@ -260,10 +270,8 @@ $(document).ready(function(){
           connection.send(JSON.stringify(message));
         }
         else{
-          if(language=="")
-             $("#message_button").text("Please review, before sending again!");
-          else
-             $("#message_button").text("Por favor, ¡revisa los campos antes de reenviar!");
+          $("#message_button .msg_btn_text").css({display:'none'});
+          $("#message_button .check_text").css({display:'block'});
         }
 
 
@@ -272,6 +280,14 @@ $(document).ready(function(){
 
     });
 });
+
+// Function to resize dimensions of black div used to prevent the user write a message
+//
+function placingBlackDivContact(){
+  $(".block_comm").css({width:Math.round($("#contact_form").width()),
+                        height:Math.round($("#contact_form").height() - ( $("#message_button").height() + parseInt($("#message_button").css("margin-top"))) - 5),
+                        'margin-top': Math.round($("#Contact h4").height() + parseInt($("#Contact h4").css("margin-top")) + + parseInt($("#Contact h4").css("margin-bottom")))});
+}
 
 // Function to set position and size to graph and divider initially in the middle
 // Used at the beginning and if someone resize from small size to big size
