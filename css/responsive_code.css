@@ -11,6 +11,10 @@
 
 @media only screen and (max-width: 900px) {
 
+  #Welcome .welcome_text {
+    min-width: 300px;
+  }
+
   #Experience .w3-half{
     width: 95%;
   }
@@ -97,7 +101,8 @@
     }
 
     #Welcome .welcome_text{
-       min-width: 220px;
+       min-width: 230px;
+       margin-right: 0%;
        margin-left: 2%;
     }
 

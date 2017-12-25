@@ -31,21 +31,21 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if(language == ".es"){
       $(".lang").css({background: "black"});
-      $("#spanish_lang").css({background: "gray"});
+      $(".spanish_lang").css({background: "gray"});
     }
 
-    $("#spanish_lang").on("click", function (event) {
+    $(".spanish_lang").on("click", function (event) {
         event.stopPropagation();
         language = ".es";
         setCookie("language", language, 365);
         window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
-        $(this).css({background: "gray"});
+        $(".spanish_lang").css({background: "gray"});
 
         console.log("Selected language", language);
     });
 
-    $("#english_lang").on("click", function (event) {
+    $(".english_lang").on("click", function (event) {
         event.stopPropagation();
         language = "";
         setCookie("language", language, 365);

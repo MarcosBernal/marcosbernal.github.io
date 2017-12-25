@@ -73,7 +73,7 @@ p {
     transform: translateY(calc(-50% + 4px));
 }
 
-#english_lang{
+.english_lang{
     background: grey;
 }
 
@@ -126,11 +126,10 @@ p {
     position: absolute;
     left:auto;
     right:0;
-    text-align: center;
     background-color: black;/* #f9f9f9; */
     opacity: 0.8;
     color: white;
-    min-width: 120px;
+    min-width: 130px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
