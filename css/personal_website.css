@@ -147,6 +147,25 @@ p {
 }
 
 
+
+#CookieWarning {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background: gray;
+    opacity: 0.9;
+    text-align: center;
+    z-index: 100;
+    color: white;
+    font-size: small;
+    padding: 10px;
+}
+
+#CookieWarning span{
+    vertical-align: middle;
+    padding: 0 3% 0 3%;
+}
+
 /*==================================================================================
 ============================== WELCOME SECTION =====================================
 ==================================================================================*/

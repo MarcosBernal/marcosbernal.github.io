@@ -1,5 +1,6 @@
 // Load the proper website according to the language selected (by default english)
 var language = getCookie("language");
+var cookiesAccepted = getCookie("cookies");
 
 if(navigator.cookieEnabled && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index"+language+".html"){
   window.location.assign("index"+language+".html");
@@ -14,6 +15,16 @@ $(document).ready(function(){
         placingBlackDivContact();
         console.log("Width has changed", window.screen.width);
   }
+
+  if(cookiesAccepted == "accepted"){
+    $("#CookieWarning").css({display:'none'});
+  }
+
+  $("#CookieWarning button").on("click", function(){
+      setCookie("cookies", "accepted", 365);
+      $("#CookieWarning").css({display:'none'});
+      console.log("Cookies have been accepted");
+  })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////

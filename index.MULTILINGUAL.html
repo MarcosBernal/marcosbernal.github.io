@@ -52,7 +52,7 @@
     <!-- If javascript is not enabled, warning the user -->
     <noscript>
       <style>
-         #right_graph, #divider, .showing_button, #message_button, #aboutme_carousel {display: none;}
+         #right_graph, #divider, .showing_button, #message_button, #aboutme_carousel, #CookieWarning {display: none;}
       </style>
     </noscript>
 
@@ -123,6 +123,19 @@
 <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++ Pages (Content) +++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<div id="CookieWarning">
+  <div class="w3-row">
+    <span>
+@en  Browsing this website you accept a fair use and storage of Cookies
+@es  Navegando esta página web aceptas un uso y almacenaminto justo de Cookies
+    </span>
+    <button class="w3-button w3-black">
+@en Accept
+@es Acepto
+    </button>
+  </div>
+</div>
+
 
 <!--+++++++++++++ Welcome ++++++++++++++++++++++++++++-->
     <div class="w3-container w3-padding-64" id="Welcome">
@@ -142,6 +155,9 @@
                     </h5>
                 </div>
             </div>
+        </div>
+        <div id="version_overview">
+
         </div>
     </div>
 

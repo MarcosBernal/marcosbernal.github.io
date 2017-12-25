@@ -92,6 +92,10 @@
         height: 280px;
     }*/
 
+    #CookieWarning span {
+      display: block;
+    }
+
     #Welcome .welcome_text{
        min-width: 220px;
        margin-left: 2%;
