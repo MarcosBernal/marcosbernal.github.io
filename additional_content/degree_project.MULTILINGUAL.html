@@ -1,79 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+@en <html lang="en">
+@es <html lang="es">
 <head></head>
 
 <body>
 
 <i class="_modal_popup-close fa fa-times"></i>
 <h2 class="w3-centered">
-  A wild solar tracker has appeared!
+@en  A wild solar tracker has appeared!
+@es  ¡Un seguidor solar salvaje ha aparecido!
 </h2>
 
 <p>
-  Before ending the sixth semester of my bachelor, I had already decided to build some robotic device.
+@en  Before ending the sixth semester of my bachelor, I had already decided to build some robotic device.
+@es  Antes de acabar el sexto semestre del grado, ya tenía decidido que quería construir un robot o algo similar.
 </p>
 
-<img width="480" height="240" src="imgs/degree_project/microcontroller_sketch_doc_photo.jpg" alt="Initial sketch of the project" />
+<img width="480" height="240" src="imgs/degree_project/microcontroller_sketch_doc_photo.jpg" alt="
+@en Initial sketch of the project
+@es Boceto inicial sobre el proyecto
+" />
+
 
 <p>
-  The topic was not completely new to me, I have had some experience in the robotics field giving support
-  and developing software for a team located in ETSI Industriales (Spain). However, the 'small'
-  world of microcontrollers will become bigger and bigger as one starts to dive into the low-level
-  programming and loses the different abstraction levels provided by modern languages and operating systems.
+@en  The topic was not completely new to me, I have had some experience in the robotics field giving support
+@en  and developing software for a team located in ETSI Industriales (Spain). However, the 'small'
+@en  world of microcontrollers will become bigger and bigger as one starts to dive into the low-level
+@en  programming and loses the different abstraction levels provided by modern languages and operating systems.
+@es  El tema no era completamente nuevo para mí, había tenido algo de experiencia dando soporte y desarrollando
+@es  software en un laboratorio en el ETSI Industriales de Madrid. Sin embargo, el 'diminuto' mundo de los microcontroladores
+@es  se va haciendo cada vez más y más voluminoso a medida que uno empieza a sumergirse en el bajo nivel del
+@es  microcontrolador y se van perdiendo las distintas abstracciones que ofrecen los lenguajes y sistemas modernos
 </p>
 
 <p>
-  Codification disparity, miscalculated high priority interruption or variable overflow could be some of
-  the problems that will arise frequently or, even worse, only in unexpected situations. Although the
-  situation of facing unknown and 'weird' situations is pretty common in the day to day of a programmer,
-  facing new complications are time consuming.
+@en  Codification disparity, miscalculated high priority interruption or variable overflow could be some of
+@en  the problems that will arise frequently or, even worse, only in unexpected situations. Although the
+@en  situation of facing unknown and 'weird' situations is pretty common in the day to day of a programmer,
+@en  facing new complications are time consuming.
+@es  Disparidad en la codificacion, problemas con interrupciones de varios niveles o desbordamiento podrían ser algunos
+@es  de los problemas que pueden encontrarse frequentemente o, peor aún, cuando uno no se lo espera. Aunque
+@es  lidiar con situaciones 'desconocidas' es bastante común en el día a día del programador, éstas se llevan de por medio
+@es  bastante tiempo.
 </p>
 
 <p>
-  The project was a mix of several fields since I have to design, build a model in addition to developing the
-  software in charge of the behavior and control of the device. The project also included a virtual
-  representation of the structure made with AutoCAD.
+@en  The project was a mix of several fields since I have to design and build a model in addition to developing the
+@en  software in charge of the behavior and control of the device. The project also included a virtual
+@en  representation of the structure made with AutoCAD.
+@es  El proyecto contempló diferentes campos dado que tuve que diseñar y construir un modelo además de desarrollar el
+@es  software que se encargaba de controlar el dispositivo. El proyecto también incluyó una representación de la estructura
+@es  realizada con AutoCAD.
 </p>
 <img width="640" height="480" src="imgs/degree_project/microcontroller_cad_doc_photo.jpg"
-  alt="Structure of the final microcontoller performed with AutoCAD" />
+  alt="
+@en  Structure of the final microcontoller performed with AutoCAD
+@es  Estructura final del microcontrolador realizada con AutoCAD
+" />
 
 <p>
-  The project was built using a development board, specifically the model EasyPIC6, and the microcontroller
-  PIC18F4520 as well as other components such as the drivers L293 or the converter RS-232 as well as several
-  sensors and actuators. But the development board could be removed in the final design, using another breadboard and multiple wires.
+@en  The project was built using a development board, specifically the model EasyPIC6, and the microcontroller
+@en  PIC18F4520 as well as other components such as the drivers L293 or the converter RS-232 as well as several
+@en  sensors and actuators. But the development board could be removed in the final design, using another
+@en  breadboard and multiple wires.
+@es  El proyecto se llevó a cabo con una placa de desarrollo, específicamente el modelo EasyPIC6, y un controlador
+@es  PIC18F4520 así como otros componentes tales como controlador L293 o el convertidor RS-232. La placa de desarrollo podía
+@es  ser removida del prototipo final siguiendo el patrón de conexión especificado en la documentación.
+
 </p>
 
-<img width="640" height="480" src="imgs/degree_project/microcontroller_fritzing_doc_photo.jpg"  alt="Connections of the final microcontoller" />
+<img width="640" height="480" src="imgs/degree_project/microcontroller_fritzing_doc_photo.jpg"  alt="
+@en Connections of the final microcontoller
+@es Conexiones del microcontrolador
+" />
 
 <p>
-  My non-existing skills working with wood are notorious in the last picture, although it worked until the
-  end and proved the jury its different features.
+@en  My non-existing skills working with wood are notorious, as you can see in the picture. However, the structure worked quite well until the
+@en  end and proved the jury its different features.
+@es  Mis inhabilidad para trabajar con la maderas es bastante llamativa, como podrás apreciar en la imagen. Sin embargo, la estructura funcionó muy
+@es  bien hasta el final y demostró al jurado las diferentes funcionalidades que habia desarrollado.
 </p>
 
-<img width="640" height="480" src="imgs/degree_project/microcontroller_structure_doc_photo.jpg" alt="Structure of the final microcontoller" />
+<img width="640" height="480" src="imgs/degree_project/microcontroller_structure_doc_photo.jpg" alt="
+@en Final structure of the prototype
+@es  Estructura final del prototipo
+" />
 
 <p>
-  To manage this small device, I also developed a basic(but functional) C++ GUI that checked the parameters
-  required to connect the device, sent orders to the device and got feedback from the execution and sensors.
+@en  To manage this small device, I also developed a basic(but functional) C++ GUI that checked the parameters
+@en  required to connect the device, sent orders to the device and got feedback from the execution and sensors.
+@es  Para controlar este pequeño prototipo, desarrolle una sencilla(pero funcional) interfaz en C++ que comprobaba
+@es  los parámetros necesarios para conectarse con el microcontrolador, enviaba ordenes al dispositivo y obtenía feedback
+@es  de las mismas procedentes de los sensores y actuadores.
 </p>
 
-<img width="640" height="480" src="imgs/degree_project/microcontroller_gui_doc_photo.jpg" alt="Graphical interface of the microcontroller" />
+<img width="640" height="480" src="imgs/degree_project/microcontroller_gui_doc_photo.jpg" alt="
+@en  Graphical interface of the microcontroller
+@es  Interfaz gráfica del microcontrolador
+" />
 
 <p>
-  In order to accomplish this project, I got assistance from my supervisor, Antonio Tabernero, and
+@en  In order to accomplish this project I got assistance from my supervisor, Antonio Tabernero, and
+@es  Para poder llevar a cabo este proyecto tuve la ayuda de mi supervisor Antonio Tabernero and
   <a href="http://picfernalia.blogspot.com.es/">
-    one of his blogs
+@en  one of his blogs.
+@es  uno de sus blogs.
   </a>,
-  if someone is interested in microcontrollers (and know Spanish) I completely recommend that Blogspot as a
-  starting point to dive in the embedded systems field.
+@en  If someone is interested in learning about microcontrollers (and knows Spanish), I completely recommend
+@en  that Blogspot as a starting point to dive in the embedded systems field.
+@es  Si alguien está interesado en aprender acerca de microcontroladores, recomiendo totalmente el Blogspot
+@es  como punto de partida en el mundo de los sistemas embebidos.
 </p>
 
 <p>
-  The documentation (in Spanish) about that project, which was my undergraduate thesis, is stored in the
+@en  The documentation (in Spanish) about that project, which was my undergraduate thesis, is available in the
+@es  La documentación del proyecto, el cual fue mi proyecto fin de grado, está disponible en la
   <a href="http://oa.upm.es/43463/">
-    official library of the UPM
+@en    official library of the UPM
+@es    biblioteca oficial de la UPM
   </a>.
-  The code is available in
+@en  The code is available in
+@es  El código está disponible en
   <a href="https://bitbucket.org/MarcosBernal/">bitbucket</a>.
 </p>
 
