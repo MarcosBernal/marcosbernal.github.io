@@ -190,6 +190,24 @@ p {
   margin: 10px 10px 30px 10px;
 }
 
+#Welcome #arrow_marker {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+  margin-bottom: 20px
+}
+
+#Welcome #version_overview {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  font-size: small;
+  opacity: 0.7;
+}
+
 
 /*==================================================================================
 ============================ EXPERIENCE SECTION ====================================

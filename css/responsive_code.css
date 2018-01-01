@@ -66,7 +66,7 @@
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 815px) {
 
   .aux_black_bar{
     height: 20px;
@@ -81,13 +81,16 @@
   #nav_menu .responsive_menu {
     display: block;
   }
+}
 
+
+@media screen and (max-width: 800px) {
   #Welcome{
       background: url('../imgs/me_and_bike_HDR_reduced_pasteu_6b_small_vertical.jpg') ;
   }
-
-
 }
+
+
 @media screen and (max-width: 600px) {
 
     /*
@@ -104,6 +107,10 @@
        min-width: 230px;
        margin-right: 0%;
        margin-left: 2%;
+    }
+
+    #Welcome .no_small_screen {
+      display: none;
     }
 
     #Welcome .welcome_text .text_centered h5 {
@@ -136,5 +143,11 @@
 
     #AboutMe img {
       display: none;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    footer {
+      --footer-size: 350px;
     }
 }
