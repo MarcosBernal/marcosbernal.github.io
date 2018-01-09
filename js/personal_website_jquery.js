@@ -169,7 +169,7 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('wss://inbox-website.marcosbernal.es/websocket');
+    var connection = new WebSocket('wss://server.marcosbernal.es/websocket');
 
     placingBlackDivContact();
 

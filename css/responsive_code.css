@@ -68,19 +68,20 @@
 
 @media screen and (max-width: 815px) {
 
-  .aux_black_bar{
-    height: 20px;
+  #nav_menu .aux_black_bar{
+    height: 50px;
     width: 100%;
     background: black;
+    position: fixed;
+    opacity: 0.9;
+    z-index: 1060;
+    display:block;
   }
 
   #nav_menu .w3-bar {
     display: none;
   }
 
-  #nav_menu .responsive_menu {
-    display: block;
-  }
 }
 
 
