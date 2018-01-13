@@ -82,6 +82,10 @@
     display: none;
   }
 
+  #Welcome #version_overview {
+      margin-bottom: 40px;
+  }
+
 }
 
 
