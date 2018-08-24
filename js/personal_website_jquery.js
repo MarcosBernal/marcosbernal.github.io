@@ -39,6 +39,8 @@ $(document).ready(function(){
         event.stopPropagation();
         language = ".es";
         setCookie("language", language, 365);
+        if(cookiesAccepted != "accepted") { return }
+
         window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
         $(".spanish_lang").css({background: "gray"});
@@ -50,6 +52,8 @@ $(document).ready(function(){
         event.stopPropagation();
         language = "";
         setCookie("language", language, 365);
+        if(cookiesAccepted != "accepted") { return }
+
         window.location.assign("index"+language+".html");
         $(".lang").css({background: "black"});
         $(this).css({background: "gray"});
@@ -374,9 +378,15 @@ function setCookie(cname, cvalue, exdays) {
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
     else{
-        var backgroundColor = $("#CookieWarning").css("backgroundColor");
+        var height = $("#CookieWarning").css("height").split("px")[0];
+        var paddingTop = $("#CookieWarning").css("padding-top").split("px")[0];
+        var fontSize = $("#CookieWarning").css("font-size").split("px")[0];
 
-        $("#CookieWarning").css({"backgroundColor":"rgb(128,"+ +", 228)"})
+        var size = 50
+
+        $("#CookieWarning").css({"height": (Number(height) + size) + "px"})
+        $("#CookieWarning").css({"padding-top": (Number(paddingTop) + size/2) + "px"})
+        $("#CookieWarning").css({"font-size": (Number(fontSize) + size/10) + "px"})
     }
 }
 
