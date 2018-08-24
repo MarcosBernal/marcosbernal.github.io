@@ -16,11 +16,12 @@ $(document).ready(function(){
         console.log("Width has changed", window.screen.width);
   }
 
-  if(cookiesAccepted == "accepted"){
-    $("#CookieWarning").css({display:'none'});
+  if(cookiesAccepted != "accepted"){
+    $("#CookieWarning").removeClass('hidden');
   }
 
   $("#CookieWarning button").on("click", function(){
+      cookiesAccepted = "accepted";
       setCookie("cookies", "accepted", 365);
       $("#CookieWarning").css({display:'none'});
       console.log("Cookies have been accepted");
@@ -368,7 +369,15 @@ function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+    if (cookiesAccepted == "accepted") {// New EU data regulation makes the agreement mandatory before any cookie
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    else{
+        var backgroundColor = $("#CookieWarning").css("backgroundColor");
+
+        $("#CookieWarning").css({"backgroundColor":"rgb(128,"+ +", 228)"})
+    }
 }
 
 function getCookie(cname) {
