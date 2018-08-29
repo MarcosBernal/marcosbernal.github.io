@@ -145,7 +145,7 @@ $(document).ready(function(){
         else {
             $("#right_graph").css('width', 0);
             $("#divider").css('right', $("#right_graph").width());
-            $(this).css({background:"darkgray", border: "1px solid #cdcdcd", 'border-radius': "4px"});
+            $(this).css({background:"darkgray", border: "1px solid #cdcdcd", 'border-radius': "4px"}); //Mark the button as used
             $("#graph_button").css({background:"", border:""});
         }
     });
@@ -154,15 +154,15 @@ $(document).ready(function(){
         event.stopPropagation();
         clearInterval(interval);
         interval = undefined;
-        if ($("#right_graph").width() == $("#left_text").width()){
+        if ($("#right_graph").width() == Math.round($('#left_text').width())){ // Use of Math.round because, when assigning the width a decimal problem rises
             $("#right_graph").css({'width':Math.round($('#left_text').width()/2)});
             $("#divider").css('right',$("#right_graph").width()+$("#divider").width());
             $(this).css({background:"", border:""});
         }
         else {
-            $("#right_graph").css('width',$("#left_text").width());
+            $("#right_graph").css('width', Math.round($('#left_text').width()));
             $("#divider").css('right',$("#right_graph").width()+$("#divider").width());
-            $(this).css({background:"darkgray", border: "1px solid #cdcdcd", 'border-radius': "4px"});
+            $(this).css({background:"darkgray", border: "1px solid #cdcdcd", 'border-radius': "4px"}); //Mark the button as used
             $("#text_button").css({background:"", border:""});
         }
     });
