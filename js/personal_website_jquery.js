@@ -1,9 +1,14 @@
 // Load the proper website according to the language selected (by default english)
-var language = getCookie("language");
-var cookiesAccepted = getCookie("cookies");
+var language = getCookie("language", "en");
+let cookiesAccepted = getCookie("cookies", false);
+let session = getCookie("start_session", { "first_connection": new Date(), "session_list": [], "clicks": 0, "cookie_id": null})
+session["current_connection"] = new Date()
+let accessedSocialLinks = getCookie("accessed_social_links", [])
+let readPostList = getCookie("read_post_list", [])
 
-if(navigator.cookieEnabled && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index"+language+".html"){
-  window.location.assign("index"+language+".html");
+// english (en) is not necesary as it is the default landing page
+if(navigator.cookieEnabled && language != "en" && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index."+language+".html"){
+  window.location.assign("index."+language+".html");
 }
 
 // When DOM has been loaded the function is triggered
@@ -16,12 +21,12 @@ $(document).ready(function(){
         console.log("Width has changed", window.screen.width);
   }
 
-  if(cookiesAccepted != "accepted"){
+  if(!cookiesAccepted){
     $("#CookieWarning").removeClass('hidden');
   }
 
   $("#CookieWarning button").on("click", function(){
-      cookiesAccepted = "accepted";
+      cookiesAccepted = true;
       setCookie("cookies", "accepted", 365);
       $("#CookieWarning").css({display:'none'});
       console.log("Cookies have been accepted");
@@ -30,39 +35,34 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  NAV_MENU - WELCOME  ////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    if(language == ".es"){
-      $(".lang").css({background: "black"});
-      $(".spanish_lang").css({background: "gray"});
-    }
-
-    $(".spanish_lang").on("click", function (event) {
+    $(".lang").on("click", function (event) {
         event.stopPropagation();
-        language = ".es";
-        setCookie("language", language, 365);
-        if(cookiesAccepted != "accepted") { return }
-
-        window.location.assign("index"+language+".html");
-        $(".lang").css({background: "black"});
-        $(".spanish_lang").css({background: "gray"});
-
+        language = $(this).attr("data");
+        setCookie("language", language, 365);  // If no agreement is set cookie is not set
+        if(!cookiesAccepted) { return }
         console.log("Selected language", language);
+
+        if (language != "en") {
+            new_location = "index."+language+".html"
+        } else {
+            new_location = "index.html"
+        }
+
+        if (window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != new_location){  // No need of reload location is placed properly
+            window.location.assign(new_location);
+        }
     });
 
-    $(".english_lang").on("click", function (event) {
-        event.stopPropagation();
-        language = "";
-        setCookie("language", language, 365);
-        if(cookiesAccepted != "accepted") { return }
-
-        window.location.assign("index"+language+".html");
-        $(".lang").css({background: "black"});
-        $(this).css({background: "gray"});
-
-        console.log("Selected language english");
+    // Mark the language selected - either by choice or by default
+    $(".lang").each(function(i, obj) {
+        if ($(obj).attr("data") == language) {
+            $(obj).css({background: "gray"})
+        } else {
+            $(obj).css({background: "black"})
+        }
     });
 
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
+    // When the user clicks on the button, toggle between hiding and showing the dropdown content
     $(".responsive_menu").on("click", function(event){
         event.stopPropagation();
         $(this).children(".dropdown_button").toggleClass("alt");
@@ -174,9 +174,12 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('wss://server.marcosbernal.es/websocket');
+    //var connection = new WebSocket('wss://server.marcosbernal.es/websocket');
 
     placingBlackDivContact();
+    base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
+    mesage_url = base_url + "/message"
+    analytics_url = base_url + "/analytics"
 
     $("#message_button").addClass("error_text");
     $("#message_button i").css({display:'none'});
@@ -184,72 +187,72 @@ $(document).ready(function(){
     $("#message_button .waiting_text").css({display:'inline-block'});
 
 
-    connection.onopen = function () {
-        // connection is opened and ready to use
-        console.log("Connected with server");
-        $(".block_comm").css({display:'none'});
-        $("#message_button").removeClass("error_text");
-        $("#message_button i").css({display:'inline-block'});
-        $("#message_button .msg_btn_text").css({display:'none'});
-        $("#message_button .connected_text").css({display:'inline-block'});
-
-        //This is How to use the Waitable findIP function, and react to the
-        //results arriving
-        var ipWaitObject = findIP(foundNewIP);        // Puts found IP(s) in window.ipAddress
-        ipWaitObject.then(
-            function (result) { console.log("IP(s) Found.  Result: '" + result + "'. You can use them now: " + window.ipAddress); },
-            function (err) { console.log("IP(s) NOT Found.  FAILED!  " + err); }
-        );
-    };
-
-    connection.onclose = function () {
-        $(".block_comm").css({display:'block'});
-        $("#message_button").addClass("error_text");
-        $("#message_button i").css({display:'none'});
-        $("#message_button .msg_btn_text").css({display:'none'});
-        $("#message_button .error_text").css({display:'inline-block'});
-    }
-
-    connection.onerror = function (error) {
-        // an error occurred when sending/receiving data
-        console.log("Error on connection");
-        $(".block_comm").css({display:'block'});
-        $("#message_button").addClass("error_text");
-        $("#message_button i").css({display:'none'});
-        $("#message_button .msg_btn_text").css({display:'none'});
-        $("#message_button .error_text").css({display:'inline-block'});
-    };
-
-    connection.onmessage = function (message) {
-        // try to decode json (I assume that each message
-        // from server is json)
-        console.log("Received message from server " + message.toString());
-        try {
-            var json = JSON.parse(message.data);
-        } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
-
-        if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
-            $("#firstname").text($("input[name~='firstname']").val());
-            $(".msg_conf_text").css({display: 'block'});
-            $("textarea[name~='message']").css({display: 'none'});
-
-            $("input[name~='firstname']").val('');
-            $("input[name~='phone']").val('');
-            $("input[name~='email']").val('');
-            $("input[name~='subject']").val('');
-
-            console.log('>> Confirmation of reception:',message);
-            $("#message_button").addClass("error_text");
-            $("#message_button i").css({display:'none'});
-            $("#message_button .msg_btn_text").css({display:'none'});
-            $("#message_button .confirmation_text").css({display:'inline-block'});
-        }
-        else
-            console.log(">> Error when receiving confirmation. Message", message);
-
-        // handle incoming message
-    };
-
+    // connection.onopen = function () {
+    //     // connection is opened and ready to use
+    //     console.log("Connected with server");
+    //     $(".block_comm").css({display:'none'});
+    //     $("#message_button").removeClass("error_text");
+    //     $("#message_button i").css({display:'inline-block'});
+    //     $("#message_button .msg_btn_text").css({display:'none'});
+    //     $("#message_button .connected_text").css({display:'inline-block'});
+    //
+    //     //This is How to use the Waitable findIP function, and react to the
+    //     //results arriving
+    //     var ipWaitObject = findIP(foundNewIP);        // Puts found IP(s) in window.ipAddress
+    //     ipWaitObject.then(
+    //         function (result) { console.log("IP(s) Found.  Result: '" + result + "'. You can use them now: " + window.ipAddress); },
+    //         function (err) { console.log("IP(s) NOT Found.  FAILED!  " + err); }
+    //     );
+    // };
+    //
+    // connection.onclose = function () {
+    //     $(".block_comm").css({display:'block'});
+    //     $("#message_button").addClass("error_text");
+    //     $("#message_button i").css({display:'none'});
+    //     $("#message_button .msg_btn_text").css({display:'none'});
+    //     $("#message_button .error_text").css({display:'inline-block'});
+    // }
+    //
+    // connection.onerror = function (error) {
+    //     // an error occurred when sending/receiving data
+    //     console.log("Error on connection");
+    //     $(".block_comm").css({display:'block'});
+    //     $("#message_button").addClass("error_text");
+    //     $("#message_button i").css({display:'none'});
+    //     $("#message_button .msg_btn_text").css({display:'none'});
+    //     $("#message_button .error_text").css({display:'inline-block'});
+    // };
+    //
+    // connection.onmessage = function (message) {
+    //     // try to decode json (I assume that each message
+    //     // from server is json)
+    //     console.log("Received message from server " + message.toString());
+    //     try {
+    //         var json = JSON.parse(message.data);
+    //     } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
+    //
+    //     if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
+    //         $("#firstname").text($("input[name~='firstname']").val());
+    //         $(".msg_conf_text").css({display: 'block'});
+    //         $("textarea[name~='message']").css({display: 'none'});
+    //
+    //         $("input[name~='firstname']").val('');
+    //         $("input[name~='phone']").val('');
+    //         $("input[name~='email']").val('');
+    //         $("input[name~='subject']").val('');
+    //
+    //         console.log('>> Confirmation of reception:',message);
+    //         $("#message_button").addClass("error_text");
+    //         $("#message_button i").css({display:'none'});
+    //         $("#message_button .msg_btn_text").css({display:'none'});
+    //         $("#message_button .confirmation_text").css({display:'inline-block'});
+    //     }
+    //     else
+    //         console.log(">> Error when receiving confirmation. Message", message);
+    //
+    //     // handle incoming message
+    // };
+    //
     $("#contact_form").submit(function() {
         if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block") {
             console.log("Tried to connect without socket");
@@ -282,19 +285,48 @@ $(document).ready(function(){
               $(this).removeClass('blame_form');
         });
 
+
+        /*
+                 "duration": {"type": "number"},
+         "number_of_clicks": {"type": "number"},
+         "read_post_list":  {"type": "array", "items": {"type": "object", "properties": {
+                  "duration": {"type": "number"},
+                  "post_name": {"type": "string"},
+                  "watch_video": {"type": "boolean"}},
+            "additionalProperties": False}},
+         "language": {"type": "string"},
+         "accessed_social_links": {"type": "array", "items": {"type": "string"}},
+         "cookie_id": {"type": "number"},
+         */
+
         if($('.blame_form').length == 0){ //Only send a message when the form is complete
-          connection.send(JSON.stringify(message));
-        }
-        else{
+            connection.send(JSON.stringify(message));
+            $.ajax({
+                url: analytics_url,
+                method: "POST",
+                crossDomain: true,
+                headers: {"content-type":"application/json"},
+                dataType: "json",
+                data: {"duration": duration},
+                xhrFields: {
+                    withCredentials: false
+                },
+                success: function(result){
+                    console.log("Hi");
+                },
+                error: function(result){
+                    console.log("Bye");
+                }
+            });
+        } else{
           $("#message_button .msg_btn_text").css({display:'none'});
           $("#message_button .check_text").css({display:'block'});
         }
 
-
-
         return false; // NEED RETURN FALSE to not refresh page and keep values in the form
 
     });
+    console.log("");
 });
 
 // Function to resize dimensions of black div used to prevent the user write a message
@@ -374,7 +406,7 @@ function setCookie(cname, cvalue, exdays) {
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
 
-    if (cookiesAccepted == "accepted") {// New EU data regulation makes the agreement mandatory before any cookie
+    if (cookiesAccepted) {// New EU data regulation makes the agreement mandatory before any cookie
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
     else{
@@ -390,7 +422,7 @@ function setCookie(cname, cvalue, exdays) {
     }
 }
 
-function getCookie(cname) {
+function getCookie(cname, default_value) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for(var i = 0; i < ca.length; i++) {
@@ -402,5 +434,5 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return default_value;
 }

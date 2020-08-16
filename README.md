@@ -15,6 +15,21 @@ I found these libraries very powerful and, as result, I decided to use them.
 - [Twitter Post Fetch](https://github.com/jasonmayes/Twitter-Post-Fetcher): Get tweets is an easy task, doing that without oauth is another matter
 - [Dislines](http://www.danielclemente.com/dislines/): Transform multilingual tagged files into several files one per language tagged. Easier translation and maintenance.
 
+# Deploy new changes
+
+Add new changes, executes dislines, confirm & commit changes and upload commit to repo:
+
+```shell script
+# Create the html files
+./dislines.pl index.MULTILINGUAL.html --out=index.html && sed -i "" && mv index.en.html index.html
+
+# Add, confirm the changed and provide a descriptive comment
+git add -u . && git commit
+
+# If everything is ready upload to the repo
+git push origin
+```
+
 # Credits
 
 As everybody, I also took ideas from the world including several projects and websites.

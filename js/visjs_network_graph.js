@@ -128,7 +128,7 @@ else
 
 // initialize your network!
 var network = "";
-if(getCookie('language')!= "")
+if(getCookie('language', false))
   network = new vis.Network(container, { nodes: nodes_es, edges: edges_es }, options);
 else
   network = new vis.Network(container, data, options);
