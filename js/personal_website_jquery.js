@@ -360,7 +360,7 @@ function setCookie(cname, cvalue) {
     if (cookiesAccepted) {// New EU data regulation makes the agreement mandatory before any cookie
         var d = new Date();
         d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
-        document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
+        document.cookie = cname + "=" + JSON.stringify({"cname": cvalue}) + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
     }
     else{
         var height = $("#CookieWarning").css("height").split("px")[0];
@@ -384,7 +384,7 @@ function getCookie(cname, default_value) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return JSON.parse(c.substring(name.length, c.length))["cname"];
         }
     }
     return default_value;
