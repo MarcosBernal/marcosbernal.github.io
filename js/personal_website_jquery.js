@@ -1,7 +1,7 @@
 // Load the proper website according to the language selected (by default english)
 var language = getCookie("language", "en");
 let cookiesAccepted = getCookie("cookies", false);
-let session = getCookie("start_session", { "first_connection": new Date(), "session_list": [], "clicks": 0, "cookie_id": null})
+let session = getCookie("start_session", { "first_connection": new Date(), "session_list": [], "clicks": 0, "cookie_id": ""})
 session["current_connection"] = new Date()
 let accessedSocialLinks = getCookie("accessed_social_links", [])
 let readPostList = getCookie("read_post_list", [])
@@ -27,7 +27,7 @@ $(document).ready(function(){
 
   $("#CookieWarning button").on("click", function(){
       cookiesAccepted = true;
-      setCookie("cookies", "accepted", 365);
+      setCookie("cookies", "accepted");
       $("#CookieWarning").css({display:'none'});
       console.log("Cookies have been accepted");
   })
@@ -38,7 +38,7 @@ $(document).ready(function(){
     $(".lang").on("click", function (event) {
         event.stopPropagation();
         language = $(this).attr("data");
-        setCookie("language", language, 365);  // If no agreement is set cookie is not set
+        setCookie("language", language);  // If no agreement is set cookie is not set
         if(!cookiesAccepted) { return }
         console.log("Selected language", language);
 
@@ -167,95 +167,57 @@ $(document).ready(function(){
         }
     });
 
-    //$('#aboutme_carousel').carousel()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////  CONTACT - JS SERVER   //////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    window.WebSocket = window.WebSocket || window.MozWebSocket;
-    //var connection = new WebSocket('wss://server.marcosbernal.es/websocket');
-
+    let backend_connexion = null;
     placingBlackDivContact();
-    base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
-    mesage_url = base_url + "/message"
+    base_url = "https://marcosbernal.es" // https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
+    message_url = base_url + "/message"
     analytics_url = base_url + "/analytics"
 
-    $("#message_button").addClass("error_text");
     $("#message_button i").css({display:'none'});
     $("#message_button .msg_btn_text").css({display:'none'});
     $("#message_button .waiting_text").css({display:'inline-block'});
 
+    // Create the IntersectionObserver  https://developers.google.com/web/updates/2019/02/intersectionobserver-v2
+    // To check connection only when contact page loads
+    const onIntersection = (entries) => {
+        for (const entry of entries) {
+            if (entry.isIntersecting) {
+                console.log("Intersecting with: ", entry);
+                if (backend_connexion == null) {
+                    ajax_to_backend(analytics_url, null, function (response) {
+                        console.log("Connected with server. Response: ", response);
+                        backend_connexion = true;
+                        if (session["cookie_id"] == ""){
+                            session["cookie_id"] = response["cookie_id"]
+                        }
+                        $(".block_comm").css({display: 'none'});
+                        $("#message_button i").css({display: 'inline-block'});
+                        $("#message_button .msg_btn_text").css({display: 'none'});
+                        $("#message_button .connected_text").css({display: 'inline-block'});
+                    }, function (response) {
+                        console.log("Error on connection");
+                        backend_connexion = false;
+                        $(".block_comm").css({display: 'block'});
+                        $("#message_button i").css({display: 'none'});
+                        $("#message_button .msg_btn_text").css({display: 'none'});
+                        $("#message_button .error_text").css({display: 'inline-block'});
+                    })
+                }
+            }
+        }
+    };
 
-    // connection.onopen = function () {
-    //     // connection is opened and ready to use
-    //     console.log("Connected with server");
-    //     $(".block_comm").css({display:'none'});
-    //     $("#message_button").removeClass("error_text");
-    //     $("#message_button i").css({display:'inline-block'});
-    //     $("#message_button .msg_btn_text").css({display:'none'});
-    //     $("#message_button .connected_text").css({display:'inline-block'});
-    //
-    //     //This is How to use the Waitable findIP function, and react to the
-    //     //results arriving
-    //     var ipWaitObject = findIP(foundNewIP);        // Puts found IP(s) in window.ipAddress
-    //     ipWaitObject.then(
-    //         function (result) { console.log("IP(s) Found.  Result: '" + result + "'. You can use them now: " + window.ipAddress); },
-    //         function (err) { console.log("IP(s) NOT Found.  FAILED!  " + err); }
-    //     );
-    // };
-    //
-    // connection.onclose = function () {
-    //     $(".block_comm").css({display:'block'});
-    //     $("#message_button").addClass("error_text");
-    //     $("#message_button i").css({display:'none'});
-    //     $("#message_button .msg_btn_text").css({display:'none'});
-    //     $("#message_button .error_text").css({display:'inline-block'});
-    // }
-    //
-    // connection.onerror = function (error) {
-    //     // an error occurred when sending/receiving data
-    //     console.log("Error on connection");
-    //     $(".block_comm").css({display:'block'});
-    //     $("#message_button").addClass("error_text");
-    //     $("#message_button i").css({display:'none'});
-    //     $("#message_button .msg_btn_text").css({display:'none'});
-    //     $("#message_button .error_text").css({display:'inline-block'});
-    // };
-    //
-    // connection.onmessage = function (message) {
-    //     // try to decode json (I assume that each message
-    //     // from server is json)
-    //     console.log("Received message from server " + message.toString());
-    //     try {
-    //         var json = JSON.parse(message.data);
-    //     } catch (e) { console.log('>> Error answer doesn\'t look like a valid JSON: ', message.data); return false; }
-    //
-    //     if(json['type'] == 'Reply' && json['message'] == "Message Processed"){
-    //         $("#firstname").text($("input[name~='firstname']").val());
-    //         $(".msg_conf_text").css({display: 'block'});
-    //         $("textarea[name~='message']").css({display: 'none'});
-    //
-    //         $("input[name~='firstname']").val('');
-    //         $("input[name~='phone']").val('');
-    //         $("input[name~='email']").val('');
-    //         $("input[name~='subject']").val('');
-    //
-    //         console.log('>> Confirmation of reception:',message);
-    //         $("#message_button").addClass("error_text");
-    //         $("#message_button i").css({display:'none'});
-    //         $("#message_button .msg_btn_text").css({display:'none'});
-    //         $("#message_button .confirmation_text").css({display:'inline-block'});
-    //     }
-    //     else
-    //         console.log(">> Error when receiving confirmation. Message", message);
-    //
-    //     // handle incoming message
-    // };
-    //
+    const observer = new IntersectionObserver(onIntersection);
+    observer.observe(document.querySelector('#contact_form'));
+
     $("#contact_form").submit(function() {
-        if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block") {
-            console.log("Tried to connect without socket");
+        if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block" || backend_connexion == null || !backend_connexion){
+            console.log("Tried to connect without connection");
             return false;
         }
 
@@ -265,11 +227,9 @@ $(document).ready(function(){
         }
 
         var message = {
-            type: "message",
-            date: Date(),
-            privOrigin: window.ipAddress,
-            firstname: $("input[name~='firstname']").val().toString(),
-            phone: $("input[name~='phone']").val().toString(),
+            cookie_id: session["cookie_id"],
+            first_name: $("input[name~='firstname']").val().toString(),
+            telephone: Number($("input[name~='phone']").val().toString().replace(/[^0-9]/g, "")),
             email: $("input[name~='email']").val().toString(),
             subject: $("input[name~='subject']").val().toString(),
             message: $("textarea[name~='message']").val().toString()
@@ -286,37 +246,29 @@ $(document).ready(function(){
         });
 
 
-        /*
-                 "duration": {"type": "number"},
-         "number_of_clicks": {"type": "number"},
-         "read_post_list":  {"type": "array", "items": {"type": "object", "properties": {
-                  "duration": {"type": "number"},
-                  "post_name": {"type": "string"},
-                  "watch_video": {"type": "boolean"}},
-            "additionalProperties": False}},
-         "language": {"type": "string"},
-         "accessed_social_links": {"type": "array", "items": {"type": "string"}},
-         "cookie_id": {"type": "number"},
-         */
+
 
         if($('.blame_form').length == 0){ //Only send a message when the form is complete
-            connection.send(JSON.stringify(message));
-            $.ajax({
-                url: analytics_url,
-                method: "POST",
-                crossDomain: true,
-                headers: {"content-type":"application/json"},
-                dataType: "json",
-                data: {"duration": duration},
-                xhrFields: {
-                    withCredentials: false
-                },
-                success: function(result){
-                    console.log("Hi");
-                },
-                error: function(result){
-                    console.log("Bye");
-                }
+            ajax_to_backend(message_url, JSON.stringify(message), function (){
+                        $("#firstname").text($("input[name~='firstname']").val());
+                        $(".msg_conf_text").css({display: 'block'});
+                        $("textarea[name~='message']").css({display: 'none'});
+
+                        $("input[name~='firstname']").val('');
+                        $("input[name~='phone']").val('');
+                        $("input[name~='email']").val('');
+                        $("input[name~='subject']").val('');
+
+                        console.log('>> Confirmation of reception:',message);
+                        $("#message_button i").css({display:'none'});
+                        $("#message_button .msg_btn_text").css({display:'none'});
+                        $("#message_button .confirmation_text").css({display:'inline-block'});
+            }, function (){
+                    console.log("Error on connection");
+                    $(".block_comm").css({display:'block'});
+                    $("#message_button").addClass("error_sending");
+                    $("#message_button .msg_btn_text").css({display:'none'});
+                    $("#message_button .error_sending").css({display:'inline-block'});
             });
         } else{
           $("#message_button .msg_btn_text").css({display:'none'});
@@ -326,11 +278,13 @@ $(document).ready(function(){
         return false; // NEED RETURN FALSE to not refresh page and keep values in the form
 
     });
-    console.log("");
+
+    $(window).on("unload", function(e) {
+        setCookie("TestExit", "iamalive")
+    });
 });
 
 // Function to resize dimensions of black div used to prevent the user write a message
-//
 function placingBlackDivContact(){
   $(".block_comm").css({width:Math.round($("#contact_form").width()),
                         height:Math.round($("#contact_form").height() - ( $("#message_button").height() + parseInt($("#message_button").css("margin-top"))) - 5),
@@ -401,13 +355,12 @@ function foundNewIP(ip) {
 }
 
 // Functions of w3 school to set, get a check a cookie https://www.w3schools.com/js/js_cookies.asp
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-
+expirationDays = 365
+function setCookie(cname, cvalue) {
     if (cookiesAccepted) {// New EU data regulation makes the agreement mandatory before any cookie
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        var d = new Date();
+        d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+        document.cookie = cname + "=" + cvalue + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
     }
     else{
         var height = $("#CookieWarning").css("height").split("px")[0];
@@ -435,4 +388,40 @@ function getCookie(cname, default_value) {
         }
     }
     return default_value;
+}
+
+function ajax_to_backend(url, data, success_callback, error_callback){
+    let processed_data
+    if (data == null){
+        processed_data = JSON.stringify({
+            "duration": new Date().getTime() - session["current_connection"].getTime(),
+            "session": [session["current_connection"].toISOString(), new Date().toISOString()],
+            "number_of_clicks": session["clicks"],
+            "read_post_list": readPostList,
+            "language": language,
+            "accessed_social_links": accessedSocialLinks,
+            "cookie_id": session["cookie_id"]
+        })
+    } else {
+        processed_data = data
+    }
+
+    let assign_success_callback = success_callback != null ? success_callback : function(data, textStatus){console.log("Success ", data, textStatus)}
+    let assign_error_callback = error_callback != null ? error_callback : function(data, textStatus){console.log("Failure ", data, textStatus)}
+
+    let jqXHR = $.ajax({
+        url: url,
+        method: "POST",
+        crossDomain: true,
+        headers: {"content-type":"application/json"},
+        dataType: "json",
+        data: processed_data,
+        xhrFields: {
+            withCredentials: false
+        }
+    });
+
+    jqXHR.done(assign_success_callback)
+    jqXHR.fail(assign_error_callback)
+    return jqXHR
 }

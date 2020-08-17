@@ -21,7 +21,7 @@ Add new changes, executes dislines, confirm & commit changes and upload commit t
 
 ```shell script
 # Create the html files
-./dislines.pl index.MULTILINGUAL.html --out=index.html && sed -i "" && mv index.en.html index.html
+./dislines.pl index.MULTILINGUAL.html --out=index.html && mv index.en.html index.html
 
 # Add, confirm the changed and provide a descriptive comment
 git add -u . && git commit
