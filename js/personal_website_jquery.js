@@ -1,8 +1,8 @@
 // Load the proper website according to the language selected (by default english)
 var language = getCookie("language", "en");
 let cookiesAccepted = getCookie("cookies", false);
-let session = getCookie("start_session", { "first_connection": new Date(), "session_list": [], "clicks": 0, "cookie_id": ""})
-session["current_connection"] = new Date()
+let session = getCookie("start_session", { "first_connection": new Date().toISOString(), "session_list": [], "clicks": 0, "cookie_id": ""})
+session["current_connection"] = new Date().toISOString()
 let accessedSocialLinks = getCookie("accessed_social_links", [])
 let readPostList = getCookie("read_post_list", [])
 
@@ -67,7 +67,6 @@ $(document).ready(function(){
         event.stopPropagation();
         $(this).children(".dropdown_button").toggleClass("alt");
         $(this).children(".dropdown_button-content").toggleClass("show");
-        console.log("clicked on event");
     });
 
     // Close the dropdown if the user clicks outside of it
@@ -75,10 +74,7 @@ $(document).ready(function(){
         if (!event.target.matches('.dropdown_button')) {
           $('.dropdown_button.alt').toggleClass('alt');
           $(".dropdown_button-content.show").removeClass('show');
-          console.log("Closing dropdown");
-
         }
-        console.log("Called event");
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +170,7 @@ $(document).ready(function(){
 
     let backend_connexion = null;
     placingBlackDivContact();
-    base_url = "https://marcosbernal.es" // https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
+    base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
     message_url = base_url + "/message"
     analytics_url = base_url + "/analytics"
 
@@ -188,25 +184,27 @@ $(document).ready(function(){
         for (const entry of entries) {
             if (entry.isIntersecting) {
                 console.log("Intersecting with: ", entry);
-                if (backend_connexion == null) {
-                    ajax_to_backend(analytics_url, null, function (response) {
-                        console.log("Connected with server. Response: ", response);
-                        backend_connexion = true;
-                        if (session["cookie_id"] == ""){
-                            session["cookie_id"] = response["cookie_id"]
-                        }
-                        $(".block_comm").css({display: 'none'});
-                        $("#message_button i").css({display: 'inline-block'});
-                        $("#message_button .msg_btn_text").css({display: 'none'});
-                        $("#message_button .connected_text").css({display: 'inline-block'});
-                    }, function (response) {
-                        console.log("Error on connection");
-                        backend_connexion = false;
-                        $(".block_comm").css({display: 'block'});
-                        $("#message_button i").css({display: 'none'});
-                        $("#message_button .msg_btn_text").css({display: 'none'});
-                        $("#message_button .error_text").css({display: 'inline-block'});
-                    })
+                if(cookiesAccepted){
+                    if (backend_connexion == null) {
+                        ajax_to_backend(analytics_url, null, function (response) {
+                            console.log("Connected with server. Response: ", response);
+                            backend_connexion = true;
+                            if (session["cookie_id"] == ""){
+                                session["cookie_id"] = response["cookie_id"]
+                            }
+                            $(".block_comm").css({display: 'none'});
+                            $("#message_button i").css({display: 'inline-block'});
+                            $("#message_button .msg_btn_text").css({display: 'none'});
+                            $("#message_button .connected_text").css({display: 'inline-block'});
+                        }, function (response) {
+                            console.log("Error on connection");
+                            backend_connexion = false;
+                            $(".block_comm").css({display: 'block'});
+                            $("#message_button i").css({display: 'none'});
+                            $("#message_button .msg_btn_text").css({display: 'none'});
+                            $("#message_button .error_text").css({display: 'inline-block'});
+                        })
+                    }
                 }
             }
         }
@@ -216,6 +214,11 @@ $(document).ready(function(){
     observer.observe(document.querySelector('#contact_form'));
 
     $("#contact_form").submit(function() {
+        if(!cookiesAccepted){
+            increaseCookieWarning();
+            return false;
+        }
+
         if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block" || backend_connexion == null || !backend_connexion){
             console.log("Tried to connect without connection");
             return false;
@@ -279,8 +282,17 @@ $(document).ready(function(){
 
     });
 
-    $(window).on("unload", function(e) {
-        setCookie("TestExit", "iamalive")
+    // Analytics to check further improvements of the website
+    $(window).on("unload", function() {
+        session["session_list"].push([session["current_connection"], new Date().toISOString()])
+        let jqXHR = ajax_to_backend(analytics_url)
+        $.when(jqXHR).then(console.log("Sent"))
+        setCookie("session", session)
+    });
+
+    $(".social-button").on('click touch', function () {
+        accessedSocialLinks.push($(this).attr("data"))
+        setCookie("accessed_social_links", accessedSocialLinks)
     });
 });
 
@@ -363,16 +375,20 @@ function setCookie(cname, cvalue) {
         document.cookie = cname + "=" + JSON.stringify({"cname": cvalue}) + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
     }
     else{
-        var height = $("#CookieWarning").css("height").split("px")[0];
-        var paddingTop = $("#CookieWarning").css("padding-top").split("px")[0];
-        var fontSize = $("#CookieWarning").css("font-size").split("px")[0];
-
-        var size = 50
-
-        $("#CookieWarning").css({"height": (Number(height) + size) + "px"})
-        $("#CookieWarning").css({"padding-top": (Number(paddingTop) + size/2) + "px"})
-        $("#CookieWarning").css({"font-size": (Number(fontSize) + size/10) + "px"})
+        increaseCookieWarning()
     }
+}
+
+var incrementalSize = 50
+function increaseCookieWarning(){
+    var height = $("#CookieWarning").css("height").split("px")[0];
+    var paddingTop = $("#CookieWarning").css("padding-top").split("px")[0];
+    var fontSize = $("#CookieWarning").css("font-size").split("px")[0];
+
+    $("#CookieWarning").css({"height": (Number(height) + incrementalSize) + "px"})
+    $("#CookieWarning").css({"padding-top": (Number(paddingTop) + incrementalSize/2) + "px"})
+    $("#CookieWarning").css({"font-size": (Number(fontSize) + incrementalSize/10) + "px"})
+
 }
 
 function getCookie(cname, default_value) {
@@ -390,12 +406,12 @@ function getCookie(cname, default_value) {
     return default_value;
 }
 
-function ajax_to_backend(url, data, success_callback, error_callback){
+function ajax_to_backend(url, data, success_callback, error_callback, async=true){
     let processed_data
     if (data == null){
         processed_data = JSON.stringify({
-            "duration": new Date().getTime() - session["current_connection"].getTime(),
-            "session": [session["current_connection"].toISOString(), new Date().toISOString()],
+            "duration": new Date().getTime() - new Date(session["current_connection"]).getTime(),
+            "session": [session["current_connection"], new Date().toISOString()],
             "number_of_clicks": session["clicks"],
             "read_post_list": readPostList,
             "language": language,
