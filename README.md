@@ -17,11 +17,11 @@ I found these libraries very powerful and, as result, I decided to use them.
 
 # Deploy new changes
 
-Add new changes, executes dislines, confirm & commit changes and upload commit to repo:
+Add new changes, update html files (execute dislines), confirm & commit changes and upload commit to repo.
 
 ```shell script
-# Create the html files
-./dislines.pl index.MULTILINGUAL.html --out=index.html && mv index.en.html index.html
+# Create the html files and then
+bash -x update_html_files.sh
 
 # Add, confirm the changed and provide a descriptive comment
 git add -u . && git commit

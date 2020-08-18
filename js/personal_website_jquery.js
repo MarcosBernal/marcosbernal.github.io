@@ -4,7 +4,7 @@ let cookiesAccepted = getCookie("cookies", false);
 let session = getCookie("start_session", { "first_connection": new Date().toISOString(), "session_list": [], "clicks": 0, "cookie_id": ""})
 session["current_connection"] = new Date().toISOString()
 let accessedSocialLinks = getCookie("accessed_social_links", [])
-let readPostList = getCookie("read_post_list", [])
+let previousReadPostList = getCookie("previous_read_post_list", [])
 
 // english (en) is not necesary as it is the default landing page
 if(navigator.cookieEnabled && language != "en" && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index."+language+".html"){
@@ -197,7 +197,7 @@ $(document).ready(function(){
                             $("#message_button .msg_btn_text").css({display: 'none'});
                             $("#message_button .connected_text").css({display: 'inline-block'});
                         }, function (response) {
-                            console.log("Error on connection");
+                            console.log("Error starting connection");
                             backend_connexion = false;
                             $(".block_comm").css({display: 'block'});
                             $("#message_button i").css({display: 'none'});
@@ -252,7 +252,7 @@ $(document).ready(function(){
 
 
         if($('.blame_form').length == 0){ //Only send a message when the form is complete
-            ajax_to_backend(message_url, JSON.stringify(message), function (){
+            ajax_to_backend(message_url, JSON.stringify(message), function (data, textStatus, request){
                         $("#firstname").text($("input[name~='firstname']").val());
                         $(".msg_conf_text").css({display: 'block'});
                         $("textarea[name~='message']").css({display: 'none'});
@@ -262,12 +262,12 @@ $(document).ready(function(){
                         $("input[name~='email']").val('');
                         $("input[name~='subject']").val('');
 
-                        console.log('>> Confirmation of reception:',message);
+                        console.log('>> Confirmation of reception:', message);
                         $("#message_button i").css({display:'none'});
                         $("#message_button .msg_btn_text").css({display:'none'});
                         $("#message_button .confirmation_text").css({display:'inline-block'});
-            }, function (){
-                    console.log("Error on connection");
+            }, function (data, textStatus, request){
+                    console.log("Error sending message. Response was: ", data, textStatus, request);
                     $(".block_comm").css({display:'block'});
                     $("#message_button").addClass("error_sending");
                     $("#message_button .msg_btn_text").css({display:'none'});
@@ -288,6 +288,7 @@ $(document).ready(function(){
         let jqXHR = ajax_to_backend(analytics_url)
         $.when(jqXHR).then(console.log("Sent"))
         setCookie("session", session)
+        setCookie("previous_read_post_list", previousReadPostList.concat(read_content_list))
     });
 
     $(".social-button").on('click touch', function () {
@@ -406,14 +407,14 @@ function getCookie(cname, default_value) {
     return default_value;
 }
 
-function ajax_to_backend(url, data, success_callback, error_callback, async=true){
+function ajax_to_backend(url, data, success_callback, error_callback){
     let processed_data
     if (data == null){
         processed_data = JSON.stringify({
             "duration": new Date().getTime() - new Date(session["current_connection"]).getTime(),
             "session": [session["current_connection"], new Date().toISOString()],
             "number_of_clicks": session["clicks"],
-            "read_post_list": readPostList,
+            "read_post_list": typeof read_content_list === "undefined" ? [] : read_content_list.slice(-10),
             "language": language,
             "accessed_social_links": accessedSocialLinks,
             "cookie_id": session["cookie_id"]
@@ -422,8 +423,8 @@ function ajax_to_backend(url, data, success_callback, error_callback, async=true
         processed_data = data
     }
 
-    let assign_success_callback = success_callback != null ? success_callback : function(data, textStatus){console.log("Success ", data, textStatus)}
-    let assign_error_callback = error_callback != null ? error_callback : function(data, textStatus){console.log("Failure ", data, textStatus)}
+    let assign_success_callback = success_callback != null ? success_callback : function( data, textStatus, request){console.log("Success ", data, textStatus, request)}
+    let assign_error_callback = error_callback != null ? error_callback : function( request, textStatus, errorThrown){console.log("Failure ", request, textStatus, errorThrown)}
 
     let jqXHR = $.ajax({
         url: url,
