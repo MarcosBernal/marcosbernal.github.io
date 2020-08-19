@@ -1,7 +1,7 @@
 // Load the proper website according to the language selected (by default english)
 var language = getCookie("language", "en");
 let cookiesAccepted = getCookie("cookies", false);
-let session = getCookie("start_session", { "first_connection": new Date().toISOString(), "session_list": [], "clicks": 0, "cookie_id": ""})
+let session = getCookie("session", { "first_connection": new Date().toISOString(), "session_list": [], "clicks": 0, "cookie_id": ""})
 session["current_connection"] = new Date().toISOString()
 let accessedSocialLinks = getCookie("accessed_social_links", [])
 let previousReadPostList = getCookie("previous_read_post_list", [])
