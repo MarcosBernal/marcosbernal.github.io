@@ -11,6 +11,11 @@ if(navigator.cookieEnabled && language != "en" && window.location.href.substr(wi
   window.location.assign("index."+language+".html");
 }
 
+let backend_connexion = null;
+base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
+message_url = base_url + "/message"
+analytics_url = base_url + "/analytics"
+
 // When DOM has been loaded the function is triggered
 $(document).ready(function(){
 
@@ -30,6 +35,7 @@ $(document).ready(function(){
       setCookie("cookies", "accepted");
       $("#CookieWarning").css({display:'none'});
       console.log("Cookies have been accepted");
+      start_contact_form_connection();
   })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,11 +174,7 @@ $(document).ready(function(){
 /////////////////////////////////////////////////  CONTACT - JS SERVER   //////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    let backend_connexion = null;
     placingBlackDivContact();
-    base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
-    message_url = base_url + "/message"
-    analytics_url = base_url + "/analytics"
 
     $("#message_button i").css({display:'none'});
     $("#message_button .msg_btn_text").css({display:'none'});
@@ -184,28 +186,7 @@ $(document).ready(function(){
         for (const entry of entries) {
             if (entry.isIntersecting) {
                 console.log("Intersecting with: ", entry);
-                if(cookiesAccepted){
-                    if (backend_connexion == null) {
-                        ajax_to_backend(analytics_url, null, function (response) {
-                            console.log("Connected with server. Response: ", response);
-                            backend_connexion = true;
-                            if (session["cookie_id"] == ""){
-                                session["cookie_id"] = response["cookie_id"]
-                            }
-                            $(".block_comm").css({display: 'none'});
-                            $("#message_button i").css({display: 'inline-block'});
-                            $("#message_button .msg_btn_text").css({display: 'none'});
-                            $("#message_button .connected_text").css({display: 'inline-block'});
-                        }, function (response) {
-                            console.log("Error starting connection");
-                            backend_connexion = false;
-                            $(".block_comm").css({display: 'block'});
-                            $("#message_button i").css({display: 'none'});
-                            $("#message_button .msg_btn_text").css({display: 'none'});
-                            $("#message_button .error_text").css({display: 'inline-block'});
-                        })
-                    }
-                }
+                start_contact_form_connection();
             }
         }
     };
@@ -295,6 +276,8 @@ $(document).ready(function(){
         accessedSocialLinks.push($(this).attr("data"))
         setCookie("accessed_social_links", accessedSocialLinks)
     });
+
+    ajax_to_backend(analytics_url)
 });
 
 // Function to resize dimensions of black div used to prevent the user write a message
@@ -441,4 +424,31 @@ function ajax_to_backend(url, data, success_callback, error_callback){
     jqXHR.done(assign_success_callback)
     jqXHR.fail(assign_error_callback)
     return jqXHR
+}
+
+function start_contact_form_connection(){
+    if(cookiesAccepted){
+        if (backend_connexion == null) {
+            ajax_to_backend(analytics_url, null, function (response) {
+                console.log("Connected with server. Response: ", response);
+                backend_connexion = true;
+                if (session["cookie_id"] == ""){
+                    session["cookie_id"] = response["cookie_id"]
+                }
+                $(".block_comm").css({display: 'none'});
+                $("#message_button i").css({display: 'inline-block'});
+                $("#message_button .msg_btn_text").css({display: 'none'});
+                $("#message_button .connected_text").css({display: 'inline-block'});
+            }, function (response) {
+                console.log("Error starting connection");
+                backend_connexion = false;
+                $(".block_comm").css({display: 'block'});
+                $("#message_button i").css({display: 'none'});
+                $("#message_button .msg_btn_text").css({display: 'none'});
+                $("#message_button .error_text").css({display: 'inline-block'});
+            })
+        }
+    } else {
+        console.log("Intersecting but cookies not allowed yet...")
+    }
 }
