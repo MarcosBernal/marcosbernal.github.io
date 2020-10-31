@@ -6,7 +6,7 @@ session["current_connection"] = new Date().toISOString()
 let accessedSocialLinks = getCookie("accessed_social_links", [])
 let previousReadPostList = getCookie("previous_read_post_list", [])
 
-// english (en) is not necesary as it is the default landing page
+// english (en) is not necessary as it is the default landing page
 if(navigator.cookieEnabled && language != "en" && window.location.href.substr(window.location.href.lastIndexOf('/') + 1) != "index."+language+".html"){
   window.location.assign("index."+language+".html");
 }
@@ -23,7 +23,7 @@ $(document).ready(function(){
         placeCanvasAndDivider();
         paintNetworkAgain();
         placingBlackDivContact();
-        console.log("Width has changed", window.screen.width);
+        console.log("Width has changed", window.screen.width, "with event:", event);
   }
 
   if(!cookiesAccepted){
@@ -47,6 +47,7 @@ $(document).ready(function(){
         setCookie("language", language);  // If no agreement is set cookie is not set
         if(!cookiesAccepted) { return }
         console.log("Selected language", language);
+        let new_location;
 
         if (language != "en") {
             new_location = "index."+language+".html"
@@ -91,9 +92,9 @@ $(document).ready(function(){
     placeCanvasAndDivider();
 
     // Refreshing the position of the knowledge graph and text according the mouse position
-    var divPos = {};
-    var right_graph_pos = 0;
-    var offset = $("#left_text").offset();
+    let divPos = {};
+    let right_graph_pos = 0;
+    let offset = $("#left_text").offset();
 
     $(".switching_content").on("mousemove", function(e){
     divPos = {
@@ -109,9 +110,8 @@ $(document).ready(function(){
                 divPos.left = divPos.left > $('#left_text').width()+ $('#divider').width() ?
                     $('#left_text').width()+$('#divider').width() : divPos.left;
                 right_graph_pos = $('#left_text').width() - divPos.left;
-                right_divider_pos = right_graph_pos == 0 ? 0 : right_graph_pos+$('#divider').width();
                 $("#right_graph").css('width', right_graph_pos);
-                $("#divider").css('right',right_divider_pos);
+                $("#divider").css('right',right_graph_pos == 0 ? 0 : right_graph_pos+$('#divider').width());
                 $("p").css('user-select', "none");
                 $("img").css('user-select', "none");
 
@@ -233,7 +233,7 @@ $(document).ready(function(){
 
 
         if($('.blame_form').length == 0){ //Only send a message when the form is complete
-            ajax_to_backend(message_url, JSON.stringify(message), function (data, textStatus, request){
+            ajax_to_backend(message_url, JSON.stringify(message), function (response){
                         $("#firstname").text($("input[name~='firstname']").val());
                         $(".msg_conf_text").css({display: 'block'});
                         $("textarea[name~='message']").css({display: 'none'});
@@ -243,12 +243,12 @@ $(document).ready(function(){
                         $("input[name~='email']").val('');
                         $("input[name~='subject']").val('');
 
-                        console.log('>> Confirmation of reception:', message);
+                        console.log('>> Confirmation of reception with response:', response);
                         $("#message_button i").css({display:'none'});
                         $("#message_button .msg_btn_text").css({display:'none'});
                         $("#message_button .confirmation_text").css({display:'inline-block'});
-            }, function (data, textStatus, request){
-                    console.log("Error sending message. Response was: ", data, textStatus, request);
+            }, function (response){
+                    console.log("Error sending message. Response was: ", response);
                     $(".block_comm").css({display:'block'});
                     $("#message_button").addClass("error_sending");
                     $("#message_button .msg_btn_text").css({display:'none'});
@@ -305,7 +305,7 @@ function placeCanvasAndDivider(){
   }
 }
 
-// Funtion to obtain the IP in the client browser without any server interaction
+// Function to obtain the IP in the client browser without any server interaction
 // Code from BRebey https://stackoverflow.com/a/36610819
 function findIP(onNewIP) { //  onNewIp - your listener function for new IPs
     var promise = new Promise(function (resolve, reject) {
@@ -352,11 +352,11 @@ function foundNewIP(ip) {
 
 // Functions of w3 school to set, get a check a cookie https://www.w3schools.com/js/js_cookies.asp
 expirationDays = 365
-function setCookie(cname, cvalue) {
+function setCookie(name, value) {
     if (cookiesAccepted) {// New EU data regulation makes the agreement mandatory before any cookie
         var d = new Date();
         d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
-        document.cookie = cname + "=" + JSON.stringify({"cname": cvalue}) + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
+        document.cookie = name + "=" + JSON.stringify({"cname": value}) + ";expires=" + d.toUTCString() + ";path=/;SameSite=Strict;";
     }
     else{
         increaseCookieWarning()
@@ -365,9 +365,9 @@ function setCookie(cname, cvalue) {
 
 var incrementalSize = 50
 function increaseCookieWarning(){
-    var height = $("#CookieWarning").css("height").split("px")[0];
-    var paddingTop = $("#CookieWarning").css("padding-top").split("px")[0];
-    var fontSize = $("#CookieWarning").css("font-size").split("px")[0];
+    let height = $("#CookieWarning").css("height").split("px")[0];
+    let paddingTop = $("#CookieWarning").css("padding-top").split("px")[0];
+    let fontSize = $("#CookieWarning").css("font-size").split("px")[0];
 
     $("#CookieWarning").css({"height": (Number(height) + incrementalSize) + "px"})
     $("#CookieWarning").css({"padding-top": (Number(paddingTop) + incrementalSize/2) + "px"})
@@ -406,8 +406,8 @@ function ajax_to_backend(url, data, success_callback, error_callback){
         processed_data = data
     }
 
-    let assign_success_callback = success_callback != null ? success_callback : function( data, textStatus, request){console.log("Success ", data, textStatus, request)}
-    let assign_error_callback = error_callback != null ? error_callback : function( request, textStatus, errorThrown){console.log("Failure ", request, textStatus, errorThrown)}
+    let assign_success_callback = success_callback != null ? success_callback : function(response){console.log("Success with response:", response)}
+    let assign_error_callback = error_callback != null ? error_callback : function(response){console.log("Failure with response:", response)}
 
     let jqXHR = $.ajax({
         url: url,
