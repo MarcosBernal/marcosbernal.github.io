@@ -35,7 +35,7 @@ $(document).ready(function(){
       setCookie("cookies", "accepted");
       $("#CookieWarning").css({display:'none'});
       console.log("Cookies have been accepted");
-      start_contact_form_connection();
+      send_hello_to_server();
   })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,7 +186,7 @@ $(document).ready(function(){
         for (const entry of entries) {
             if (entry.isIntersecting) {
                 console.log("Intersecting with: ", entry);
-                start_contact_form_connection();
+                send_hello_to_server();
             }
         }
     };
@@ -195,11 +195,6 @@ $(document).ready(function(){
     observer.observe(document.querySelector('#contact_form'));
 
     $("#contact_form").submit(function() {
-        if(!cookiesAccepted){
-            increaseCookieWarning();
-            return false;
-        }
-
         if($("#message_button .error_text").css("display") == "inline-block" || $("#message_button .waiting_text").css("display") == "inline-block" || backend_connexion == null || !backend_connexion){
             console.log("Tried to connect without connection");
             return false;
@@ -277,7 +272,7 @@ $(document).ready(function(){
         setCookie("accessed_social_links", accessedSocialLinks)
     });
 
-    ajax_to_backend(analytics_url)
+    send_hello_to_server()
 });
 
 // Function to resize dimensions of black div used to prevent the user write a message
@@ -426,8 +421,7 @@ function ajax_to_backend(url, data, success_callback, error_callback){
     return jqXHR
 }
 
-function start_contact_form_connection(){
-    if(cookiesAccepted){
+function send_hello_to_server(){
         if (backend_connexion == null) {
             ajax_to_backend(analytics_url, null, function (response) {
                 console.log("Connected with server. Response: ", response);
@@ -448,7 +442,4 @@ function start_contact_form_connection(){
                 $("#message_button .error_text").css({display: 'inline-block'});
             })
         }
-    } else {
-        console.log("Intersecting but cookies not allowed yet...")
-    }
 }
