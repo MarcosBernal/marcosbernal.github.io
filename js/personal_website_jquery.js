@@ -12,7 +12,7 @@ if(navigator.cookieEnabled && language != "en" && window.location.href.substr(wi
 }
 
 let backend_connexion = null;
-base_url = "https://bw3g39ud37.execute-api.eu-west-1.amazonaws.com/live"
+base_url = "https://hraqrt3c59.execute-api.eu-west-1.amazonaws.com/live"
 message_url = base_url + "/message"
 analytics_url = base_url + "/analytics"
 
